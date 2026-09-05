@@ -89,13 +89,20 @@ CLI route (`npm profile enable-2fa`) is refused by the registry now.
   and the `SortableList` banner comment, which named the product. BirthGuide
   still has its own copies until 4c deletes them. Not yet merged to `main`
   or published.
-- 4c NEXT: BirthGuide consumes the package: `globals.css` imports
-  `@fracazo/design-system/roles.css` then its own brand file, gains
-  `@source` for the package's `dist` so Tailwind generates the utilities
-  the components use, ui imports codemodded to the package, local copies
-  and scripts deleted, ESLint pulls `designSystemGuardrails`. Snapshot
-  must compare identical (349 keys).
-- 4d: birthplans.app consumes the same way and takes ownership of
+- 4c DONE in BirthGuide on branch `feature/consume-design-system`
+  (commit `9ef71fb`, not merged): `globals.css` imports the package's
+  roles.css, then the brand, then `@source`s the package `dist`; the 17
+  local components, `src/system/roles.css` and the two brand scripts are
+  deleted; imports codemodded to `@fracazo/design-system/ui/*` (stories
+  included); `cn` re-exported from `@/lib/utils`; ESLint pulls
+  `designSystemGuardrails`; the snapshot harness reads roles from the
+  package. Snapshot identical (349 keys), tsc, 429 tests, next build and
+  storybook build all pass. One step remains before merging: publish 0.2.0,
+  then in BirthGuide replace the vendored `vendor/fracazo-design-system-
+  0.2.0.tgz` dependency with `^0.2.0`, delete `vendor/`, and re-run the
+  snapshot compare. The vendored tarball exists only because a `link:`
+  install would resolve a second React from this repo's devDependencies.
+- 4d NEXT: birthplans.app consumes the same way and takes ownership of
   `brands/birthplans.css` (a validated copy currently sits in BirthGuide's
   `src/system/brands/`).
 - 5: author `DESIGN.md` in Vercel's design.md skeleton, brand-agnostic
