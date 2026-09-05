@@ -22,7 +22,8 @@ product from.
 | `DESIGN.md` | The written authority: who the reader is, the priority order, how a page is composed, the rejection list, one short chapter per brand |
 
 Brand files live in each product repo, not here. The contract is what keeps
-them honest.
+them honest. A new product starts from the `design-system-starter` template:
+Next 16, Tailwind v4, this package, a blank brand file and the guardrails on.
 
 ## Consume it
 

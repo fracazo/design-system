@@ -120,5 +120,17 @@ CLI route (`npm profile enable-2fa`) is refused by the registry now.
   corrections that recurred in git history. Consumer CLAUDE.md files still
   carry their full design sections; slimming them to hard in-context rules
   plus a pointer here is optional follow-up.
-- 6 NEXT: a starter template repo (Next 16 + Tailwind v4 + this package + a
-  blank brand file + the guardrails on by default).
+- 6 DONE locally, GitHub creation pending: `~/Developer/design-system-starter`
+  (commit `a78c204`, not yet on GitHub). Next 16 via create-next-app 16.1.6,
+  Tailwind v4, the package and its peers, `src/system/brands/starter.css`
+  with achromatic placeholders for all 63/48/2 contract properties, the
+  house base layer in `globals.css`, the pre-paint dark script plus
+  `ThemeSync`, `designSystemGuardrails()` with no exemptions, `pnpm lint`
+  = eslint plus `ds-check-brand`. Lint, typecheck and build pass; both
+  themes verified in a browser. Its `pnpm-workspace.yaml` approves the
+  native builds and excludes the package from pnpm 11's minimum-release-age
+  gate. Alex creates the GitHub repo (name and visibility his call) and
+  marks it a template.
+- Later: publish 0.2.1 (DESIGN.md); slim the consumers' CLAUDE.md design
+  sections to hard rules plus a pointer to DESIGN.md; a type-role pass in
+  birthplans so its fluid-type guardrail can switch on.
