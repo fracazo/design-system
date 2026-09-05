@@ -1,0 +1,92 @@
+# CLAUDE.md - @fracazo/design-system
+
+## What this is
+
+The brand-agnostic half of a product design system, published to npm as
+`@fracazo/design-system` (public, MIT). It ships the roles a product can
+name (tokens, the Tailwind v4 theme mapping, radius ramp, fluid type,
+band rhythm, the eight aliasing semantics), a machine-readable brand
+contract, two bins that hold a product's brand file to that contract and
+compose its public `brand.css`, ESLint guardrails, and a showcase page.
+Each product keeps its own brand file in its own repo; nothing brand-
+specific lives here.
+
+Consumers today: BirthGuide (`~/Developer/birthguide`, warm cream / espresso
+/ rose) and birthplans.app (`~/Developer/birthplans`, same palette, brand
+hue rotated to periwinkle, plus a status ramp). The system was extracted
+from BirthGuide in September 2026; both products stay byte-identical in
+rendering through every step, proven with BirthGuide's snapshot harness.
+
+## Layout
+
+- `css/roles.css`: the system. The brand contract is the comment block at
+  the top (`brand-contract:theme` / `:light` / `:dark`); the bins parse it.
+- `guardrails/*.ts`: compiled by `tsc` to `dist/`, which is what publishes.
+  `check-brand.ts` and `build-brand-css.ts` are bins (`ds-check-brand`,
+  `ds-build-brand-css`); `eslint.ts` exports `designSystemGuardrails()`.
+- `demo/index.html`: showcase template that links a served `/brand.css`.
+- `DESIGN.md`: the written authority, still a stub (phase 5).
+
+## Rules
+
+- Australian English everywhere, including comments and commit messages.
+- Never use em dashes, anywhere. Commas, colons, full stops instead.
+- No brand literal in `css/roles.css`, ever. If a value is needed, it is a
+  role the brand file must supply; add it to the contract.
+- The eight aliasing semantics (foreground, card, popover, primary, accent,
+  ring and their foregrounds) live here once. The six divergent ones
+  (secondary, muted, border, input, muted-foreground, accent-foreground)
+  are brand values by design; never alias them.
+- A new or renamed role is a minor version and a changelog note; a contract
+  change a brand file must satisfy anew is a major version.
+- Feature branch, then fast-forward merge to `main`; no PRs. Conventional
+  Commits, present tense. (The initial scaffold went straight to main;
+  that was the exception.)
+- Do not add dependencies without discussing first. Dev tooling is
+  `typescript` and `@types/node` only; there is deliberately no Storybook
+  here (BirthGuide's local Storybook consumes the components instead).
+
+## Verify a change
+
+- `pnpm check` (tsc, no emit) and `pnpm build`.
+- `node dist/guardrails/check-brand.js <a brand file>`: both product brand
+  files must still satisfy the contract (currently 63 light, 48 dark,
+  2 theme).
+- `node dist/guardrails/build-brand-css.js --brand <file> --out /tmp/x.css
+  --name X --url https://x --check` against a product's committed
+  `public/brand.css`: declarations must match.
+- Anything that can change a consumer's rendering is verified in the
+  consumer with its snapshot harness (`pnpm design:snapshot` /
+  `design:compare` in BirthGuide), never here by eye.
+
+## Publishing
+
+Alex publishes; it needs his npm login and a 2FA code at publish time:
+`pnpm publish --access public` from this folder (it builds first), then
+tag `vX.Y.Z` and push the tag. `v0.1.0` is tagged; the 0.1.0 publish was
+blocked on enabling 2FA for the npm account at the time of writing.
+
+## Roadmap (state as of 5 Sep 2026)
+
+- 4a DONE: this repo, first commit `d714eaa`, pushed to
+  github.com/fracazo/design-system.
+- 4b NEXT: move BirthGuide's `src/components/ui/*` (17 shadcn-based
+  components with intent JSDoc; `place-autocomplete` stays in BirthGuide,
+  it imports app code) and `cn` into `src/`, exported as `.` and `./ui/*`,
+  with peerDependencies for react, radix-ui, lucide-react, react-hook-form,
+  react-day-picker, @dnd-kit/*, clsx, tailwind-merge,
+  class-variance-authority. Stories stay in BirthGuide.
+- 4c: BirthGuide consumes the package: `globals.css` imports
+  `@fracazo/design-system/roles.css` then its own brand file, gains
+  `@source` for the package's `dist` so Tailwind generates the utilities
+  the components use, ui imports codemodded to the package, local copies
+  and scripts deleted, ESLint pulls `designSystemGuardrails`. Snapshot
+  must compare identical (349 keys).
+- 4d: birthplans.app consumes the same way and takes ownership of
+  `brands/birthplans.css` (a validated copy currently sits in BirthGuide's
+  `src/system/brands/`).
+- 5: author `DESIGN.md` in Vercel's design.md skeleton, brand-agnostic
+  core plus one short chapter per brand; prose rules only where a
+  correction has recurred (the stylesheet does the visual work).
+- 6: a starter template repo (Next 16 + Tailwind v4 + this package + a
+  blank brand file + the guardrails on by default).
