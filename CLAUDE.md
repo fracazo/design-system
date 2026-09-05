@@ -63,8 +63,9 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 
 Alex publishes; it needs his npm login and a 2FA code at publish time:
 `pnpm publish --access public` from this folder (it builds first), then
-tag `vX.Y.Z` and push the tag. `v0.1.0` is tagged; the 0.1.0 publish was
-blocked on enabling 2FA for the npm account at the time of writing.
+tag `vX.Y.Z` and push the tag. 0.1.0 is published (5 Sep 2026) and tagged
+`v0.1.0`. Enabling 2FA on the npm account had to be done on npmjs.com; the
+CLI route (`npm profile enable-2fa`) is refused by the registry now.
 
 ## Roadmap (state as of 5 Sep 2026)
 
