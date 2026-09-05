@@ -1,0 +1,206 @@
+/* =============================================================================
+   Design system roles (src/system/roles.css)
+
+   The brand-agnostic half of the system: every role the app can name, and
+   no brand literal anywhere in this file. Values come from one brand file
+   that lives in the product repo and satisfies the contract below. The
+   product stylesheet imports this file first, then exactly one brand.
+
+   Two tiers. Primitives (--brand, --band, --ink ...) hold literals and live
+   in the brand file. Semantics either alias a primitive via var() here (the
+   eight below, identical in light and dark) or hold a brand-tuned literal in
+   the brand file (the six divergent ones: secondary, muted, border, input,
+   muted-foreground, accent-foreground). Dark border/input as translucent
+   hairlines is a design decision, not duplication; never "fix" a divergent
+   semantic by aliasing it.
+
+   Brand contract. ds-check-brand reads these lists and fails the lint when
+   a brand file defines less or more.
+
+   brand-contract:theme
+     --font-sans --font-mono
+   brand-contract:light
+     --radius
+     --card-shadow --card-shadow-hover --card-shadow-selected
+     --background --primary-foreground --secondary --secondary-foreground
+     --muted --muted-foreground --accent-foreground --destructive
+     --border --input
+     --band --band-2 --surface --surface-2 --ink --ink-2 --ink-3
+     --line --line-2 --brand --brand-ink --brand-soft --dark-accent
+     --headline-accent
+     --highlight --highlight-ink --highlight-soft --highlight-deep
+     --dark --dark-2 --dark-3 --dark-4 --dark-line --dark-soft
+     --dark-ink --dark-ink-2 --dark-muted --dark-soft-2 --dark-faint
+     --dark-faint-2 --dark-brand
+     --chip-1-soft --chip-1-ink --chip-2-soft --chip-2-ink
+     --chip-3-soft --chip-3-ink --glow-1 --glow-2
+     --status-want --status-want-soft --status-ifnec --status-ifnec-soft
+     --status-no --status-no-soft
+     --bar-shadow --warm-shadow-sm --warm-shadow-md --warm-shadow-lg
+   brand-contract:dark
+     --card-shadow --card-shadow-hover --card-shadow-selected
+     --background --primary-foreground --secondary --secondary-foreground
+     --muted --muted-foreground --accent-foreground --destructive
+     --border --input
+     --band --band-2 --surface --surface-2 --ink --ink-2 --ink-3
+     --line --line-2 --brand --brand-ink --brand-soft --dark-accent
+     --headline-accent
+     --highlight-soft --highlight-deep
+     --dark --dark-2 --dark-line --dark-soft
+     --chip-1-soft --chip-1-ink --chip-2-soft --chip-2-ink
+     --chip-3-soft --chip-3-ink --glow-1 --glow-2
+     --status-want --status-want-soft --status-no --status-no-soft
+     --warm-shadow-sm --warm-shadow-md --warm-shadow-lg
+   brand-contract:end
+
+   Roles absent from the dark list are mode-constant by design: the radius
+   base, the NEW badge (--highlight, --highlight-ink), the phone bezel
+   (--dark-3, --dark-4), the on-dark text ramp (--dark-ink ... --dark-brand)
+   and the bottom-bar shadow. Always-dark surfaces never change theme, so
+   neither does their text. The status "if necessary" pair aliases the
+   highlight primitive in light and follows it into dark by itself.
+   ============================================================================= */
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  /* shadcn semantics */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  /* Radius ramp, relative to the brand's --radius base */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  /* Named token for the 20px radius used ~34× as rounded-[20px]. Absolute
+     value (not on the relative --radius calc ramp) so it resolves to exactly
+     20px, identical to the arbitrary value it replaces. Utility: rounded-20. */
+  --radius-20: 20px;
+
+  /* ── Fluid type roles (SPEC_017): conversion-surface headline scale ───
+     Byte-identical to the arbitrary clamp() literals they replace.
+     text-section-title carries its line-height via the companion token;
+     text-lede deliberately does not, so per-use leading utilities
+     (e.g. leading-relaxed) still apply where they exist. */
+  --text-display: clamp(2.25rem, 5vw, 3.4rem);
+  --text-display--line-height: 0.9;
+  --text-section-title: clamp(1.875rem, 4.1vw, 3.0625rem);
+  --text-section-title--line-height: 1.05;
+  --text-lede: clamp(1.0625rem, 1.6vw, 1.1875rem);
+
+  /* ── Band rhythm (SPEC_017): landing section verticals ────────────────
+     band = section py; band-gap = section header to content mt. */
+  --spacing-band: clamp(4.5rem, 9vw, 7.75rem);
+  --spacing-band-gap: clamp(2.25rem, 4vw, 3.25rem);
+
+  /* Shadow-border utilities: shadow-card, shadow-card-hover, shadow-card-selected */
+  --shadow-card: var(--card-shadow);
+  --shadow-card-hover: var(--card-shadow-hover);
+  --shadow-card-selected: var(--card-shadow-selected);
+
+  /* ── Primitive palette roles ──────────────────────────────────────────
+     Theme-aware: each utility maps to a custom property the brand file
+     defines under :root / .force-light (light) and overrides in .dark.
+     Use the .force-light class to pin a subtree to light, e.g. document
+     previews that represent printed white paper. */
+  --color-band: var(--band);
+  --color-band-2: var(--band-2);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-dark-accent: var(--dark-accent);
+  --color-headline-accent: var(--headline-accent);
+  --color-highlight: var(--highlight);
+  --color-highlight-ink: var(--highlight-ink);
+  --color-highlight-soft: var(--highlight-soft);
+  --color-highlight-deep: var(--highlight-deep);
+  --color-dark: var(--dark);
+  --color-dark-2: var(--dark-2);
+  --color-dark-3: var(--dark-3);
+  --color-dark-4: var(--dark-4);
+  --color-dark-line: var(--dark-line);
+  --color-dark-ink: var(--dark-ink);
+  --color-dark-ink-2: var(--dark-ink-2);
+  --color-dark-muted: var(--dark-muted);
+  --color-dark-soft: var(--dark-soft);
+  --color-dark-soft-2: var(--dark-soft-2);
+  --color-dark-faint: var(--dark-faint);
+  --color-dark-faint-2: var(--dark-faint-2);
+  --color-dark-brand: var(--dark-brand);
+
+  /* Stat chips + hero glow blobs (SPEC_016): theme-varying accent tints
+     that let the landing components drop their hand-authored dark: pairs. */
+  --color-chip-1-soft: var(--chip-1-soft);
+  --color-chip-1-ink: var(--chip-1-ink);
+  --color-chip-2-soft: var(--chip-2-soft);
+  --color-chip-2-ink: var(--chip-2-ink);
+  --color-chip-3-soft: var(--chip-3-soft);
+  --color-chip-3-ink: var(--chip-3-ink);
+  --color-glow-1: var(--glow-1);
+  --color-glow-2: var(--glow-2);
+
+  /* Traffic-light status ramp (Want / If necessary / Don't want) for
+     on-screen preference UI. PDFs and previews keep their own hex palette
+     in constants.ts. */
+  --color-status-want: var(--status-want);
+  --color-status-want-soft: var(--status-want-soft);
+  --color-status-ifnec: var(--status-ifnec);
+  --color-status-ifnec-soft: var(--status-ifnec-soft);
+  --color-status-no: var(--status-no);
+  --color-status-no-soft: var(--status-no-soft);
+
+  /* Warm soft shadows for landing cards: shadow-warm-sm / -md / -lg */
+  --shadow-warm-sm: var(--warm-shadow-sm);
+  --shadow-warm-md: var(--warm-shadow-md);
+  --shadow-warm-lg: var(--warm-shadow-lg);
+
+  /* Floating bottom-bar shadow (upward): shadow-bar */
+  --shadow-bar: var(--bar-shadow);
+}
+
+/* The eight aliasing semantics, declared once. They recompute on any element
+   that redefines the primitive they point at, which is what lets a
+   .force-light subtree inside a dark page resolve to light values. */
+:root,
+.force-light {
+  color-scheme: light;
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--brand);
+  --accent: var(--brand-soft);
+  --ring: var(--brand);
+}
+
+.dark {
+  color-scheme: dark;
+}

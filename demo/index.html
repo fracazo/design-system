@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- Showcase template from @fracazo/design-system. Serve it from a product
+     that publishes its tokens at /brand.css; the copy and the illustrative
+     second skin are BirthGuide and birthplans.app, edit them for yours. -->
+<meta charset="utf-8">
+<title>brand.css demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/brand.css">
+<style>
+  body { margin: 0; font-family: 'Hanken Grotesk', system-ui, sans-serif; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; min-height: 100vh; }
+  .panel { padding: 30px 36px 34px; background: var(--background); color: var(--ink); }
+
+  /* Illustrative birthplans.app skin: same roles, periwinkle values.
+     Exactly the override contract documented in brand.css's header. */
+  .skin-bp { --brand: #7280cf; --brand-ink: #5c6cbe; --brand-soft: #e9ecf8; --headline-accent: var(--brand-ink); }
+  .dark.skin-bp { --brand: #96a4ea; --brand-ink: #aeb9f0; --brand-soft: #343c66; --headline-accent: #c3cbf5; }
+
+  .tag { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--warm-muted); }
+  h2 { margin: 14px 0 0; font-size: var(--text-section-title); line-height: var(--text-section-title--line-height); font-weight: 600; letter-spacing: -0.02em; }
+  h2 em { font-style: normal; color: var(--headline-accent); }
+  .lede { margin: 12px 0 0; max-width: 46ch; font-size: var(--text-lede); line-height: 1.55; color: var(--ink-2); }
+  .row { display: flex; align-items: center; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .btn { display: inline-block; padding: 11px 20px; border-radius: 999px; background: var(--brand); color: var(--primary-foreground); font-weight: 600; font-size: 15px; }
+  .chip { display: inline-block; padding: 7px 14px; border-radius: 999px; background: var(--brand-soft); color: var(--brand-ink); font-weight: 600; font-size: 13px; }
+  .card { margin-top: 22px; max-width: 400px; padding: 16px 18px; background: var(--card); border-radius: var(--radius-lg); box-shadow: var(--card-shadow); }
+  .card b { display: block; font-size: 14.5px; }
+  .card span { display: block; margin-top: 3px; font-size: 13px; color: var(--warm-muted); }
+  .swatches { display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap; }
+  .sw { width: 74px; }
+  .sw i { display: block; height: 40px; border-radius: 8px; border: 1px solid var(--line); }
+  .sw small { display: block; margin-top: 4px; font-size: 10.5px; color: var(--warm-muted); font-family: ui-monospace, monospace; }
+</style>
+<div class="grid">
+  <div class="panel">
+    <span class="tag">BirthGuide &middot; light</span>
+    <h2>Feel <em>calm and prepared</em> for labour and birth.</h2>
+    <p class="lede">Every value on this page resolves from brand.css: colours, type roles, radii and shadows. Nothing is styled directly.</p>
+    <div class="row"><span class="btn">Explore the program</span><span class="chip">Evidence-based</span></div>
+    <div class="card"><b>Card on surface</b><span>shadow-card over the cream page, radius from the ramp</span></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:var(--brand)"></i><small>brand</small></div>
+      <div class="sw"><i style="background:var(--brand-ink)"></i><small>brand-ink</small></div>
+      <div class="sw"><i style="background:var(--brand-soft)"></i><small>brand-soft</small></div>
+      <div class="sw"><i style="background:var(--sand)"></i><small>sand</small></div>
+      <div class="sw"><i style="background:var(--surface)"></i><small>surface</small></div>
+      <div class="sw"><i style="background:var(--ink)"></i><small>ink</small></div>
+      <div class="sw"><i style="background:var(--amber)"></i><small>amber</small></div>
+    </div>
+  </div>
+  <div class="panel dark">
+    <span class="tag">BirthGuide &middot; dark</span>
+    <h2>Feel <em>calm and prepared</em> for labour and birth.</h2>
+    <p class="lede">The .dark block swaps every token; the markup and the roles are identical to the light panel.</p>
+    <div class="row"><span class="btn">Explore the program</span><span class="chip">Evidence-based</span></div>
+    <div class="card"><b>Card on surface</b><span>dark shadows lean on black and hairlines</span></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:var(--brand)"></i><small>brand</small></div>
+      <div class="sw"><i style="background:var(--brand-ink)"></i><small>brand-ink</small></div>
+      <div class="sw"><i style="background:var(--brand-soft)"></i><small>brand-soft</small></div>
+      <div class="sw"><i style="background:var(--sand)"></i><small>sand</small></div>
+      <div class="sw"><i style="background:var(--surface)"></i><small>surface</small></div>
+      <div class="sw"><i style="background:var(--ink)"></i><small>ink</small></div>
+      <div class="sw"><i style="background:var(--amber)"></i><small>amber</small></div>
+    </div>
+  </div>
+  <div class="panel skin-bp">
+    <span class="tag">birthplans.app skin &middot; light (illustrative)</span>
+    <h2>Your plan, <em>ready to share</em> in minutes.</h2>
+    <p class="lede">Same stylesheet, same roles. Only the brand primitives are overridden, exactly as the brand.css header documents.</p>
+    <div class="row"><span class="btn">Build your plan</span><span class="chip">Free basic plan</span></div>
+    <div class="card"><b>Card on surface</b><span>warm neutrals carry across products unchanged</span></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:var(--brand)"></i><small>brand</small></div>
+      <div class="sw"><i style="background:var(--brand-ink)"></i><small>brand-ink</small></div>
+      <div class="sw"><i style="background:var(--brand-soft)"></i><small>brand-soft</small></div>
+      <div class="sw"><i style="background:var(--sand)"></i><small>sand</small></div>
+      <div class="sw"><i style="background:var(--surface)"></i><small>surface</small></div>
+      <div class="sw"><i style="background:var(--ink)"></i><small>ink</small></div>
+      <div class="sw"><i style="background:var(--amber)"></i><small>amber</small></div>
+    </div>
+  </div>
+  <div class="panel dark skin-bp">
+    <span class="tag">birthplans.app skin &middot; dark (illustrative)</span>
+    <h2>Your plan, <em>ready to share</em> in minutes.</h2>
+    <p class="lede">The dark skin overrides the same four primitives again; everything else rides the shared espresso palette.</p>
+    <div class="row"><span class="btn">Build your plan</span><span class="chip">Free basic plan</span></div>
+    <div class="card"><b>Card on surface</b><span>one system, two products, both modes</span></div>
+    <div class="swatches">
+      <div class="sw"><i style="background:var(--brand)"></i><small>brand</small></div>
+      <div class="sw"><i style="background:var(--brand-ink)"></i><small>brand-ink</small></div>
+      <div class="sw"><i style="background:var(--brand-soft)"></i><small>brand-soft</small></div>
+      <div class="sw"><i style="background:var(--sand)"></i><small>sand</small></div>
+      <div class="sw"><i style="background:var(--surface)"></i><small>surface</small></div>
+      <div class="sw"><i style="background:var(--ink)"></i><small>ink</small></div>
+      <div class="sw"><i style="background:var(--amber)"></i><small>amber</small></div>
+    </div>
+  </div>
+</div>

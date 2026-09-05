@@ -1,0 +1,46 @@
+{
+  "name": "@fracazo/design-system",
+  "version": "0.1.0",
+  "description": "Roles, brand contract and guardrails for a warm, evidence-led product design system. Each product supplies a brand file; the system stays the same.",
+  "license": "MIT",
+  "author": "Alex Fracazo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fracazo/design-system.git"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "files": [
+    "css",
+    "dist",
+    "demo",
+    "README.md",
+    "DESIGN.md"
+  ],
+  "exports": {
+    "./roles.css": "./css/roles.css",
+    "./eslint": {
+      "types": "./dist/guardrails/eslint.d.ts",
+      "default": "./dist/guardrails/eslint.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "ds-check-brand": "dist/guardrails/check-brand.js",
+    "ds-build-brand-css": "dist/guardrails/build-brand-css.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "prepublishOnly": "pnpm build"
+  },
+  "peerDependencies": {
+    "tailwindcss": "^4"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "typescript": "^5"
+  }
+}
