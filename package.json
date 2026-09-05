@@ -1,7 +1,7 @@
 {
   "name": "@fracazo/design-system",
-  "version": "0.1.0",
-  "description": "Roles, brand contract and guardrails for a warm, evidence-led product design system. Each product supplies a brand file; the system stays the same.",
+  "version": "0.2.0",
+  "description": "Roles, brand contract, guardrails and shadcn-based components for a warm, evidence-led product design system. Each product supplies a brand file; the system stays the same.",
   "license": "MIT",
   "author": "Alex Fracazo",
   "repository": {
@@ -20,6 +20,14 @@
     "DESIGN.md"
   ],
   "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./dist/src/index.js"
+    },
+    "./ui/*": {
+      "types": "./dist/src/ui/*.d.ts",
+      "default": "./dist/src/ui/*.js"
+    },
     "./roles.css": "./css/roles.css",
     "./eslint": {
       "types": "./dist/guardrails/eslint.d.ts",
@@ -37,10 +45,36 @@
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.564.0",
+    "radix-ui": "^1.4.3",
+    "react": "^19",
+    "react-day-picker": "^9.13.2",
+    "react-hook-form": "^7.71.1",
+    "tailwind-merge": "^3.4.1",
     "tailwindcss": "^4"
   },
   "devDependencies": {
+    "@dnd-kit/core": "^6.3.1",
+    "@dnd-kit/sortable": "^10.0.0",
+    "@dnd-kit/utilities": "^3.2.2",
     "@types/node": "^22",
+    "@types/react": "^19",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.564.0",
+    "radix-ui": "^1.4.3",
+    "react": "^19",
+    "react-day-picker": "^9.13.2",
+    "react-hook-form": "^7.71.1",
+    "tailwind-merge": "^3.4.1",
     "typescript": "^5"
-  }
+  },
+  "sideEffects": [
+    "*.css"
+  ]
 }

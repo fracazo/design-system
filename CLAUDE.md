@@ -19,6 +19,11 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 
 ## Layout
 
+- `src/`: `cn.ts`, `index.ts` (the `.` export) and `ui/*.tsx`, the 17
+  shadcn-based components with their intent JSDoc, exported as `./ui/*`.
+  Compiled by `tsc` to `dist/src/`; the class strings and `"use client"`
+  directives survive compilation, which is what lets a consumer `@source`
+  the dist. Stories stay in BirthGuide.
 - `css/roles.css`: the system. The brand contract is the comment block at
   the top (`brand-contract:theme` / `:light` / `:dark`); the bins parse it.
 - `guardrails/*.ts`: compiled by `tsc` to `dist/`, which is what publishes.
@@ -42,13 +47,18 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 - Feature branch, then fast-forward merge to `main`; no PRs. Conventional
   Commits, present tense. (The initial scaffold went straight to main;
   that was the exception.)
-- Do not add dependencies without discussing first. Dev tooling is
-  `typescript` and `@types/node` only; there is deliberately no Storybook
-  here (BirthGuide's local Storybook consumes the components instead).
+- Do not add dependencies without discussing first. The package has no
+  runtime dependencies: everything the components sit on is a peer, and
+  each peer is mirrored as a devDependency only so `tsc` can resolve types.
+  Dev tooling beyond that is `typescript`, `@types/node` and `@types/react`;
+  there is deliberately no Storybook here (BirthGuide's local Storybook
+  consumes the components instead).
 
 ## Verify a change
 
-- `pnpm check` (tsc, no emit) and `pnpm build`.
+- `pnpm check` (tsc, no emit) and `pnpm build`. After a component change,
+  confirm the compiled file still opens with its `"use client"` directive
+  (13 of the 17 carry one) and that `pnpm pack` lists `dist/src/ui/*.js`.
 - `node dist/guardrails/check-brand.js <a brand file>`: both product brand
   files must still satisfy the contract (currently 63 light, 48 dark,
   2 theme).
@@ -67,17 +77,19 @@ tag `vX.Y.Z` and push the tag. 0.1.0 is published (5 Sep 2026) and tagged
 `v0.1.0`. Enabling 2FA on the npm account had to be done on npmjs.com; the
 CLI route (`npm profile enable-2fa`) is refused by the registry now.
 
-## Roadmap (state as of 5 Sep 2026)
+## Roadmap (state as of 5 Sep 2026, evening)
 
 - 4a DONE: this repo, first commit `d714eaa`, pushed to
   github.com/fracazo/design-system.
-- 4b NEXT: move BirthGuide's `src/components/ui/*` (17 shadcn-based
-  components with intent JSDoc; `place-autocomplete` stays in BirthGuide,
-  it imports app code) and `cn` into `src/`, exported as `.` and `./ui/*`,
-  with peerDependencies for react, radix-ui, lucide-react, react-hook-form,
-  react-day-picker, @dnd-kit/*, clsx, tailwind-merge,
-  class-variance-authority. Stories stay in BirthGuide.
-- 4c: BirthGuide consumes the package: `globals.css` imports
+- 4b DONE (branch `claude/claude-md-phase-4b-5a17c7`, version 0.2.0):
+  BirthGuide's 17 `src/components/ui/*` components and `cn` live in `src/`,
+  exported as `.` and `./ui/*`, with the peerDependencies listed in
+  `package.json`. `place-autocomplete` stayed in BirthGuide (it imports app
+  code), as did the stories. The only source edits were the import paths
+  and the `SortableList` banner comment, which named the product. BirthGuide
+  still has its own copies until 4c deletes them. Not yet merged to `main`
+  or published.
+- 4c NEXT: BirthGuide consumes the package: `globals.css` imports
   `@fracazo/design-system/roles.css` then its own brand file, gains
   `@source` for the package's `dist` so Tailwind generates the utilities
   the components use, ui imports codemodded to the package, local copies

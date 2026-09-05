@@ -1,7 +1,7 @@
 # @fracazo/design-system
 
-Roles, a brand contract and guardrails for a warm, evidence-led product
-design system. The package ships the half of the system that is the same
+Roles, a brand contract, guardrails and components for a warm, evidence-led
+product design system. The package ships the half of the system that is the same
 for every product; each product supplies one brand file with its values.
 Change the brand file and the whole product re-skins; the roles never move.
 
@@ -16,6 +16,7 @@ product from.
 | `css/roles.css` | The system: the dark variant, the Tailwind v4 `@theme` mapping, the radius ramp, fluid type roles, band rhythm, the eight aliasing semantics, and the **brand contract** at the top |
 | `ds-check-brand` | Holds a brand file to the contract: nothing missing, nothing extra |
 | `ds-build-brand-css` | Composes the plain-CSS token file a product serves publicly (e.g. `/brand.css`) |
+| `@fracazo/design-system` and `./ui/*` | `cn` and seventeen shadcn-based components (button, card, dialog, form, select, sortable-list and the rest), each with intent JSDoc: use for, avoid when, variants |
 | `@fracazo/design-system/eslint` | Two guardrails: no raw colours and no arbitrary fluid type sizes in a `className` |
 | `demo/index.html` | A showcase page that renders the roles in both modes off a served `/brand.css` |
 | `DESIGN.md` | The written authority: judgment, composition, the rejection list. Authored next |
@@ -25,7 +26,11 @@ them honest.
 
 ## Consume it
 
-Install (Tailwind v4 is a peer dependency):
+Install. Tailwind v4 is a peer dependency; so are the libraries the
+components sit on (react, radix-ui, lucide-react, react-hook-form,
+react-day-picker, the three `@dnd-kit` packages, clsx, tailwind-merge and
+class-variance-authority). A product that only wants the roles and
+guardrails can leave the component peers uninstalled.
 
 ```bash
 pnpm add @fracazo/design-system
@@ -38,6 +43,22 @@ stylesheet. Order matters: roles first.
 @import "tailwindcss";
 @import "@fracazo/design-system/roles.css";
 @import "./system/brands/my-product.css";
+```
+
+Then tell Tailwind to scan the package, so it generates the utilities the
+components use. The package ships compiled JavaScript, and the class strings
+survive compilation verbatim:
+
+```css
+@source "../../node_modules/@fracazo/design-system/dist";
+```
+
+Import components from their subpath, which keeps each one's client
+boundary where it declares it, or `cn` and everything else from the root:
+
+```tsx
+import { Button } from '@fracazo/design-system/ui/button'
+import { cn } from '@fracazo/design-system'
 ```
 
 Write the brand file to the contract printed at the top of `roles.css`: one
