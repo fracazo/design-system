@@ -2,7 +2,13 @@
 
 Semantic versioning by hand. Australian English, no em dashes.
 
-## 0.2.0 (unreleased)
+## 0.2.1 (unreleased)
+
+- `DESIGN.md` authored: the written authority for products on the system,
+  in the design.md shape. Judgment and the rejection list only; the
+  stylesheet and guardrails keep doing the visual work.
+
+## 0.2.0
 
 - Components: `cn` and the seventeen shadcn-based components extracted from
   BirthGuide (accordion, button, calendar, card, checkbox, dialog, form,

@@ -1,6 +1,6 @@
 {
   "name": "@fracazo/design-system",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Roles, brand contract, guardrails and shadcn-based components for a warm, evidence-led product design system. Each product supplies a brand file; the system stays the same.",
   "license": "MIT",
   "author": "Alex Fracazo",

@@ -31,7 +31,11 @@ rendering through every step, proven with BirthGuide's snapshot harness.
   `check-brand.ts` and `build-brand-css.ts` are bins (`ds-check-brand`,
   `ds-build-brand-css`); `eslint.ts` exports `designSystemGuardrails()`.
 - `demo/index.html`: showcase template that links a served `/brand.css`.
-- `DESIGN.md`: the written authority, still a stub (phase 5).
+- `DESIGN.md`: the written authority, in Vercel's design.md shape (front
+  matter, reader, priority order, surface scopes, four passes, the visual
+  system, components, guardrails, reject list, one chapter per brand). A
+  prose rule is added only when the same correction has recurred; prefer a
+  token, lint rule or contract entry that enforces itself.
 
 ## Rules
 
@@ -110,8 +114,11 @@ CLI route (`npm profile enable-2fa`) is refused by the registry now.
   fourteen clamp literals. BirthGuide branch
   `feature/retire-birthplans-brand-copy` (`0754afa`) removes its validated
   copy. Both branches fast-forward cleanly; Alex merges.
-- 5 NEXT: author `DESIGN.md` in Vercel's design.md skeleton, brand-agnostic
-  core plus one short chapter per brand; prose rules only where a
-  correction has recurred (the stylesheet does the visual work).
-- 6: a starter template repo (Next 16 + Tailwind v4 + this package + a
+- 5 DONE: `DESIGN.md` authored (version 1.0.0 in its front matter,
+  package 0.2.1), assembled from BirthGuide's PRINCIPLES.md, the Storybook
+  principles/tokens/usage prose, the component intent JSDoc and the
+  corrections that recurred in git history. Consumer CLAUDE.md files still
+  carry their full design sections; slimming them to hard in-context rules
+  plus a pointer here is optional follow-up.
+- 6 NEXT: a starter template repo (Next 16 + Tailwind v4 + this package + a
   blank brand file + the guardrails on by default).

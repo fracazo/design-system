@@ -19,7 +19,7 @@ product from.
 | `@fracazo/design-system` and `./ui/*` | `cn` and seventeen shadcn-based components (button, card, dialog, form, select, sortable-list and the rest), each with intent JSDoc: use for, avoid when, variants |
 | `@fracazo/design-system/eslint` | Two guardrails: no raw colours and no arbitrary fluid type sizes in a `className` |
 | `demo/index.html` | A showcase page that renders the roles in both modes off a served `/brand.css` |
-| `DESIGN.md` | The written authority: judgment, composition, the rejection list. Authored next |
+| `DESIGN.md` | The written authority: who the reader is, the priority order, how a page is composed, the rejection list, one short chapter per brand |
 
 Brand files live in each product repo, not here. The contract is what keeps
 them honest.
