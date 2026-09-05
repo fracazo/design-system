@@ -73,8 +73,8 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 
 Alex publishes; it needs his npm login and a 2FA code at publish time:
 `pnpm publish --access public` from this folder (it builds first), then
-tag `vX.Y.Z` and push the tag. 0.1.0 is published (5 Sep 2026) and tagged
-`v0.1.0`. Enabling 2FA on the npm account had to be done on npmjs.com; the
+tag `vX.Y.Z` and push the tag. 0.1.0 and 0.2.0 are published (5 Sep 2026) and tagged
+`v0.1.0`, `v0.2.0`. Enabling 2FA on the npm account had to be done on npmjs.com; the
 CLI route (`npm profile enable-2fa`) is refused by the registry now.
 
 ## Roadmap (state as of 5 Sep 2026, evening)
@@ -89,19 +89,16 @@ CLI route (`npm profile enable-2fa`) is refused by the registry now.
   and the `SortableList` banner comment, which named the product. BirthGuide
   still has its own copies until 4c deletes them. Not yet merged to `main`
   or published.
-- 4c DONE in BirthGuide on branch `feature/consume-design-system`
-  (commit `9ef71fb`, not merged): `globals.css` imports the package's
-  roles.css, then the brand, then `@source`s the package `dist`; the 17
-  local components, `src/system/roles.css` and the two brand scripts are
-  deleted; imports codemodded to `@fracazo/design-system/ui/*` (stories
-  included); `cn` re-exported from `@/lib/utils`; ESLint pulls
-  `designSystemGuardrails`; the snapshot harness reads roles from the
-  package. Snapshot identical (349 keys), tsc, 429 tests, next build and
-  storybook build all pass. One step remains before merging: publish 0.2.0,
-  then in BirthGuide replace the vendored `vendor/fracazo-design-system-
-  0.2.0.tgz` dependency with `^0.2.0`, delete `vendor/`, and re-run the
-  snapshot compare. The vendored tarball exists only because a `link:`
-  install would resolve a second React from this repo's devDependencies.
+- 4c DONE: BirthGuide main (`d3f1dcc`) depends on `@fracazo/design-system`
+  `^0.2.0` from npm. `globals.css` imports the package's roles.css, then the
+  brand, then `@source`s the package `dist`; the local components,
+  `src/system/roles.css` and the brand scripts are gone; imports point at
+  `@fracazo/design-system/ui/*` (stories included); `cn` is re-exported
+  from `@/lib/utils`; ESLint pulls `designSystemGuardrails`; the snapshot
+  harness reads roles from the package. Snapshot identical (349 keys).
+  Lesson: after merging a version that adds devDependencies, run
+  `pnpm install` in the main checkout before `pnpm publish`, or the
+  pre-publish `tsc` fails on missing types.
 - 4d NEXT: birthplans.app consumes the same way and takes ownership of
   `brands/birthplans.css` (a validated copy currently sits in BirthGuide's
   `src/system/brands/`).
