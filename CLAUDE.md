@@ -25,6 +25,13 @@ rendering through every step, proven with BirthGuide's snapshot harness.
   Compiled by `tsc` to `dist/src/`; the class strings and `"use client"`
   directives survive compilation, which is what lets a consumer `@source`
   the dist. Stories stay in BirthGuide.
+- `skills/product-design/`: the agent skill (Vercel's product-design
+  shape). `SKILL.md` routes by mode; `references/rules.md` is the rule
+  registry (stable IDs, source, enforcement status, bad and good);
+  `exemplars/` are decisions from shipped commits; `coverage-gaps.md` holds
+  lint candidates and missing decisions. A rule is added only when the same
+  correction has recurred and Alex accepts it; lintable rules move to
+  `guardrails/eslint.ts`.
 - `css/roles.css`: the system. The brand contract is the comment block at
   the top (`brand-contract:theme` / `:light` / `:dark`); the bins parse it.
 - `guardrails/*.ts`: compiled by `tsc` to `dist/`, which is what publishes.
@@ -130,6 +137,14 @@ CLI route (`npm profile enable-2fa`) is refused by the registry now.
   themes verified in a browser. Its `pnpm-workspace.yaml` approves the
   native builds and excludes the package from pnpm 11's minimum-release-age
   gate.
-- Later: publish 0.2.1 (DESIGN.md); slim the consumers' CLAUDE.md design
-  sections to hard rules plus a pointer to DESIGN.md; a type-role pass in
-  birthplans so its fluid-type guardrail can switch on.
+- 7 (5 Sep 2026, evening): reframed after Vercel's "Teaching agents
+  product design" post. The system is how agents building Alex's products
+  make his design decisions for the right reasons: the package is the
+  mechanical half, `skills/product-design` the judgment half. 7a DONE: the
+  skill (0.3.0, unpublished; 0.2.1 is on npm). 7b NEXT: move the lint
+  candidates in `coverage-gaps.md` into `guardrails/eslint.ts` (dark pairs,
+  radius literals, stock palette, focus:ring, em dashes). 7c: an intake pass
+  at merge time that proposes rule candidates from commit bodies and review
+  comments; Alex accepts. 7d: evals once exemplars reach ten. Still open:
+  the birthplans type-role pass, and which BirthGuide-shaped roles become
+  optional modules (a 7b-adjacent decision, not a rewrite).

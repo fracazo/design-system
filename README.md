@@ -19,6 +19,7 @@ product from.
 | `@fracazo/design-system` and `./ui/*` | `cn` and seventeen shadcn-based components (button, card, dialog, form, select, sortable-list and the rest), each with intent JSDoc: use for, avoid when, variants |
 | `@fracazo/design-system/eslint` | Two guardrails: no raw colours and no arbitrary fluid type sizes in a `className` |
 | `demo/index.html` | A showcase page that renders the roles in both modes off a served `/brand.css` |
+| `skills/product-design/` | The agent skill: request modes, routed references, rules with stable IDs, exemplars, coverage gaps. Point your CLAUDE.md or AGENTS.md at its `SKILL.md` |
 | `DESIGN.md` | The written authority: who the reader is, the priority order, how a page is composed, the rejection list, one short chapter per brand |
 
 Brand files live in each product repo, not here. The contract is what keeps
@@ -92,6 +93,21 @@ export default defineConfig([
   }),
 ])
 ```
+
+## Tell your agent when to load the skill
+
+In the product's CLAUDE.md or AGENTS.md:
+
+```
+When shaping, building, reviewing or writing copy for user-facing UI, load
+node_modules/@fracazo/design-system/skills/product-design/SKILL.md first.
+Skip it for backend-only work, telemetry, generated files and tests with no
+shipped UI.
+```
+
+The skill names the request mode, routes to the reference that applies and
+cites rules by stable ID. `DESIGN.md` is the narrative those rules point
+back to.
 
 ## The two tiers, in one paragraph
 

@@ -14,6 +14,11 @@ refuses to ship, and where each brand differs. It is deliberately short.
 The stylesheet carries the visual decisions; this file carries judgment,
 and gains a rule only when the same correction has been made twice.
 
+Agents load `skills/product-design/SKILL.md` first: it names the request
+mode, routes to the reference that applies, and cites rules by stable ID
+from `skills/product-design/references/rules.md`. This file stays the
+narrative those rules point back to.
+
 Read `css/roles.css` for the roles and the brand contract, the component
 source in `src/ui/*` for each component's intent, and the product's own
 CLAUDE.md for the rules that are local to it.
