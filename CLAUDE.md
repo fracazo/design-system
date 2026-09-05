@@ -13,7 +13,8 @@ specific lives here.
 
 Consumers today: BirthGuide (`~/Developer/birthguide`, warm cream / espresso
 / rose) and birthplans.app (`~/Developer/birthplans`, same palette, brand
-hue rotated to periwinkle, plus a status ramp). The system was extracted
+hue rotated to periwinkle). Both depend on the npm package and keep only a
+brand file of their own. The system was extracted
 from BirthGuide in September 2026; both products stay byte-identical in
 rendering through every step, proven with BirthGuide's snapshot harness.
 
@@ -99,10 +100,17 @@ CLI route (`npm profile enable-2fa`) is refused by the registry now.
   Lesson: after merging a version that adds devDependencies, run
   `pnpm install` in the main checkout before `pnpm publish`, or the
   pre-publish `tsc` fails on missing types.
-- 4d NEXT: birthplans.app consumes the same way and takes ownership of
-  `brands/birthplans.css` (a validated copy currently sits in BirthGuide's
-  `src/system/brands/`).
-- 5: author `DESIGN.md` in Vercel's design.md skeleton, brand-agnostic
+- 4d DONE, awaiting merge: birthplans.app on branch
+  `feature/consume-design-system` (two commits, `aa49ed0` renames the
+  colour-literal tokens to the roles with 329 keys pairwise identical under
+  the rename map, `3a98e2c` swaps to the package and its own
+  `src/system/brands/birthplans.css` with exactly six token additions, the
+  reasoned chip-3 pair and dark-brand, and nothing changed). The package's
+  fluid-type ESLint rule stays off there until a type-role pass converges
+  fourteen clamp literals. BirthGuide branch
+  `feature/retire-birthplans-brand-copy` (`0754afa`) removes its validated
+  copy. Both branches fast-forward cleanly; Alex merges.
+- 5 NEXT: author `DESIGN.md` in Vercel's design.md skeleton, brand-agnostic
   core plus one short chapter per brand; prose rules only where a
   correction has recurred (the stylesheet does the visual work).
 - 6: a starter template repo (Next 16 + Tailwind v4 + this package + a
