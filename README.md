@@ -15,6 +15,7 @@ product from.
 |---|---|
 | `css/roles.css` | The system: the dark variant, the Tailwind v4 `@theme` mapping, the radius ramp, fluid type roles, band rhythm, the eight aliasing semantics, and the **brand contract** at the top |
 | `ds-check-brand` | Holds a brand file to the contract: nothing missing, nothing extra |
+| `ds-intake` | Collects design-relevant commits from product repos into an intake packet the agent judges and Alex accepts (see the skill's `references/intake.md`) |
 | `ds-build-brand-css` | Composes the plain-CSS token file a product serves publicly (e.g. `/brand.css`) |
 | `@fracazo/design-system` and `./ui/*` | `cn` and seventeen shadcn-based components (button, card, dialog, form, select, sortable-list and the rest), each with intent JSDoc: use for, avoid when, variants |
 | `@fracazo/design-system/eslint` | Eight guardrails as an ESLint plugin, one per rule ID: colour literals, arbitrary clamp sizes, dark pairs, radius literals, stock palette, `focus:` rings, text on always-dark surfaces, em dashes |

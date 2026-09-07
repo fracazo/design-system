@@ -100,6 +100,7 @@ Resolve conflicts in this order.
    | Which surface, budgets, imagery | `references/surfaces.md` |
    | Any rule by ID, lint status, examples | `references/rules.md` |
    | Before claiming zero visual change | `references/verification.md` |
+   | Running or judging an intake packet | `references/intake.md` |
 
 6. **Decide, then implement.** For each non-mechanical change be able to
    say: what reader problem it solves, why this component, what consequence
@@ -134,5 +135,7 @@ consequence, smallest concrete fix.
 - Prefer the narrowest destination: a token or contract entry, a lint rule,
   a rule record, an exemplar, or a coverage gap. Deterministic checks stay
   mechanical; judgment stays in prose with its evidence.
+- New evidence enters through the intake loop (`references/intake.md`):
+  `ds-intake` collects, the agent judges in the packet, Alex accepts.
 - Keep `coverage-gaps.md` honest. A missing rule is not a licence to invent
   one; it is a decision to raise.

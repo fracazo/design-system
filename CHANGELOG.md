@@ -2,6 +2,15 @@
 
 Semantic versioning by hand. Australian English, no em dashes.
 
+## 0.5.0 (unreleased)
+
+- `ds-intake`: the collector half of the intake loop. Gathers design-relevant
+  commits from one or more product repos since a date or ref into a review
+  packet with empty judge and human-review sections. The procedure is in
+  `skills/product-design/references/intake.md`; packets live under
+  `skills/product-design/intake/` as the decision log. First packet
+  included, judged, pending review.
+
 ## 0.4.0 (unreleased)
 
 - `@fracazo/design-system/eslint` is a flat-config plugin: eight rules

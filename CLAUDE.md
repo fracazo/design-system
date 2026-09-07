@@ -35,8 +35,8 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 - `css/roles.css`: the system. The brand contract is the comment block at
   the top (`brand-contract:theme` / `:light` / `:dark`); the bins parse it.
 - `guardrails/*.ts`: compiled by `tsc` to `dist/`, which is what publishes.
-  `check-brand.ts` and `build-brand-css.ts` are bins (`ds-check-brand`,
-  `ds-build-brand-css`); `eslint.ts` is a flat-config plugin, one rule per
+  `check-brand.ts`, `build-brand-css.ts` and `intake.ts` are bins
+  (`ds-check-brand`, `ds-build-brand-css`, `ds-intake`); `eslint.ts` is a flat-config plugin, one rule per
   ID in `rules.md`, exported through `designSystemGuardrails()`. It has no
   dependency on eslint: the rule shapes are typed locally. Test a rule
   change by linting a fixture inside a consumer with a temporary config that
@@ -152,8 +152,10 @@ CLI route (`npm profile enable-2fa`) is refused by the registry now.
   until a cleanup pass. Consumers bump, rename their inline disables to
   `design-system/<id>`, and birthplans drops `noArbitraryColour` for
   `designSystemGuardrails({ severity: { 'no-arbitrary-clamp': 'warn' } })`.
-  7c: an intake pass
-  at merge time that proposes rule candidates from commit bodies and review
-  comments; Alex accepts. 7d: evals once exemplars reach ten. Still open:
+  7c DONE (0.5.0): `ds-intake` collects, the agent judges inside the
+  packet, Alex accepts (`references/intake.md`); first packet at
+  `skills/product-design/intake/2026-09-07.md`, candidates pending. Publish
+  note: 0.3.0 and 0.4.0 never reached npm (registry checked 7 Sep); 0.5.0
+  carries all three. 7d: evals once exemplars reach ten. Still open:
   the birthplans type-role pass, and which BirthGuide-shaped roles become
   optional modules (a 7b-adjacent decision, not a rewrite).
