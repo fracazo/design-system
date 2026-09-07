@@ -226,10 +226,10 @@ export const rules: Record<string, RuleModule> = {
         Program() {
           const lines = context.sourceCode.text.split('\n')
           lines.forEach((line, i) => {
-            let col = line.indexOf('—')
+            let col = line.indexOf('\u2014')
             while (col !== -1) {
               context.report({ loc: { start: { line: i + 1, column: col }, end: { line: i + 1, column: col + 1 } }, messageId: 'violation' })
-              col = line.indexOf('—', col + 1)
+              col = line.indexOf('\u2014', col + 1)
             }
           })
         },
