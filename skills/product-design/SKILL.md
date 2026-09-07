@@ -136,6 +136,7 @@ consequence, smallest concrete fix.
   a rule record, an exemplar, or a coverage gap. Deterministic checks stay
   mechanical; judgment stays in prose with its evidence.
 - New evidence enters through the intake loop (`references/intake.md`):
-  `ds-intake` collects, the agent judges in the packet, Alex accepts.
+  `ds-intake` collects, the agent proposes in the packet, a human reviews
+  and accepts.
 - Keep `coverage-gaps.md` honest. A missing rule is not a licence to invent
   one; it is a decision to raise.

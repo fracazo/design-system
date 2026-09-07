@@ -152,8 +152,8 @@ CLI route (`npm profile enable-2fa`) is refused by the registry now.
   until a cleanup pass. Consumers bump, rename their inline disables to
   `design-system/<id>`, and birthplans drops `noArbitraryColour` for
   `designSystemGuardrails({ severity: { 'no-arbitrary-clamp': 'warn' } })`.
-  7c DONE (0.5.0): `ds-intake` collects, the agent judges inside the
-  packet, Alex accepts (`references/intake.md`); first packet at
+  7c DONE (0.5.0): `ds-intake` collects, the agent proposes inside the
+  packet, a human reviews and accepts (`references/intake.md`); first packet at
   `skills/product-design/intake/2026-09-07.md`, candidates pending. Publish
   note: 0.3.0 and 0.4.0 never reached npm (registry checked 7 Sep); 0.5.0
   carries all three. 7d: evals once exemplars reach ten. Still open:
