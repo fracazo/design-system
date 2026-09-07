@@ -2,9 +2,11 @@
 
 Every rule has a stable ID, a scope, the rule, why, exceptions, its source
 and an example pair. `Enforced by` says who catches a violation today:
-`lint` (the package's ESLint export), `contract` (ds-check-brand), `base`
-(the house base layer in globals.css), `prose` (this skill and review), or
-`lint candidate` (checkable by code, not yet written; see coverage-gaps.md).
+`lint` (the package's ESLint plugin, rule `design-system/<id>`; `lint,
+warn` means it ships at warning level until the product is clean),
+`contract` (ds-check-brand), `base` (the house base layer in globals.css),
+`prose` (this skill and review), or `lint candidate` (checkable by code, not
+yet written; see coverage-gaps.md).
 Cite the ID in findings. Add a rule only per SKILL.md's integrity section.
 
 ## Colour
@@ -28,8 +30,8 @@ colour. The token owns both themes; write one class.
 Why: two literals drift independently and the dark half is never reviewed.
 Exceptions: `dark:` on a non-colour property (opacity, display) is fine.
 Source: DESIGN.md, Reject list; BirthGuide SPEC_016.
-Enforced by: lint candidate (`dark:(bg|text|border|ring|from|to|via)-\[`
-or a `dark:` colour utility beside its light twin).
+Enforced by: lint (the arbitrary-value form). A `dark:` token beside its
+light twin is still prose.
 Bad: `bg-[#E6EFE2] dark:bg-[oklch(0.34_0.045_150)]`
 Good: `bg-chip-1-soft`
 
@@ -42,8 +44,8 @@ Why: the surface never changes theme, so its text must not; `text-ink` on
 the footer renders espresso on espresso in light mode.
 Exceptions: none.
 Source: DESIGN.md, Colour; BirthGuide usage story.
-Enforced by: prose (lint candidate: a theme-varying text token inside a
-JSX subtree whose root carries `bg-dark`).
+Enforced by: lint, warn (a theme-varying text token inside a JSX subtree
+whose root carries `bg-dark`; a nested light surface resets the context).
 Bad: `<footer className="bg-dark"><p className="text-ink">`
 Good: `<footer className="bg-dark"><p className="text-dark-ink-2">`
 
@@ -83,8 +85,8 @@ Why: it competes with the brand, ignores dark mode and looks generic.
 Exceptions: none in UI. Known violation: BirthGuide `PregnancyProgress.tsx`
 (coverage gap).
 Source: BirthGuide brand spec 9.2; DESIGN.md, Colour.
-Enforced by: lint candidate (regex on the 22 default hue names followed by
-a numeric step).
+Enforced by: lint, warn (BirthGuide has 48 occurrences, mostly in the
+calculator tools; a cleanup spec turns it to error).
 Bad: `bg-amber-100 text-amber-800`
 Good: `bg-highlight-soft text-highlight-ink`
 
@@ -109,7 +111,7 @@ Why: a new radius is a design decision; 34 hand-written 20px radii once
 drifted before `rounded-20` named them.
 Exceptions: none. A genuinely new radius becomes a token first.
 Source: DESIGN.md, Radius.
-Enforced by: lint candidate (`rounded(-[a-z]+)?-\[`).
+Enforced by: lint.
 Bad: `rounded-[14px]`
 Good: `rounded-xl`
 
@@ -202,7 +204,9 @@ ring with `focus-visible:`.
 Exceptions: none. Re-running `shadcn add` reverts the dialog; the reason is
 recorded above the element.
 Source: exemplar dialog-close-focus-visible.
-Enforced by: lint candidate (`focus:ring` in a className).
+Enforced by: lint, warn (`focus:ring`, `focus:outline`, `focus:border`).
+The skip link in each layout is a legitimate `focus:` use; disable inline
+with the reason.
 Bad: `focus:ring-2 focus:ring-ring`
 Good: `focus-visible:ring-2 focus-visible:ring-ring`
 
@@ -269,7 +273,8 @@ Rule: never an em dash. Commas, colons, full stops, parentheses instead.
 Why: house style across every product and repo.
 Exceptions: none (legacy occurrences are removed when a file is touched).
 Source: every CLAUDE.md; DESIGN.md.
-Enforced by: lint candidate (grep for U+2014 in src and docs).
+Enforced by: lint, warn (every U+2014 in a source file, comments
+included); docs and commit messages stay prose.
 
 ### rule/voice-bans
 Scope: all user-facing writing.

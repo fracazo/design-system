@@ -36,7 +36,11 @@ rendering through every step, proven with BirthGuide's snapshot harness.
   the top (`brand-contract:theme` / `:light` / `:dark`); the bins parse it.
 - `guardrails/*.ts`: compiled by `tsc` to `dist/`, which is what publishes.
   `check-brand.ts` and `build-brand-css.ts` are bins (`ds-check-brand`,
-  `ds-build-brand-css`); `eslint.ts` exports `designSystemGuardrails()`.
+  `ds-build-brand-css`); `eslint.ts` is a flat-config plugin, one rule per
+  ID in `rules.md`, exported through `designSystemGuardrails()`. It has no
+  dependency on eslint: the rule shapes are typed locally. Test a rule
+  change by linting a fixture inside a consumer with a temporary config that
+  imports this repo's `dist/guardrails/eslint.js`.
 - `demo/index.html`: showcase template that links a served `/brand.css`.
 - `DESIGN.md`: the written authority, in Vercel's design.md shape (front
   matter, reader, priority order, surface scopes, four passes, the visual
@@ -141,9 +145,14 @@ CLI route (`npm profile enable-2fa`) is refused by the registry now.
   product design" post. The system is how agents building Alex's products
   make his design decisions for the right reasons: the package is the
   mechanical half, `skills/product-design` the judgment half. 7a DONE: the
-  skill (0.3.0, unpublished; 0.2.1 is on npm). 7b NEXT: move the lint
-  candidates in `coverage-gaps.md` into `guardrails/eslint.ts` (dark pairs,
-  radius literals, stock palette, focus:ring, em dashes). 7c: an intake pass
+  skill (0.3.0, unpublished; 0.2.1 is on npm). 7b DONE (0.4.0): eight
+  plugin rules with per-rule severities; against the products, dark pairs
+  are clean, radius literals are 8 and 2 (phone bezel and two tiny corners),
+  and stock palette, focus:, em dashes and on-dark text ship as warnings
+  until a cleanup pass. Consumers bump, rename their inline disables to
+  `design-system/<id>`, and birthplans drops `noArbitraryColour` for
+  `designSystemGuardrails({ severity: { 'no-arbitrary-clamp': 'warn' } })`.
+  7c: an intake pass
   at merge time that proposes rule candidates from commit bodies and review
   comments; Alex accepts. 7d: evals once exemplars reach ten. Still open:
   the birthplans type-role pass, and which BirthGuide-shaped roles become

@@ -2,7 +2,22 @@
 
 Semantic versioning by hand. Australian English, no em dashes.
 
-## 0.3.0 (unreleased)
+## 0.4.0 (unreleased)
+
+- `@fracazo/design-system/eslint` is a flat-config plugin: eight rules
+  named after their records in `rules.md` (`design-system/no-colour-literal`,
+  `no-arbitrary-clamp`, `no-dark-pairs`, `no-radius-literal`,
+  `no-stock-palette`, `focus-visible`, `on-dark-ramp`, `no-em-dash`), each
+  with its own message citing the rule ID and its own severity.
+  `designSystemGuardrails({ files, ignores, severity })` returns one config
+  block as before; clean rules default to error, the four that need a
+  cleanup pass first default to warn.
+- Migration: inline disables change from `no-restricted-syntax` to the
+  specific rule, e.g. `eslint-disable-next-line
+  design-system/no-arbitrary-clamp -- reason`. The selector arrays
+  `noArbitraryColour` and `noArbitraryTypeClamp` still export, deprecated.
+
+## 0.3.0
 
 - `skills/product-design`: the judgment half of the system as an agent
   skill. `SKILL.md` routes by request mode (shape, implement, review, copy,

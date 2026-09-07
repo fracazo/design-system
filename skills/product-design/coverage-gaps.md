@@ -5,18 +5,17 @@ but could be code. A gap is a decision to raise, not a licence to invent.
 
 ## Lint candidates (checkable by code, not written)
 
-- rule/no-dark-pairs: `dark:` colour utility with an arbitrary value or a
-  light twin.
-- rule/no-radius-literal: `rounded(-[a-z]+)?-\[`.
-- rule/no-stock-palette: default hue name followed by a numeric step in a
-  className. Known violation to clear first: BirthGuide
-  `PregnancyProgress.tsx` uses stock `amber-*`.
-- rule/focus-visible: `focus:ring` in a className.
-- rule/no-em-dash: U+2014 anywhere in `src`, docs and commit messages.
-- rule/on-dark-ramp: theme-varying text token inside a `bg-dark` subtree
-  (needs a small JSX walker; likely warning level).
+Shipped in 0.4.0 as `design-system/*` rules: no-colour-literal,
+no-arbitrary-clamp, no-dark-pairs, no-radius-literal, no-stock-palette,
+focus-visible, on-dark-ramp, no-em-dash. Still candidates:
+
 - A `className` on a package component that overrides its colour, radius or
-  shadow (layout classes allowed).
+  shadow (layout classes allowed). Needs the imported component names.
+- rule/no-dark-pairs, second form: a `dark:` token utility beside its light
+  twin (`bg-band dark:bg-dark`), which usually means a missing token.
+- rule/voice-bans as a word list over string literals in JSX.
+- Warnings to turn into errors once each product is clean: no-stock-palette
+  (BirthGuide 48, birthplans 5), focus-visible (24, 2), no-em-dash (47, 23).
 
 ## Missing decisions
 

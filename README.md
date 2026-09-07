@@ -17,7 +17,7 @@ product from.
 | `ds-check-brand` | Holds a brand file to the contract: nothing missing, nothing extra |
 | `ds-build-brand-css` | Composes the plain-CSS token file a product serves publicly (e.g. `/brand.css`) |
 | `@fracazo/design-system` and `./ui/*` | `cn` and seventeen shadcn-based components (button, card, dialog, form, select, sortable-list and the rest), each with intent JSDoc: use for, avoid when, variants |
-| `@fracazo/design-system/eslint` | Two guardrails: no raw colours and no arbitrary fluid type sizes in a `className` |
+| `@fracazo/design-system/eslint` | Eight guardrails as an ESLint plugin, one per rule ID: colour literals, arbitrary clamp sizes, dark pairs, radius literals, stock palette, `focus:` rings, text on always-dark surfaces, em dashes |
 | `demo/index.html` | A showcase page that renders the roles in both modes off a served `/brand.css` |
 | `skills/product-design/` | The agent skill: request modes, routed references, rules with stable IDs, exemplars, coverage gaps. Point your CLAUDE.md or AGENTS.md at its `SKILL.md` |
 | `DESIGN.md` | The written authority: who the reader is, the priority order, how a page is composed, the rejection list, one short chapter per brand |
@@ -90,8 +90,18 @@ export default defineConfig([
   designSystemGuardrails({
     files: ['src/**/*.{ts,tsx}'],
     ignores: ['src/components/pdf/**', 'src/lib/email.ts'],
+    // Clean rules are errors by default; stock palette, focus: rings,
+    // on-dark text and em dashes start as warnings. Turn each up once
+    // the product is clean, or down while a pass is pending.
+    severity: { 'no-stock-palette': 'error', 'no-arbitrary-clamp': 'warn' },
   }),
 ])
+```
+
+A deliberate one-off names the rule and the reason:
+
+```tsx
+{/* eslint-disable-next-line design-system/no-radius-literal -- phone bezel, not a UI corner */}
 ```
 
 ## Tell your agent when to load the skill
