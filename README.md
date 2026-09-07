@@ -1,13 +1,20 @@
 # @fracazo/design-system
 
-Roles, a brand contract, guardrails and components for a warm, evidence-led
-product design system. The package ships the half of the system that is the same
-for every product; each product supplies one brand file with its values.
-Change the brand file and the whole product re-skins; the roles never move.
+A design system that puts the quality bar in the tooling.
 
-Built for [BirthGuide](https://birthguide.com.au) and
-[birthplans.app](https://www.birthplans.app), designed to start the next
-product from.
+When a team ships faster, the design review queue is the first thing that breaks. Either every change waits on a designer, or the bar drops quietly. Neither works.
+
+This package moves the bar out of the review queue and into the tooling, where it holds whether a designer is in the room or not.
+
+It lives in three places.
+
+**Lint.** Eight ESLint rules catch what a reviewer would: colour literals, radius literals, stock palette, dark pairs, arbitrary sizes, focus rings, text on dark surfaces. The build fails before anyone posts a screenshot.
+
+**Components.** Each of the seventeen components carries its own guidance in JSDoc: use for, avoid when, variants. The decision sits where it gets made, not in a doc nobody opens.
+
+**The agent skill.** AI tools load the design rules before they build or review any UI, route to the reference that applies, and cite rules by stable ID. The system proposes, the human commits.
+
+Built for BirthGuide and birthplans.app, and designed to start the next product from.
 
 ## What is in the package
 
@@ -129,7 +136,8 @@ primary, accent, ring and their foregrounds) or hold a brand-tuned literal
 in the brand file (the six that diverge in dark: secondary, muted, border,
 input, muted-foreground, accent-foreground). Dark border and input as
 translucent hairlines is a design decision, not duplication; never "fix" a
-divergent semantic by aliasing it.
+divergent semantic by aliasing it. Change the brand file and the whole product
+re-skins; the roles never move.
 
 ## Versioning
 

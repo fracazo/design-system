@@ -1,7 +1,7 @@
 {
   "name": "@fracazo/design-system",
   "version": "0.5.0",
-  "description": "Roles, brand contract, guardrails and shadcn-based components for a warm, evidence-led product design system. Each product supplies a brand file; the system stays the same.",
+  "description": "A design system that puts the quality bar in the tooling. Lint guardrails, components with intent docs, and an agent skill so AI tools inherit the design rules. One brand file per product, the system stays the same.",
   "license": "MIT",
   "author": "Alex Fracazo",
   "repository": {
