@@ -12,7 +12,12 @@ Semantic versioning by hand. Australian English, no em dashes.
   `@fracazo/design-system/motion.css`. Consumers drop the
   `tw-animate-css` and `shadcn/tailwind.css` imports from their stylesheet;
   nothing else changes. Closes a gap where the components emitted animation
-  classes no peer supplied.
+  classes no peer supplied. Verified in BirthGuide with its animation probe
+  (`pnpm design:animation`, added in BirthGuide `3fae451`): dialog, sheet,
+  select, popover and accordion, open and closed, computed identical before
+  and after; the only differences are the accordion keyframes dropping
+  fallback variables for frameworks not in use, and source whitespace.
+  Snapshot identical, 349 keys.
 - `ds-init` and `template/`: the starter repo folded in. `ds-init <dir>`
   writes a new product from the template, pinned to the package version
   that ran it, and refuses a non-empty directory. The template no longer
