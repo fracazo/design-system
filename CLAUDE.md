@@ -156,8 +156,8 @@ CLI route (`npm profile enable-2fa`) is refused by the registry now.
   the pre-paint dark script plus `ThemeSync`, `designSystemGuardrails()`
   with no exemptions, `pnpm lint` = eslint plus `ds-check-brand`, the
   `pnpm-workspace.yaml` that approves native builds and excludes the
-  package from pnpm 11's minimum-release-age gate. The old repo is to be
-  archived by Alex with a pointer here.
+  package from pnpm 11's minimum-release-age gate. The old repo was deleted
+  on 8 Sep 2026; nothing referenced it.
 - 7 (5 Sep 2026, evening): reframed after Vercel's "Teaching agents
   product design" post. The system is how agents building Alex's products
   make his design decisions for the right reasons: the package is the
