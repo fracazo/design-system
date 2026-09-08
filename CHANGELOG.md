@@ -2,6 +2,23 @@
 
 Semantic versioning by hand. Australian English, no em dashes.
 
+## 0.7.0 (unreleased)
+
+- `OfferCard` (`@fracazo/design-system/ui/offer-card`): the first house
+  primitive, a linked offer surface for a grid of peer offers. Media on
+  top as a node slot (a product passes its own tile or next/image), a tag
+  with a Lucide icon, a title, a description and a source footer (avatar
+  slot, name, a meta node for a code or a was-price) with a 44px arrow
+  that fills and rotates on hover. `highlighted` tints the body with the
+  primary at low opacity, the one emphasis signal. `external` opens a new
+  tab and says so in the accessible name. Hover lift, media scale and
+  arrow rotate are CSS transitions gated to motion-safe; under reduced
+  motion the card sits still. Tokens only (card, muted, secondary, border,
+  primary, ring, the shadow-card pair, the radius ramp); no client
+  directive, no new dependency. A scroll-snap row was considered and left
+  out: DESIGN.md rejects carousels, and the card fills a grid column at
+  360px and 1280px. Minor version: a new export, no contract change.
+
 ## 0.6.0 (unreleased)
 
 - `css/motion.css`: the package owns its animation vocabulary. The enter,

@@ -22,8 +22,9 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 
 ## Layout
 
-- `src/`: `cn.ts`, `index.ts` (the `.` export) and `ui/*.tsx`, the 17
-  shadcn-based components with their intent JSDoc, exported as `./ui/*`.
+- `src/`: `cn.ts`, `index.ts` (the `.` export) and `ui/*.tsx`, the 18
+  components (17 shadcn-based, plus the house OfferCard) with their intent
+  JSDoc, exported as `./ui/*`.
   Compiled by `tsc` to `dist/src/`; the class strings and `"use client"`
   directives survive compilation, which is what lets a consumer `@source`
   the dist. Stories stay in BirthGuide.
@@ -84,7 +85,7 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 
 - `pnpm check` (tsc, no emit) and `pnpm build`. After a component change,
   confirm the compiled file still opens with its `"use client"` directive
-  (13 of the 17 carry one) and that `pnpm pack` lists `dist/src/ui/*.js`.
+  (13 of the 18 carry one) and that `pnpm pack` lists `dist/src/ui/*.js`.
 - `node dist/guardrails/check-brand.js <a brand file>`: both product brand
   files must still satisfy the contract (currently 63 light, 48 dark,
   2 theme).

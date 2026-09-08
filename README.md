@@ -10,7 +10,7 @@ It lives in three places.
 
 **Lint.** Eight ESLint rules catch what a reviewer would: colour literals, radius literals, stock palette, dark pairs, arbitrary sizes, focus rings, text on dark surfaces. The build fails before anyone posts a screenshot.
 
-**Components.** Each of the seventeen components carries its own guidance in JSDoc: use for, avoid when, variants. The decision sits where it gets made, not in a doc nobody opens.
+**Components.** Each of the eighteen components carries its own guidance in JSDoc: use for, avoid when, variants. The decision sits where it gets made, not in a doc nobody opens.
 
 **The agent skill.** AI tools load the design rules before they build or review any UI, route to the reference that applies, and cite rules by stable ID. The system proposes, the human commits.
 
@@ -26,7 +26,7 @@ Built for BirthGuide and birthplans.app, and designed to start the next product 
 | `ds-build-brand-css` | Composes the plain-CSS token file a product serves publicly (e.g. `/brand.css`) |
 | `ds-init` and `template/` | Writes a new product: Next 16, Tailwind v4, this package, a blank brand file and the guardrails on, pinned to the package version that wrote it |
 | `css/motion.css` | The animation vocabulary the components use (enter, exit, accordion, the fade, zoom, blur and slide utilities); `roles.css` imports it |
-| `@fracazo/design-system` and `./ui/*` | `cn` and seventeen shadcn-based components (button, card, dialog, form, select, sortable-list and the rest), each with intent JSDoc: use for, avoid when, variants |
+| `@fracazo/design-system` and `./ui/*` | `cn` and eighteen components (button, card, dialog, form, select, sortable-list, offer-card and the rest), each with intent JSDoc: use for, avoid when, variants |
 | `@fracazo/design-system/eslint` | Eight guardrails as an ESLint plugin, one per rule ID: colour literals, arbitrary clamp sizes, dark pairs, radius literals, stock palette, `focus:` rings, text on always-dark surfaces, em dashes |
 | `demo/index.html` | A showcase page that renders the roles in both modes off a served `/brand.css` |
 | `skills/product-design/` | The agent skill: request modes, routed references, rules with stable IDs, exemplars, coverage gaps. Point your CLAUDE.md or AGENTS.md at its `SKILL.md` |

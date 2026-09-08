@@ -26,6 +26,7 @@ Components, has the one-paragraph digest.
 | Secondary detail under a heading | `Accordion` | Tabs |
 | Ranking a small capped set | `SortableList` | drag on a plain list |
 | Long free text | `Textarea` (auto-grows) | Input |
+| A grid of peer offers, each one link | `OfferCard` in a grid | a carousel, a house card with a Button per offer |
 
 ## Composing
 
