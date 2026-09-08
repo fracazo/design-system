@@ -53,6 +53,9 @@ rendering through every step, proven with BirthGuide's snapshot harness.
   change by linting a fixture inside a consumer with a temporary config that
   imports this repo's `dist/guardrails/eslint.js`.
 - `demo/index.html`: showcase template that links a served `/brand.css`.
+- `studio/`: recording kit for the X series (Canastra). Vite app that
+  renders the real components on an illustrative Minas skin (Canastra and
+  Pampulha). Not in the published tarball. `pnpm build` then `pnpm studio`.
 - `DESIGN.md`: the written authority, in Vercel's design.md shape (front
   matter, reader, priority order, surface scopes, four passes, the visual
   system, components, guardrails, reject list, one chapter per brand). A

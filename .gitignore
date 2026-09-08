@@ -9,3 +9,7 @@ next-env.d.ts
 
 # Claude Code local tooling (launch configs, worktrees)
 .claude/
+
+# Recording studio (local install and Vite output)
+studio/node_modules/
+studio/dist/

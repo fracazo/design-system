@@ -1,0 +1,41 @@
+@import "tailwindcss";
+@import "@fracazo/design-system/roles.css";
+@import "./brands/record.css";
+@source "../node_modules/@fracazo/design-system/dist";
+@source "./**/*.{ts,tsx}";
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  a[href],
+  summary {
+    cursor: pointer;
+  }
+}
+
+/* Hide hash-route chrome while recording. */
+[data-record="true"] [data-studio-chrome] {
+  display: none;
+}

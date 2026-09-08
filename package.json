@@ -47,6 +47,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "check": "tsc -p tsconfig.json --noEmit",
+    "studio": "pnpm --dir studio dev",
     "prepublishOnly": "pnpm build"
   },
   "peerDependencies": {
