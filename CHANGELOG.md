@@ -2,6 +2,18 @@
 
 Semantic versioning by hand. Australian English, no em dashes.
 
+## 0.6.0 (unreleased)
+
+- `css/motion.css`: the package owns its animation vocabulary. The enter,
+  exit and accordion keyframes, `animate-in` and `animate-out`, and the
+  fade, zoom, blur and slide utilities the components and the products use,
+  with class names and values matching `tw-animate-css` 1.4.0 for that
+  subset. `roles.css` imports it, and it is also exported as
+  `@fracazo/design-system/motion.css`. Consumers drop the
+  `tw-animate-css` and `shadcn/tailwind.css` imports from their stylesheet;
+  nothing else changes. Closes a gap where the components emitted animation
+  classes no peer supplied.
+
 ## 0.5.0 (unreleased)
 
 - `ds-intake`: the collector half of the intake loop. Gathers design-relevant

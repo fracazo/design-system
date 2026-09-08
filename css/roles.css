@@ -61,6 +61,9 @@
    highlight primitive in light and follows it into dark by itself.
    ============================================================================= */
 
+/* Motion vocabulary (animate-in, fade-in-0, accordion-down ...). */
+@import "./motion.css";
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
