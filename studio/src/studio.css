@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "@fracazo/design-system/roles.css";
 @import "./brands/record.css";
-@source "../../node_modules/@fracazo/design-system/dist";
+@source "../node_modules/@fracazo/design-system/dist";
 @source "./**/*.{ts,tsx}";
 
 @layer base {

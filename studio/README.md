@@ -1,7 +1,17 @@
-# The System Proposes
+# Canastra
 
-A recording studio for the X series. Each scene is a real package component
-on an illustrative cream / espresso / rose skin. Nothing here publishes.
+Recording studio for the X series. The on-screen product is a Minas Gerais
+tasting guide: Serra da Canastra, Serro, Pampulha. No product brand lives
+here. Nothing in this folder publishes.
+
+The package on npm stays `@fracazo/design-system`. **Canastra** is the name
+you say on X.
+
+Named for queijo Canastra: it is only itself if it comes from that serra.
+Same contract as the system. The roles never move.
+
+Runners-up if you want a different Minas word later: **Serro**, **pedra-sabão**,
+**Vila Rica**. Pão de queijo is too cute. Matrinxã is Mato Grosso.
 
 ## Run it
 
@@ -15,33 +25,34 @@ Open `http://localhost:5173`. Pick a scene, press `r` (or add `?record=1`)
 to hide the chrome, then record. Arrows step between scenes. Escape brings
 the chrome back.
 
-## How to record
+## How to post on X
 
-Prefer MP4 over GIF. X recompresses GIFs and they look soft.
+The clip is the post. The text is a caption. For You shows the first line
+and autoplays the video muted, so the first second of motion has to read
+without sound.
 
-1. Viewport 1080×1080 (1:1) or 1080×1350 (4:5). CleanShot, Kap or QuickTime.
-2. 8 to 12 seconds. Start at rest, do the move, return to rest so the clip loops.
-3. Show the cursor. Enlarge it in the OS if you can.
-4. 60fps if the tool offers it. No browser chrome in the frame.
-5. Turn off reduced motion on the machine, or the cards will not lift.
-6. One clip per post. Do not stitch a montage.
+1. MP4, not GIF. 1080×1080 or 1080×1350. 8 to 12 seconds.
+2. Start at rest, do the move, return to rest so it loops.
+3. Show a large cursor. No browser chrome. Reduced motion off.
+4. First line is the hook. Proper noun or a sharp claim. Not "starting a series".
+5. One hashtag at the end, `#DesignEngineering`. People find the series by
+   searching **Canastra**.
+6. One clip per post. Do not stitch a montage. Do not pin a 16-post thread.
 
 ## Posts and moves
 
-Hashtag: `#DesignEngineering`. Every post stays under 280 characters.
+Every caption is under 280 characters. Attach the scene's clip.
 
 ### 01 · `#/intro`
 
-Hover the OfferCard, then the primary button.
+Hover the OfferCard, then Order a wheel.
 
 ```
-Starting a series: The System Proposes.
+Canastra is a cheese you cannot fake.
 
-Watch the card lift. That hover is a CSS transition on a real component, not a mock.
+It is only Canastra if it comes from one serra in Minas. I named a design system after that.
 
-19 components. A brand contract. Eight lint rules. An agent skill.
-
-The bar lives in the tooling. The system proposes. I commit.
+Watch the card. CSS transition. No JavaScript.
 
 #DesignEngineering
 ```
@@ -51,11 +62,11 @@ The bar lives in the tooling. The system proposes. I commit.
 Hover Continue. One signal, then rest.
 
 ```
-When a team ships faster, the design review queue is the first thing that breaks.
+Agents write most of my UI now.
 
-Either every change waits on a designer, or the bar drops quietly.
+The design review queue did not survive. Either every change waits, or the bar drops.
 
-I moved the bar into the tooling. One primary action. One emphasis signal.
+I put the bar in the tooling. One button. One signal.
 
 #DesignEngineering
 ```
@@ -65,27 +76,25 @@ I moved the bar into the tooling. One primary action. One emphasis signal.
 Hover Lint, then Components, then Skill.
 
 ```
-An agentic design system is not a Figma file plus a prompt.
+An agentic design system is three things you can hover.
 
-Mine lives in three places:
-
-1. Lint: eight rules that catch what a reviewer would
-2. Components: each one ships use-for and avoid-when in the source
-3. An agent skill: rules load before any UI gets written
+Lint that fails the build.
+Components that say when not to use them.
+A skill agents load before they touch any UI.
 
 #DesignEngineering
 ```
 
 ### 04 · `#/brand`
 
-Hover the rose card, then the periwinkle card.
+Hover Canastra, then Pampulha.
 
 ```
-Nothing brand-specific lives in the system. No hex in roles.css.
+Same card. I only changed the brand file.
 
-Each product keeps one brand file. Same roles, hue rotated: rose, then periwinkle.
+Left is Canastra. Right is Pampulha.
 
-Change the brand file, the whole product re-skins. The roles never move.
+No hex in the system. The hue lives in one file. The roles never move.
 
 #DesignEngineering
 ```
@@ -95,111 +104,108 @@ Change the brand file, the whole product re-skins. The roles never move.
 Hover Default, then switch the tab.
 
 ```
-The package ships 19 components. 17 sit on shadcn. Two are house primitives.
+19 components. Each file opens with Use for and Avoid when.
 
-Each file opens with an intent block: one line, then Use for, Avoid when, Variants.
-
-That block is the contract. The decision sits where it gets made.
+That block is the contract. The decision sits where the agent is already looking.
 
 #DesignEngineering
 ```
 
 ### 06 · `#/buttons`
 
-Hover each variant top to bottom. Pause on Default so the lift reads.
+Hover each variant. Pause on Order a wheel.
 
 ```
-Button is the tappable action primitive. Four variants, not a kitchen sink.
+Four buttons. That is the whole set.
 
-Default: the one primary action of a step. It lifts 2px on hover.
-Outline: copy, save, dismiss.
-Ghost: back, cancel, edit in place.
-Destructive: irreversible acts only.
+Default lifts 2px. That is the one primary action.
+Outline, ghost, destructive. Everything else is a mistake.
 
 #DesignEngineering
 ```
 
 ### 07 · `#/form`
 
-Click Email, type a short address, then type in Notes so the field grows.
+Click Email, type, then grow the notes field.
 
 ```
-Input, Textarea, Label, Form. The boring ones, on purpose.
+The boring components are the point.
 
-Textarea auto-grows. A field outside react-hook-form uses Label plus Input.
+Textarea grows. A single date uses the OS picker.
 
-A single date uses the native OS picker. Agents reach for the fancy control. The intent block says not to.
+Agents reach for the fancy control. The file says not to.
 
 #DesignEngineering
 ```
 
 ### 08 · `#/choice`
 
-Open the select, pick Birth centre.
+Open the select, pick Serro.
 
 ```
-Checkbox, RadioGroup, Select are for dense or utilitarian UI.
+Select is for long filters. This one is micro-regions of Minas.
 
-They are the wrong answer for a questionnaire. Birth-plan answers use icon cards with 44px targets.
+A short list of cheeses should be cards.
 
-Shipping a component is easy. Shipping when not to use it is the design system.
+Shipping the component is easy. Shipping the refuse-when is the system.
 
 #DesignEngineering
 ```
 
 ### 09 · `#/overlays`
 
-Open Preview the plan, wait for the zoom, close, then open Did you know.
+Open Preview the wheel, close, then How to keep it.
 
 ```
-Three overlays, three jobs.
+Three overlays. Three jobs.
 
-Dialog: a focused task over dimmed content. Preview, confirm.
-Sheet: mobile bottom sheet. On desktop the same content is an aside.
-Popover: transient UI anchored to a control. Focus never moves.
+Dialog for the wheel.
+Sheet for how to keep it.
+Popover stays on the search.
+
+If the agent opens a Dialog for all three, the surface shouts.
 
 #DesignEngineering
 ```
 
 ### 10 · `#/disclosure`
 
-Collapse Labour, open Birth, switch to Notes.
+Collapse Fresco, open Meia-cura, switch to Route.
 
 ```
-Accordion: progressive disclosure inside the app.
-Tabs: two or three peer views of equal weight. Inactive panels unmount.
-Public FAQ: native details and summary, so answers exist without JavaScript.
+Fresco, meia-cura, curado.
 
-Same family of UI. Three different contracts.
+Accordion for ages. Tabs when the views weigh the same.
+
+A public FAQ still uses details and summary. No JavaScript required.
 
 #DesignEngineering
 ```
 
 ### 11 · `#/cards`
 
-Hover OfferCard, then ArticleCard. Watch lift, media scale, arrow rotate.
+Hover OfferCard, then ArticleCard.
 
 ```
-A card is a unit the reader picks up, not a border around a section. Cards do not nest.
+A card is a thing you pick up, not a border around a section.
 
-OfferCard: a grid of peer offers, whole card one link, one emphasis signal.
-ArticleCard: cover, tags as text (not badges), excerpt, byline. Never a carousel.
+Hover: 8px lift, media scale, arrow rotates. CSS. motion-safe.
 
-Hover is a CSS transition, gated to motion-safe.
+No carousel. No badges. No glass.
 
 #DesignEngineering
 ```
 
 ### 12 · `#/rank`
 
-Drag Immediate skin to skin to the top by the grip handle.
+Drag Canastra curado to the top.
 
 ```
-SortableList ranks a small capped set. Two zones: a ranked list and a tap-to-add pool.
+Drag the tasting order. Grip handle only.
 
-Touch, mouse, keyboard. Drag is scoped to the grip handle.
+Touch, mouse, keyboard.
 
-If order does not matter, do not use it. The avoid-when line is the point.
+If order does not matter, do not use this.
 
 #DesignEngineering
 ```
@@ -209,43 +215,37 @@ If order does not matter, do not use it. The avoid-when line is the point.
 Click the cream, then Tab through the three buttons.
 
 ```
-How the agent half works:
+Click nothing. Hit Tab.
 
-A product's CLAUDE.md points at the skill. The skill names the mode, routes to the reference, and cites rules by stable ID.
+The ring is focus-visible. A mouse click never paints it.
 
-Watch the ring. It is focus-visible, so a mouse click never paints it.
-
-The system proposes. A human still commits.
+The skill names the mode. I still commit.
 
 #DesignEngineering
 ```
 
 ### 14 · `#/tokens`
 
-Click Dark, pause two seconds, click Light.
+Click Dark, pause, click Light.
 
 ```
-Eight ESLint rules catch what a reviewer used to.
+One class. Light and dark.
 
-Colour literals. Dark pairs. Radius literals. Stock palette. Arbitrary clamps. focus: rings. Text on always-dark surfaces. Em dashes.
+bg-card. The token owns both.
 
-Write bg-card once. The token owns both themes. The build fails before anyone posts a screenshot.
+Eight lint rules catch the rest. The build fails before anyone posts a screenshot.
 
 #DesignEngineering
 ```
 
 ### 15 · `#/emphasis`
 
-Hover the middle card, then a neighbour. Only one card is tinted.
+Hover the middle wheel, then a neighbour.
 
 ```
-A rule is added only when the same correction has recurred.
+Only the middle wheel is tinted.
 
-ds-intake collects the commits. The agent proposes. I accept.
-
-Once is a review comment. Twice can become a token, a lint rule, or a contract entry.
-
-One emphasis signal per surface. The middle card is the only one that tints.
+One emphasis signal. A rule ships only when I have made the same correction twice.
 
 #DesignEngineering
 ```
@@ -255,13 +255,13 @@ One emphasis signal per surface. The middle card is the only one that tints.
 Hover Start a product.
 
 ```
-The System Proposes, last post.
+Canastra. Public MIT.
 
-@fracazo/design-system is public MIT. Lint, 19 components with intent docs, an agent skill, one brand file per product.
+@fracazo/design-system
 
 pnpm dlx --package @fracazo/design-system ds-init my-product
 
-The next product starts with the bar already in the tooling.
+The next product starts already named.
 
 #DesignEngineering
 ```

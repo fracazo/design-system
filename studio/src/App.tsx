@@ -27,18 +27,18 @@ type Scene = {
 };
 
 const scenes: Scene[] = [
-  { id: "intro", n: "01", title: "The System Proposes", move: "Hover the card, then the primary button.", node: <IntroScene /> },
+  { id: "intro", n: "01", title: "Canastra", move: "Hover the card, then Order a wheel.", node: <IntroScene /> },
   { id: "queue", n: "02", title: "The queue", move: "Hover Continue. One signal, then rest.", node: <QueueScene /> },
   { id: "layers", n: "03", title: "Three layers", move: "Hover Lint, Components, Skill left to right.", node: <LayersScene /> },
-  { id: "brand", n: "04", title: "One brand file", move: "Hover rose, then periwinkle.", node: <BrandScene /> },
+  { id: "brand", n: "04", title: "One brand file", move: "Hover Canastra, then Pampulha.", node: <BrandScene /> },
   { id: "nineteen", n: "05", title: "Nineteen", move: "Hover Default, then switch the tab.", node: <NineteenScene /> },
-  { id: "buttons", n: "06", title: "Button", move: "Hover each variant top to bottom. Pause on Default.", node: <ButtonsScene /> },
+  { id: "buttons", n: "06", title: "Button", move: "Hover each variant top to bottom. Pause on Order a wheel.", node: <ButtonsScene /> },
   { id: "form", n: "07", title: "Form", move: "Click Email, type, then grow the notes field.", node: <FormScene /> },
-  { id: "choice", n: "08", title: "Choice", move: "Open the select, pick Birth centre.", node: <ChoiceScene /> },
-  { id: "overlays", n: "09", title: "Overlays", move: "Open Preview the plan, close, then Did you know.", node: <OverlaysScene /> },
-  { id: "disclosure", n: "10", title: "Accordion and Tabs", move: "Collapse Labour, open Birth, then switch to Notes.", node: <DisclosureScene /> },
+  { id: "choice", n: "08", title: "Choice", move: "Open the select, pick Serro.", node: <ChoiceScene /> },
+  { id: "overlays", n: "09", title: "Overlays", move: "Open Preview the wheel, close, then How to keep it.", node: <OverlaysScene /> },
+  { id: "disclosure", n: "10", title: "Accordion and Tabs", move: "Collapse Fresco, open Meia-cura, then switch to Route.", node: <DisclosureScene /> },
   { id: "cards", n: "11", title: "OfferCard and ArticleCard", move: "Hover each card. Watch the lift, scale and arrow.", node: <CardsScene /> },
-  { id: "rank", n: "12", title: "SortableList", move: "Drag Immediate skin to skin to the top.", node: <RankScene /> },
+  { id: "rank", n: "12", title: "SortableList", move: "Drag Canastra curado to the top.", node: <RankScene /> },
   { id: "skill", n: "13", title: "Focus-visible", move: "Click the page, then Tab through the three buttons.", node: <SkillScene /> },
   { id: "tokens", n: "14", title: "Both themes", move: "Click Dark, pause, click Light.", node: <TokensScene /> },
   { id: "emphasis", n: "15", title: "One emphasis", move: "Hover the middle card, then a neighbour.", node: <EmphasisScene /> },
@@ -114,7 +114,7 @@ export function App() {
       >
         <div className="px-5 py-5">
           <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-3">
-            The System Proposes
+            Canastra
           </p>
           <p className="mt-2 text-sm text-ink-2">Recording studio</p>
         </div>

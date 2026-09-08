@@ -1,7 +1,8 @@
 /* =============================================================================
-   Illustrative recording skin for the studio. Cream, espresso and rose from
-   the BirthGuide chapter in DESIGN.md; periwinkle overrides live on .skin-bp.
-   This file is not a product brand and does not ship in the package tarball.
+   Illustrative recording skin for the studio. Cream, espresso and rose stand
+   in for Canastra (the rind, the coffee). Periwinkle overrides live on
+   .skin-pampulha (the lake in Belo Horizonte). Not a product brand. Does not
+   ship in the package tarball.
    ============================================================================= */
 
 @theme inline {
@@ -127,8 +128,8 @@
   --warm-shadow-lg: 0 36px 90px -38px oklch(0 0 0 / 0.8);
 }
 
-/* Sister-product hue, the same override contract as demo/index.html. */
-.skin-bp {
+/* Second Minas skin: Pampulha blue. Same override contract as the demo. */
+.skin-pampulha {
   --brand: #7480c6;
   --brand-ink: #4a529e;
   --brand-soft: #e8eaf8;
@@ -137,9 +138,9 @@
   --dark-accent: #96a4ea;
 }
 
-.dark.skin-bp,
-.skin-bp.dark,
-.dark .skin-bp {
+.dark.skin-pampulha,
+.skin-pampulha.dark,
+.dark .skin-pampulha {
   --brand: #96a4ea;
   --brand-ink: #aeb9f0;
   --brand-soft: #343c66;
