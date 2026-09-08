@@ -1,0 +1,14 @@
+# pnpm 11 reads project settings from here.
+#
+# allowBuilds: these packages ship install scripts and are approved to build.
+# Without this pnpm fails with ERR_PNPM_IGNORED_BUILDS on install.
+allowBuilds:
+  esbuild: true
+  msw: true
+  sharp: true
+  unrs-resolver: true
+
+# The design system is ours, so a fresh release may be installed the day it
+# ships; pnpm's minimum-release-age gate otherwise refuses it.
+minimumReleaseAgeExclude:
+  - '@fracazo/design-system'

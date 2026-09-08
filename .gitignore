@@ -2,5 +2,10 @@ node_modules/
 dist/
 .DS_Store
 
+# A template/ that has been installed or built locally
+.next/
+next-env.d.ts
+*.tsbuildinfo
+
 # Claude Code local tooling (launch configs, worktrees)
 .claude/

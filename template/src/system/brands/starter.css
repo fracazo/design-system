@@ -1,0 +1,143 @@
+/* =============================================================================
+   Brand: STARTER (src/system/brands/starter.css)
+
+   Every role @fracazo/design-system's roles.css declares, with achromatic
+   placeholder values so the starter renders and passes `pnpm brand:contract`
+   on day one. Nothing here is a brand. Replace every value, light and dark,
+   with the product's own, keep the property names exactly as they are, and
+   rename this file to the product. The contract at the top of roles.css is
+   the list; `ds-check-brand` fails lint if a property is missing or extra.
+
+   Two tiers. Primitives (--brand, --band, --ink ...) hold literals here.
+   Eight semantics alias them in roles.css and are not redeclared. The six
+   below (secondary, muted, border, input, muted-foreground,
+   accent-foreground) hold their own literals because a good dark theme
+   tunes them away from the primitives; keep that freedom.
+   ============================================================================= */
+
+@theme inline {
+  /* Typeface. next/font sets these variables on <body> (see layout.tsx); the
+     mapping stays inline so font-sans resolves on the element carrying it. */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+:root,
+.force-light {
+  /* Light values: page, semantics, primitives, status ramp, shadows. */
+  --radius: 0.625rem;
+  --card-shadow: 0 0 0 1px oklch(0 0 0 / 0.06), 0 1px 2px -1px oklch(0 0 0 / 0.06), 0 2px 4px 0 oklch(0 0 0 / 0.04);
+  --card-shadow-hover: 0 0 0 1px oklch(0 0 0 / 0.08), 0 1px 2px -1px oklch(0 0 0 / 0.08), 0 2px 4px 0 oklch(0 0 0 / 0.06);
+  --card-shadow-selected: 0 0 0 1.5px var(--primary), 0 1px 3px -1px oklch(0 0 0 / 0.06), 0 2px 6px 0 oklch(0 0 0 / 0.04);
+  --background: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.94 0 0);
+  --secondary-foreground: oklch(0.25 0 0);
+  --muted: oklch(0.94 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent-foreground: oklch(0.35 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.9 0 0);
+  --input: oklch(0.9 0 0);
+  --band: oklch(0.95 0 0);
+  --band-2: oklch(0.93 0 0);
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.975 0 0);
+  --ink: oklch(0.25 0 0);
+  --ink-2: oklch(0.45 0 0);
+  --ink-3: oklch(0.62 0 0);
+  --line: oklch(0.9 0 0);
+  --line-2: oklch(0.93 0 0);
+  --brand: oklch(0.5 0 0);
+  --brand-ink: oklch(0.35 0 0);
+  --brand-soft: oklch(0.93 0 0);
+  --dark-accent: oklch(0.72 0 0);
+  --headline-accent: var(--brand-ink);
+  --highlight: oklch(0.8 0 0);
+  --highlight-ink: oklch(0.25 0 0);
+  --highlight-soft: oklch(0.95 0 0);
+  --highlight-deep: oklch(0.6 0 0);
+  --dark: oklch(0.22 0 0);
+  --dark-2: oklch(0.27 0 0);
+  --dark-3: oklch(0.17 0 0);
+  --dark-4: oklch(0.12 0 0);
+  --dark-line: oklch(0.33 0 0);
+  --dark-soft: oklch(0.65 0 0);
+  --dark-ink: oklch(0.94 0 0);
+  --dark-ink-2: oklch(0.82 0 0);
+  --dark-muted: oklch(0.72 0 0);
+  --dark-soft-2: oklch(0.6 0 0);
+  --dark-faint: oklch(0.55 0 0);
+  --dark-faint-2: oklch(0.52 0 0);
+  --dark-brand: oklch(0.8 0 0);
+  --chip-1-soft: oklch(0.94 0 0);
+  --chip-1-ink: oklch(0.4 0 0);
+  --chip-2-soft: oklch(0.94 0 0);
+  --chip-2-ink: oklch(0.4 0 0);
+  --chip-3-soft: oklch(0.94 0 0);
+  --chip-3-ink: oklch(0.4 0 0);
+  --glow-1: oklch(0.95 0 0);
+  --glow-2: oklch(0.96 0 0);
+  --status-want: oklch(0.606 0.117 158);
+  --status-want-soft: oklch(0.945 0.012 158);
+  --status-ifnec: var(--highlight);
+  --status-ifnec-soft: var(--highlight-soft);
+  --status-no: oklch(0.616 0.156 22);
+  --status-no-soft: oklch(0.949 0.017 22);
+  --bar-shadow: 0 -4px 16px rgba(0, 0, 0, 0.06);
+  --warm-shadow-sm: 0 1px 2px oklch(0 0 0 / 0.05), 0 4px 16px -8px oklch(0 0 0 / 0.12);
+  --warm-shadow-md: 0 2px 4px oklch(0 0 0 / 0.04), 0 18px 40px -20px oklch(0 0 0 / 0.26);
+  --warm-shadow-lg: 0 30px 80px -36px oklch(0 0 0 / 0.42);
+}
+
+.dark {
+  /* Dark values. Roles absent here are mode-constant by design. */
+  --card-shadow: 0 0 0 1px oklch(1 0 0 / 0.06), 0 1px 2px -1px oklch(0 0 0 / 0.4), 0 2px 4px 0 oklch(0 0 0 / 0.3);
+  --card-shadow-hover: 0 0 0 1px oklch(1 0 0 / 0.1), 0 1px 2px -1px oklch(0 0 0 / 0.5), 0 2px 4px 0 oklch(0 0 0 / 0.35);
+  --card-shadow-selected: 0 0 0 1.5px var(--primary), 0 1px 3px -1px oklch(0 0 0 / 0.4), 0 2px 6px 0 oklch(0 0 0 / 0.3);
+  --background: oklch(0.22 0 0);
+  --primary-foreground: oklch(0.2 0 0);
+  --secondary: oklch(0.33 0 0);
+  --secondary-foreground: oklch(0.94 0 0);
+  --muted: oklch(0.33 0 0);
+  --muted-foreground: oklch(0.72 0 0);
+  --accent-foreground: oklch(0.94 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --band: oklch(0.27 0 0);
+  --band-2: oklch(0.3 0 0);
+  --surface: oklch(0.27 0 0);
+  --surface-2: oklch(0.245 0 0);
+  --ink: oklch(0.94 0 0);
+  --ink-2: oklch(0.8 0 0);
+  --ink-3: oklch(0.72 0 0);
+  --line: oklch(0.355 0 0);
+  --line-2: oklch(0.325 0 0);
+  --brand: oklch(0.75 0 0);
+  --brand-ink: oklch(0.82 0 0);
+  --brand-soft: oklch(0.38 0 0);
+  --dark-accent: oklch(0.75 0 0);
+  --headline-accent: oklch(0.9 0 0);
+  --highlight-soft: oklch(0.34 0 0);
+  --highlight-deep: oklch(0.74 0 0);
+  --dark: oklch(0.2 0 0);
+  --dark-2: oklch(0.26 0 0);
+  --dark-line: oklch(0.33 0 0);
+  --dark-soft: oklch(0.65 0 0);
+  --chip-1-soft: oklch(0.34 0 0);
+  --chip-1-ink: oklch(0.83 0 0);
+  --chip-2-soft: oklch(0.34 0 0);
+  --chip-2-ink: oklch(0.83 0 0);
+  --chip-3-soft: oklch(0.34 0 0);
+  --chip-3-ink: oklch(0.83 0 0);
+  --glow-1: oklch(0.4 0 0);
+  --glow-2: oklch(0.38 0 0);
+  --status-want: oklch(0.72 0.13 158);
+  --status-want-soft: oklch(0.34 0.04 158);
+  --status-no: oklch(0.70 0.17 22);
+  --status-no-soft: oklch(0.34 0.05 22);
+  --warm-shadow-sm: 0 1px 2px oklch(0 0 0 / 0.4), 0 4px 16px -8px oklch(0 0 0 / 0.55);
+  --warm-shadow-md: 0 2px 6px oklch(0 0 0 / 0.38), 0 20px 44px -22px oklch(0 0 0 / 0.7);
+  --warm-shadow-lg: 0 36px 90px -38px oklch(0 0 0 / 0.8);
+}

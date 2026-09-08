@@ -36,9 +36,17 @@ rendering through every step, proven with BirthGuide's snapshot harness.
   `guardrails/eslint.ts`.
 - `css/roles.css`: the system. The brand contract is the comment block at
   the top (`brand-contract:theme` / `:light` / `:dark`); the bins parse it.
+  It imports `css/motion.css`, the animation vocabulary the components use
+  (values matching `tw-animate-css` 1.4.0 for the subset in use); add a
+  utility there only when a component or a product needs it.
+- `template/`: what `ds-init` writes for a new product (Next 16, Tailwind
+  v4, the package, the blank brand file, the guardrails). Ships in the
+  tarball. `gitignore` is undotted because npm renames a packed
+  `.gitignore`; `ds-init` restores the dot. Never install or build inside
+  it in this repo; scaffold into a scratch directory instead.
 - `guardrails/*.ts`: compiled by `tsc` to `dist/`, which is what publishes.
-  `check-brand.ts`, `build-brand-css.ts` and `intake.ts` are bins
-  (`ds-check-brand`, `ds-build-brand-css`, `ds-intake`); `eslint.ts` is a flat-config plugin, one rule per
+  `check-brand.ts`, `build-brand-css.ts`, `intake.ts` and `init.ts` are bins
+  (`ds-check-brand`, `ds-build-brand-css`, `ds-intake`, `ds-init`); `eslint.ts` is a flat-config plugin, one rule per
   ID in `rules.md`, exported through `designSystemGuardrails()`. It has no
   dependency on eslint: the rule shapes are typed locally. Test a rule
   change by linting a fixture inside a consumer with a temporary config that
@@ -83,9 +91,15 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 - `node dist/guardrails/build-brand-css.js --brand <file> --out /tmp/x.css
   --name X --url https://x --check` against a product's committed
   `public/brand.css`: declarations must match.
+- `node dist/guardrails/check-brand.js template/src/system/brands/starter.css`
+  must pass, and before a release: `pnpm pack`, `ds-init` into a scratch
+  directory with the dependency pointed at the tarball, then `pnpm install`,
+  `pnpm lint`, `pnpm typecheck`, `pnpm build` there.
 - Anything that can change a consumer's rendering is verified in the
   consumer with its snapshot harness (`pnpm design:snapshot` /
-  `design:compare` in BirthGuide), never here by eye.
+  `design:compare` in BirthGuide), never here by eye. Claude here is DRI for
+  this package only: work needed in a consumer becomes a prompt for that
+  repo's agent, handed to Alex, never an edit from here.
 
 ## Publishing
 
@@ -133,16 +147,17 @@ CLI route (`npm profile enable-2fa`) is refused by the registry now.
   corrections that recurred in git history. Consumer CLAUDE.md files still
   carry their full design sections; slimming them to hard in-context rules
   plus a pointer here is optional follow-up.
-- 6 DONE: github.com/fracazo/design-system-starter (public, template flag
-  on), local at `~/Developer/design-system-starter`. Next 16 via create-next-app 16.1.6,
-  Tailwind v4, the package and its peers, `src/system/brands/starter.css`
-  with achromatic placeholders for all 63/48/2 contract properties, the
-  house base layer in `globals.css`, the pre-paint dark script plus
-  `ThemeSync`, `designSystemGuardrails()` with no exemptions, `pnpm lint`
-  = eslint plus `ds-check-brand`. Lint, typecheck and build pass; both
-  themes verified in a browser. Its `pnpm-workspace.yaml` approves the
-  native builds and excludes the package from pnpm 11's minimum-release-age
-  gate.
+- 6 DONE, then folded in (8 Sep 2026, 0.6.0): the starter was a separate
+  repo, github.com/fracazo/design-system-starter, pinned to `^0.2.0` with
+  nothing tying it to the package version. It now lives in `template/` and
+  `ds-init` writes it, pinned to the version that ran. Same content: Next
+  16, Tailwind v4, `src/system/brands/starter.css` with achromatic
+  placeholders for all 63/48/2 contract properties, the house base layer,
+  the pre-paint dark script plus `ThemeSync`, `designSystemGuardrails()`
+  with no exemptions, `pnpm lint` = eslint plus `ds-check-brand`, the
+  `pnpm-workspace.yaml` that approves native builds and excludes the
+  package from pnpm 11's minimum-release-age gate. The old repo is to be
+  archived by Alex with a pointer here.
 - 7 (5 Sep 2026, evening): reframed after Vercel's "Teaching agents
   product design" post. The system is how agents building Alex's products
   make his design decisions for the right reasons: the package is the

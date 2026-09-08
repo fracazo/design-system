@@ -13,6 +13,11 @@ Semantic versioning by hand. Australian English, no em dashes.
   `tw-animate-css` and `shadcn/tailwind.css` imports from their stylesheet;
   nothing else changes. Closes a gap where the components emitted animation
   classes no peer supplied.
+- `ds-init` and `template/`: the starter repo folded in. `ds-init <dir>`
+  writes a new product from the template, pinned to the package version
+  that ran it, and refuses a non-empty directory. The template no longer
+  imports `tw-animate-css` or `shadcn/tailwind.css`. Verified by scaffolding
+  from the packed tarball and running lint, typecheck and a Next build.
 
 ## 0.5.0 (unreleased)
 

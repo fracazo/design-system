@@ -24,6 +24,8 @@ Built for BirthGuide and birthplans.app, and designed to start the next product 
 | `ds-check-brand` | Holds a brand file to the contract: nothing missing, nothing extra |
 | `ds-intake` | Collects design-relevant commits from product repos into an intake packet the agent proposes and a human commits (see the skill's `references/intake.md`) |
 | `ds-build-brand-css` | Composes the plain-CSS token file a product serves publicly (e.g. `/brand.css`) |
+| `ds-init` and `template/` | Writes a new product: Next 16, Tailwind v4, this package, a blank brand file and the guardrails on, pinned to the package version that wrote it |
+| `css/motion.css` | The animation vocabulary the components use (enter, exit, accordion, the fade, zoom, blur and slide utilities); `roles.css` imports it |
 | `@fracazo/design-system` and `./ui/*` | `cn` and seventeen shadcn-based components (button, card, dialog, form, select, sortable-list and the rest), each with intent JSDoc: use for, avoid when, variants |
 | `@fracazo/design-system/eslint` | Eight guardrails as an ESLint plugin, one per rule ID: colour literals, arbitrary clamp sizes, dark pairs, radius literals, stock palette, `focus:` rings, text on always-dark surfaces, em dashes |
 | `demo/index.html` | A showcase page that renders the roles in both modes off a served `/brand.css` |
@@ -31,8 +33,35 @@ Built for BirthGuide and birthplans.app, and designed to start the next product 
 | `DESIGN.md` | The written authority: who the reader is, the priority order, how a page is composed, the rejection list, one short chapter per brand |
 
 Brand files live in each product repo, not here. The contract is what keeps
-them honest. A new product starts from the `design-system-starter` template:
-Next 16, Tailwind v4, this package, a blank brand file and the guardrails on.
+them honest.
+
+## Start a product
+
+```bash
+pnpm dlx --package @fracazo/design-system ds-init my-product
+```
+
+That writes `template/` into `my-product`: Next 16, Tailwind v4, this
+package, every role with an achromatic placeholder in
+`src/system/brands/starter.css`, the house base layer in `globals.css`, the
+pre-paint dark script, `designSystemGuardrails()` with no exemptions, and
+`pnpm lint` running ESLint plus `ds-check-brand`. It refuses a non-empty
+directory. Then:
+
+1. `pnpm install`.
+2. Rename the brand file to the product and update the two paths that name
+   it: the `@import` in `globals.css` and the `brand:*` scripts.
+3. Replace every value in the brand file, light and dark. Keep the property
+   names; `pnpm brand:contract` holds you to them. `DESIGN.md` says what
+   each role is for and which six semantics are meant to diverge in dark.
+4. Pick the typeface in `layout.tsx` and point the brand file's `@theme`
+   block at its variable.
+5. Rewrite the top of `CLAUDE.md`, delete `page.tsx`, build the first
+   surface. `pnpm lint && pnpm typecheck && pnpm build` before every merge.
+
+The template is proven against the package it ships with: its brand file
+passes the contract and a product written from it lints, typechecks and
+builds before a release.
 
 ## Consume it
 
@@ -47,7 +76,8 @@ pnpm add @fracazo/design-system
 ```
 
 Import the roles, then exactly one brand file, at the top of your global
-stylesheet. Order matters: roles first.
+stylesheet. Order matters: roles first. `roles.css` also brings in the
+motion vocabulary the components use, so no animation library is needed.
 
 ```css
 @import "tailwindcss";

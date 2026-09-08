@@ -17,6 +17,7 @@
     "dist",
     "demo",
     "skills",
+    "template",
     "README.md",
     "DESIGN.md"
   ],
@@ -40,7 +41,8 @@
   "bin": {
     "ds-check-brand": "dist/guardrails/check-brand.js",
     "ds-build-brand-css": "dist/guardrails/build-brand-css.js",
-    "ds-intake": "dist/guardrails/intake.js"
+    "ds-intake": "dist/guardrails/intake.js",
+    "ds-init": "dist/guardrails/init.js"
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",

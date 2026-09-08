@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+/* Tokens: the package's roles.css declares every role the app can name and
+   the motion vocabulary the components use; the brand file supplies the
+   values. Import order matters: roles first, then exactly one brand. The
+   @source line makes Tailwind scan the package's compiled components, so it
+   generates the utilities they use. Everything below the imports is
+   app-level CSS. */
+@import "@fracazo/design-system/roles.css";
+@import "../system/brands/starter.css";
+@source "../../node_modules/@fracazo/design-system/dist";
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    /* font-sans is applied here, not on <html>: next/font sets the font
+       variable on <body>, so it only resolves at or below that element. */
+    @apply bg-background text-foreground font-sans;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  h1, h2, h3, h4 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  /* Tailwind v4 resets cursor to default; interactive elements get the pointer. */
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  a[href],
+  summary {
+    cursor: pointer;
+  }
+  /* iOS zooms into inputs smaller than 16px on focus. */
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+  /* Tap targets on coarse pointers: at least 44px, 48px for the primary controls. */
+  @media (pointer: coarse) {
+    [data-slot="radio-group-item"],
+    [data-slot="checkbox"] {
+      min-width: 44px;
+      min-height: 44px;
+    }
+    [data-slot="button"],
+    [data-slot="input"] {
+      min-height: 48px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
