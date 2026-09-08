@@ -1,6 +1,6 @@
 # @fracazo/design-system
 
-A design system that puts the quality bar in the tooling.
+An agent-native design system. Design decisions as code, so the quality bar lives in the tooling.
 
 When a team ships faster, the design review queue is the first thing that breaks. Either every change waits on a designer, or the bar drops quietly. Neither works.
 

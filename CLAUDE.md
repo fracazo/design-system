@@ -2,9 +2,11 @@
 
 ## What this is
 
-The brand-agnostic half of a product design system, published to npm as
-`@fracazo/design-system` (public, MIT). It ships the roles a product can
-name (tokens, the Tailwind v4 theme mapping, radius ramp, fluid type,
+The brand-agnostic half of an agent-native design system, published to
+npm as `@fracazo/design-system` (public, MIT). "Agent-native" is Vercel's
+phrase (their product-design and design.md posts); it lives in the
+description and README, the package name stays plain. It ships the roles
+a product can name (tokens, the Tailwind v4 theme mapping, radius ramp, fluid type,
 band rhythm, the eight aliasing semantics), a machine-readable brand
 contract, two bins that hold a product's brand file to that contract and
 compose its public `brand.css`, ESLint guardrails, and a showcase page.

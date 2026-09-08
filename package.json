@@ -1,7 +1,7 @@
 {
   "name": "@fracazo/design-system",
   "version": "0.5.0",
-  "description": "A design system that puts the quality bar in the tooling. Lint guardrails, components with intent docs, and an agent skill so AI tools inherit the design rules. One brand file per product, the system stays the same.",
+  "description": "An agent-native design system. Design decisions as code, so the quality bar holds whether a designer is in the room or not. Lint guardrails, components with intent docs, and an agent skill. One brand file per product, the system stays the same.",
   "license": "MIT",
   "author": "Alex Fracazo",
   "repository": {
