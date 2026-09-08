@@ -9,6 +9,7 @@
 export { cn } from "./cn.js"
 
 export * from "./ui/accordion.js"
+export * from "./ui/article-card.js"
 export * from "./ui/button.js"
 export * from "./ui/calendar.js"
 export * from "./ui/card.js"

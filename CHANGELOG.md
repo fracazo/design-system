@@ -2,7 +2,29 @@
 
 Semantic versioning by hand. Australian English, no em dashes.
 
-## 0.7.0 (unreleased)
+## 0.8.0 (unreleased)
+
+- `ArticleCard` (`@fracazo/design-system/ui/article-card`): the second
+  house primitive, a linked article surface for a grid of blog posts and
+  articles. Cover on top as a node slot (a product passes its own tile or
+  next/image), the tags the piece files under as one muted text row behind
+  a Lucide icon, a title, a two-line excerpt and a byline footer (avatar
+  slot, author name, a time element for the date, reading time with a
+  clock). The whole card is one link; `external` opens a new tab and says
+  so in the accessible name. Hover lift and cover scale are CSS transitions
+  gated to motion-safe; under reduced motion only the shadow deepens.
+  Tokens only (card, muted, border, ring, the shadow-card pair, the radius
+  ramp); no client directive, no new dependency. Adapted from a 21st.dev
+  glass blog card, and deliberately not that card: DESIGN.md rejects glass,
+  gradient overlays and badges as metadata, so the backdrop blur, the
+  gradient over the cover, the badge tags and the framer-motion entrance
+  are gone, and the "Read article" button that only appeared on hover is
+  gone because hover-only content never reaches touch or keyboard readers.
+  An entrance, if a product wants one, is motion.css classes through
+  className, gated once per visit. Minor version: a new export, no
+  contract change.
+
+## 0.7.0 (8 Sep 2026)
 
 - `OfferCard` (`@fracazo/design-system/ui/offer-card`): the first house
   primitive, a linked offer surface for a grid of peer offers. Media on

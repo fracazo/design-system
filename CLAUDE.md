@@ -22,9 +22,9 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 
 ## Layout
 
-- `src/`: `cn.ts`, `index.ts` (the `.` export) and `ui/*.tsx`, the 18
-  components (17 shadcn-based, plus the house OfferCard) with their intent
-  JSDoc, exported as `./ui/*`.
+- `src/`: `cn.ts`, `index.ts` (the `.` export) and `ui/*.tsx`, the 19
+  components (17 shadcn-based, plus the house OfferCard and ArticleCard)
+  with their intent JSDoc, exported as `./ui/*`.
   Compiled by `tsc` to `dist/src/`; the class strings and `"use client"`
   directives survive compilation, which is what lets a consumer `@source`
   the dist. Stories stay in BirthGuide.
@@ -85,7 +85,7 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 
 - `pnpm check` (tsc, no emit) and `pnpm build`. After a component change,
   confirm the compiled file still opens with its `"use client"` directive
-  (13 of the 18 carry one) and that `pnpm pack` lists `dist/src/ui/*.js`.
+  (13 of the 19 carry one) and that `pnpm pack` lists `dist/src/ui/*.js`.
 - `node dist/guardrails/check-brand.js <a brand file>`: both product brand
   files must still satisfy the contract (currently 63 light, 48 dark,
   2 theme).
@@ -109,7 +109,7 @@ Alex publishes; it needs his npm login and a 2FA code at publish time:
 (it builds first), then tag `vX.Y.Z` on the published commit and push the
 tag. Always confirm with `npm view @fracazo/design-system versions
 --prefer-online` before touching a consumer. On npm: 0.1.0, 0.2.0, 0.2.1
-(5 Sep 2026) and 0.6.0 (8 Sep 2026), tagged. 0.3.0, 0.4.0 and 0.5.0 never
+(5 Sep 2026) 0.6.0 and 0.7.0 (8 Sep 2026), tagged. 0.3.0, 0.4.0 and 0.5.0 never
 reached the registry: an expired npm session makes a scoped publish fail
 with a misleading `404 Not Found - PUT`, and no 2FA prompt appears. Run
 `npm whoami` first; a 401 means `npm login` again. Enabling 2FA on the

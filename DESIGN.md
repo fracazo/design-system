@@ -220,7 +220,8 @@ Source order is reading order; landmarks and heading levels are real;
 
 ## Components
 
-The package ships eighteen components, seventeen shadcn-based and one house primitive, under
+The package ships nineteen components, seventeen shadcn-based and two
+house primitives, under
 `@fracazo/design-system/ui/*`. Each carries an intent block at the top of
 its source (one line, then Use for, Avoid when, Variants); that block is
 the contract and is updated whenever variants change. In brief:
@@ -250,11 +251,16 @@ the contract and is updated whenever variants change. In brief:
   bespoke. **Calendar** exists for range selection; a single date uses a
   native input. **SortableList** ranks a small capped set with drag,
   touch and keyboard.
-- **OfferCard** is the one house primitive: a linked offer surface with
+- **OfferCard** is a house primitive: a linked offer surface with
   a media slot, tag, title, description and a source footer, for a grid
   of peer offers. The whole card is one link; `highlighted` is its single
   emphasis signal; hover motion is CSS transitions under motion-safe.
   It lays out in a grid, never a carousel.
+- **ArticleCard** is the house primitive for blog posts and articles: a
+  linked surface with a cover slot, a tag row, title, two-line excerpt and
+  a byline footer (author, date, reading time). The whole card is one
+  link; hover motion is CSS transitions under motion-safe; tags are text,
+  not badges. It lays out in a grid, never a carousel.
 
 A component that must import app code (stores, data clients, routes)
 does not belong in the package; it stays in the product, like
