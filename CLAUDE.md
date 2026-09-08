@@ -104,10 +104,16 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 ## Publishing
 
 Alex publishes; it needs his npm login and a 2FA code at publish time:
-`pnpm publish --access public` from this folder (it builds first), then
-tag `vX.Y.Z` and push the tag. 0.1.0 and 0.2.0 are published (5 Sep 2026) and tagged
-`v0.1.0`, `v0.2.0`. Enabling 2FA on the npm account had to be done on npmjs.com; the
-CLI route (`npm profile enable-2fa`) is refused by the registry now.
+`pnpm publish --access public` from the main checkout after the fast-forward
+(it builds first), then tag `vX.Y.Z` on the published commit and push the
+tag. Always confirm with `npm view @fracazo/design-system versions
+--prefer-online` before touching a consumer. On npm: 0.1.0, 0.2.0, 0.2.1
+(5 Sep 2026) and 0.6.0 (8 Sep 2026), tagged. 0.3.0, 0.4.0 and 0.5.0 never
+reached the registry: an expired npm session makes a scoped publish fail
+with a misleading `404 Not Found - PUT`, and no 2FA prompt appears. Run
+`npm whoami` first; a 401 means `npm login` again. Enabling 2FA on the
+account had to be done on npmjs.com; the CLI route
+(`npm profile enable-2fa`) is refused by the registry now.
 
 ## Roadmap (state as of 5 Sep 2026, evening)
 
