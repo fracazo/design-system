@@ -1,0 +1,149 @@
+/* =============================================================================
+   Illustrative recording skin for the studio. Cream, espresso and rose from
+   the BirthGuide chapter in DESIGN.md; periwinkle overrides live on .skin-bp.
+   This file is not a product brand and does not ship in the package tarball.
+   ============================================================================= */
+
+@theme inline {
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "Geist Mono", monospace;
+}
+
+:root,
+.force-light {
+  --radius: 0.625rem;
+  --card-shadow: 0 0 0 1px oklch(0.35 0.02 70 / 0.06), 0 1px 2px -1px oklch(0.35 0.02 70 / 0.06), 0 2px 4px 0 oklch(0.35 0.02 70 / 0.04);
+  --card-shadow-hover: 0 0 0 1px oklch(0.35 0.02 70 / 0.1), 0 8px 24px -12px oklch(0.35 0.02 70 / 0.28);
+  --card-shadow-selected: 0 0 0 1.5px var(--primary), 0 1px 3px -1px oklch(0.35 0.02 70 / 0.06), 0 2px 6px 0 oklch(0.35 0.02 70 / 0.04);
+  --background: #faf6ef;
+  --primary-foreground: #faf6ef;
+  --secondary: #efe8dc;
+  --secondary-foreground: #2b2620;
+  --muted: #efe8dc;
+  --muted-foreground: #6f685e;
+  --accent-foreground: #8f4e55;
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e5ddd0;
+  --input: #e5ddd0;
+  --band: #f3ede3;
+  --band-2: #ebe4d8;
+  --surface: #fffcf7;
+  --surface-2: #f7f1e7;
+  --ink: #2b2620;
+  --ink-2: #5c564e;
+  --ink-3: #8a847a;
+  --line: #e5ddd0;
+  --line-2: #ede6da;
+  --brand: #c2727a;
+  --brand-ink: #8f4e55;
+  --brand-soft: #f3e4e5;
+  --dark-accent: #de949a;
+  --headline-accent: #8f4e55;
+  --highlight: #e4c48a;
+  --highlight-ink: #2b2620;
+  --highlight-soft: #f7edd6;
+  --highlight-deep: #c4a05e;
+  --dark: #2b2620;
+  --dark-2: #3a342e;
+  --dark-3: #1f1b17;
+  --dark-4: #161310;
+  --dark-line: #4a433c;
+  --dark-soft: #b8b0a6;
+  --dark-ink: #faf6ef;
+  --dark-ink-2: #e4dcd0;
+  --dark-muted: #c4bdb2;
+  --dark-soft-2: #a89f93;
+  --dark-faint: #8a8278;
+  --dark-faint-2: #7a736a;
+  --dark-brand: #de949a;
+  --chip-1-soft: #e6efe2;
+  --chip-1-ink: #3d5a3a;
+  --chip-2-soft: #f7edd6;
+  --chip-2-ink: #6b5420;
+  --chip-3-soft: #e8eaf8;
+  --chip-3-ink: #4a529e;
+  --glow-1: #f3e4e5;
+  --glow-2: #f7edd6;
+  --status-want: oklch(0.606 0.117 158);
+  --status-want-soft: oklch(0.945 0.012 158);
+  --status-ifnec: var(--highlight);
+  --status-ifnec-soft: var(--highlight-soft);
+  --status-no: oklch(0.616 0.156 22);
+  --status-no-soft: oklch(0.949 0.017 22);
+  --bar-shadow: 0 -4px 16px oklch(0.35 0.02 70 / 0.08);
+  --warm-shadow-sm: 0 1px 2px oklch(0.35 0.02 70 / 0.06), 0 4px 16px -8px oklch(0.35 0.02 70 / 0.16);
+  --warm-shadow-md: 0 2px 4px oklch(0.35 0.02 70 / 0.05), 0 18px 40px -20px oklch(0.35 0.02 70 / 0.28);
+  --warm-shadow-lg: 0 30px 80px -36px oklch(0.35 0.02 70 / 0.42);
+}
+
+.dark {
+  --card-shadow: 0 0 0 1px oklch(1 0 0 / 0.06), 0 1px 2px -1px oklch(0 0 0 / 0.4), 0 2px 4px 0 oklch(0 0 0 / 0.3);
+  --card-shadow-hover: 0 0 0 1px oklch(1 0 0 / 0.1), 0 8px 28px -12px oklch(0 0 0 / 0.55);
+  --card-shadow-selected: 0 0 0 1.5px var(--primary), 0 1px 3px -1px oklch(0 0 0 / 0.4), 0 2px 6px 0 oklch(0 0 0 / 0.3);
+  --background: #2b2620;
+  --primary-foreground: #2b2620;
+  --secondary: #3a342e;
+  --secondary-foreground: #faf6ef;
+  --muted: #3a342e;
+  --muted-foreground: #c4bdb2;
+  --accent-foreground: #e8b4b8;
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --band: #3a342e;
+  --band-2: #433c35;
+  --surface: #3a342e;
+  --surface-2: #322d28;
+  --ink: #faf6ef;
+  --ink-2: #e4dcd0;
+  --ink-3: #c4bdb2;
+  --line: #4a433c;
+  --line-2: #433c35;
+  --brand: #de949a;
+  --brand-ink: #e8b4b8;
+  --brand-soft: #4a3536;
+  --dark-accent: #de949a;
+  --headline-accent: #e4d2b0;
+  --highlight-soft: #4a4030;
+  --highlight-deep: #e4c48a;
+  --dark: #241f1b;
+  --dark-2: #322d28;
+  --dark-line: #4a433c;
+  --dark-soft: #b8b0a6;
+  --chip-1-soft: #2f3a2e;
+  --chip-1-ink: #c5d6c2;
+  --chip-2-soft: #4a4030;
+  --chip-2-ink: #e4d2b0;
+  --chip-3-soft: #343c66;
+  --chip-3-ink: #c3cbf5;
+  --glow-1: #4a3536;
+  --glow-2: #4a4030;
+  --status-want: oklch(0.72 0.13 158);
+  --status-want-soft: oklch(0.34 0.04 158);
+  --status-no: oklch(0.7 0.17 22);
+  --status-no-soft: oklch(0.34 0.05 22);
+  --warm-shadow-sm: 0 1px 2px oklch(0 0 0 / 0.4), 0 4px 16px -8px oklch(0 0 0 / 0.55);
+  --warm-shadow-md: 0 2px 6px oklch(0 0 0 / 0.38), 0 20px 44px -22px oklch(0 0 0 / 0.7);
+  --warm-shadow-lg: 0 36px 90px -38px oklch(0 0 0 / 0.8);
+}
+
+/* Sister-product hue, the same override contract as demo/index.html. */
+.skin-bp {
+  --brand: #7480c6;
+  --brand-ink: #4a529e;
+  --brand-soft: #e8eaf8;
+  --headline-accent: var(--brand-ink);
+  --accent-foreground: #4a529e;
+  --dark-accent: #96a4ea;
+}
+
+.dark.skin-bp,
+.skin-bp.dark,
+.dark .skin-bp {
+  --brand: #96a4ea;
+  --brand-ink: #aeb9f0;
+  --brand-soft: #343c66;
+  --headline-accent: #c3cbf5;
+  --accent-foreground: #c3cbf5;
+  --dark-accent: #96a4ea;
+}
