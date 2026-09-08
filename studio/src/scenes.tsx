@@ -52,7 +52,7 @@ export function IntroScene() {
   return (
     <Stage width="max-w-lg">
       <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ink-3">
-        Minas Gerais
+        Um cafezinho e um queijinho
       </p>
       <h1 className="mt-3 text-display">
         <span className="text-headline-accent">Canastra</span>
@@ -68,7 +68,7 @@ export function IntroScene() {
         <OfferCard
           href="#intro"
           onClick={holdLink}
-          media={<Tile letter="C" wash="rose" />}
+          media={<Tile letter="C" wash="cafe" />}
           tag="Serra da Canastra"
           title="A wheel from São Roque de Minas"
           description="Raw milk, yellow rind, only this if it comes from that serra."
@@ -120,7 +120,7 @@ export function LayersScene() {
           href="#layers"
           onClick={holdLink}
           highlighted
-          media={<Tile letter="C" wash="rose" />}
+          media={<Tile letter="C" wash="cafe" />}
           tag="Components"
           title="Use for, avoid when"
           description="The decision sits in the source, not in a doc nobody opens."
@@ -151,10 +151,10 @@ export function BrandScene() {
           <OfferCard
             href="#brand"
             onClick={holdLink}
-            media={<Tile letter="C" wash="rose" />}
+            media={<Tile letter="C" wash="cafe" />}
             tag="Serra da Canastra"
-            title="Casca, cream, espresso"
-            description="Same roles. One brand file. The rind and the coffee."
+            title="Cafezinho e queijinho"
+            description="Same roles. One brand file. Coffee for the action, casca for the name."
             footer={{ avatar: <Initials letters="SR" />, name: "São Roque de Minas", meta: "Meia-cura" }}
           />
         </div>
@@ -533,7 +533,7 @@ export function EmphasisScene() {
           href="#emphasis"
           onClick={holdLink}
           highlighted
-          media={<Tile letter="C" wash="rose" />}
+          media={<Tile letter="C" wash="cafe" />}
           tag="Canastra"
           title="Meia-cura, São Roque"
           description="highlighted tints the body. Nothing else changes."

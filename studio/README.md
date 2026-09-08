@@ -48,11 +48,11 @@ Every caption is under 280 characters. Attach the scene's clip.
 Hover the OfferCard, then Order a wheel.
 
 ```
-Canastra is a cheese you cannot fake.
+Um cafezinho e um queijinho.
 
-It is only Canastra if it comes from one serra in Minas. I named a design system after that.
+Canastra is a cheese you cannot fake. I named a design system after that.
 
-Watch the card. CSS transition. No JavaScript.
+Coffee for the button. Casca for the name. Watch the card. CSS. No JavaScript.
 
 #DesignEngineering
 ```

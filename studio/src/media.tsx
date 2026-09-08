@@ -3,13 +3,13 @@ import type { ReactNode } from "react";
 /** Editorial tile for card media. No photography, no stock. */
 export function Tile({
   letter,
-  wash = "rose",
+  wash = "cafe",
 }: {
   letter: string;
-  wash?: "rose" | "sand" | "peri" | "moss";
+  wash?: "cafe" | "sand" | "peri" | "moss";
 }) {
   const washes = {
-    rose: "bg-brand-soft text-brand-ink",
+    cafe: "bg-brand-soft text-brand-ink",
     sand: "bg-highlight-soft text-highlight-ink",
     peri: "bg-chip-3-soft text-chip-3-ink",
     moss: "bg-chip-1-soft text-chip-1-ink",
