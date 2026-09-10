@@ -1,124 +1,124 @@
 /* =============================================================================
-   Illustrative recording skin for the studio. Cafezinho (roasted coffee) is
-   the primary. Queijinho (butter page, casca gold) is the headline and the
-   highlight. Pampulha blue lives on .skin-pampulha. Not a product brand.
-   Does not ship in the package tarball.
+   Illustrative recording skin for the studio. Jacaranda bloom (violet,
+   hue 308) is the one brand hue: primary, headline, small accents. The page
+   stays cool and near-white. Grafton (cooler lilac, hue 285) lives on
+   .skin-grafton. Not a product brand. Does not ship in the package tarball.
    ============================================================================= */
 
 @theme inline {
-  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, "Geist Mono", monospace;
 }
 
 :root,
 .force-light {
-  --radius: 0.625rem;
-  --card-shadow: 0 0 0 1px oklch(0.35 0.02 70 / 0.06), 0 1px 2px -1px oklch(0.35 0.02 70 / 0.06), 0 2px 4px 0 oklch(0.35 0.02 70 / 0.04);
-  --card-shadow-hover: 0 0 0 1px oklch(0.35 0.02 70 / 0.1), 0 8px 24px -12px oklch(0.35 0.02 70 / 0.28);
-  --card-shadow-selected: 0 0 0 1.5px var(--primary), 0 1px 3px -1px oklch(0.35 0.02 70 / 0.06), 0 2px 6px 0 oklch(0.35 0.02 70 / 0.04);
-  --background: #f7f1e4;
-  --primary-foreground: #f7f1e4;
-  --secondary: #efe4d2;
-  --secondary-foreground: #2b2218;
-  --muted: #efe4d2;
-  --muted-foreground: #6f6254;
-  --accent-foreground: #3c2416;
+  --radius: 0.5rem;
+  --card-shadow: 0 0 0 1px oklch(0.3 0.02 308 / 0.06), 0 1px 2px -1px oklch(0.3 0.02 308 / 0.05), 0 2px 4px 0 oklch(0.3 0.02 308 / 0.03);
+  --card-shadow-hover: 0 0 0 1px oklch(0.3 0.02 308 / 0.1), 0 8px 24px -12px oklch(0.3 0.04 308 / 0.18);
+  --card-shadow-selected: 0 0 0 1.5px var(--primary), 0 1px 3px -1px oklch(0.3 0.02 308 / 0.06), 0 2px 6px 0 oklch(0.3 0.02 308 / 0.04);
+  --background: oklch(0.99 0.004 300);
+  --primary-foreground: oklch(0.99 0.004 308);
+  --secondary: oklch(0.96 0.008 300);
+  --secondary-foreground: oklch(0.24 0.02 300);
+  --muted: oklch(0.96 0.008 300);
+  --muted-foreground: oklch(0.5 0.02 300);
+  --accent-foreground: oklch(0.38 0.12 308);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #e5d8c4;
-  --input: #e5d8c4;
-  --band: #f0e6d4;
-  --band-2: #e8dcc8;
-  --surface: #fffaf0;
-  --surface-2: #f4ead8;
-  --ink: #2b2218;
-  --ink-2: #5c4e40;
-  --ink-3: #8a7a68;
-  --line: #e5d8c4;
-  --line-2: #eee4d4;
-  --brand: #6f3f1e;
-  --brand-ink: #3c2416;
-  --brand-soft: #efe2d0;
-  --dark-accent: #c9a06a;
-  --headline-accent: #a67c2d;
-  --highlight: #e6c77a;
-  --highlight-ink: #3c2416;
-  --highlight-soft: #f6e8c4;
-  --highlight-deep: #c4a04a;
-  --dark: #2b2620;
-  --dark-2: #3a342e;
-  --dark-3: #1f1b17;
-  --dark-4: #161310;
-  --dark-line: #4a433c;
-  --dark-soft: #b8b0a6;
-  --dark-ink: #faf6ef;
-  --dark-ink-2: #e4dcd0;
-  --dark-muted: #c4bdb2;
-  --dark-soft-2: #a89f93;
-  --dark-faint: #8a8278;
-  --dark-faint-2: #7a736a;
-  --dark-brand: #d4b08a;
-  --chip-1-soft: #e6efe2;
-  --chip-1-ink: #3d5a3a;
-  --chip-2-soft: #f7edd6;
-  --chip-2-ink: #6b5420;
-  --chip-3-soft: #e8eaf8;
-  --chip-3-ink: #4a529e;
-  --glow-1: #efe2d0;
-  --glow-2: #f6e8c4;
+  --border: oklch(0.91 0.01 300);
+  --input: oklch(0.91 0.01 300);
+  --band: oklch(0.97 0.008 300);
+  --band-2: oklch(0.95 0.01 300);
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.98 0.006 300);
+  --ink: oklch(0.22 0.02 300);
+  --ink-2: oklch(0.42 0.02 300);
+  --ink-3: oklch(0.58 0.02 300);
+  --line: oklch(0.91 0.01 300);
+  --line-2: oklch(0.94 0.008 300);
+  --brand: oklch(0.48 0.16 308);
+  --brand-ink: oklch(0.38 0.14 308);
+  --brand-soft: oklch(0.95 0.03 308);
+  --dark-accent: oklch(0.78 0.1 308);
+  --headline-accent: oklch(0.48 0.16 308);
+  --highlight: oklch(0.78 0.1 308);
+  --highlight-ink: oklch(0.32 0.1 308);
+  --highlight-soft: oklch(0.96 0.02 308);
+  --highlight-deep: oklch(0.52 0.14 308);
+  --dark: oklch(0.2 0.02 300);
+  --dark-2: oklch(0.26 0.02 300);
+  --dark-3: oklch(0.16 0.02 300);
+  --dark-4: oklch(0.12 0.015 300);
+  --dark-line: oklch(0.34 0.02 300);
+  --dark-soft: oklch(0.68 0.02 300);
+  --dark-ink: oklch(0.97 0.008 300);
+  --dark-ink-2: oklch(0.86 0.02 300);
+  --dark-muted: oklch(0.74 0.02 300);
+  --dark-soft-2: oklch(0.62 0.02 300);
+  --dark-faint: oklch(0.56 0.02 300);
+  --dark-faint-2: oklch(0.5 0.02 300);
+  --dark-brand: oklch(0.82 0.08 308);
+  --chip-1-soft: oklch(0.95 0.02 145);
+  --chip-1-ink: oklch(0.38 0.06 145);
+  --chip-2-soft: oklch(0.95 0.03 308);
+  --chip-2-ink: oklch(0.4 0.12 308);
+  --chip-3-soft: oklch(0.95 0.03 285);
+  --chip-3-ink: oklch(0.4 0.12 285);
+  --glow-1: oklch(0.96 0.02 308);
+  --glow-2: oklch(0.97 0.015 300);
   --status-want: oklch(0.606 0.117 158);
   --status-want-soft: oklch(0.945 0.012 158);
   --status-ifnec: var(--highlight);
   --status-ifnec-soft: var(--highlight-soft);
   --status-no: oklch(0.616 0.156 22);
   --status-no-soft: oklch(0.949 0.017 22);
-  --bar-shadow: 0 -4px 16px oklch(0.35 0.02 70 / 0.08);
-  --warm-shadow-sm: 0 1px 2px oklch(0.35 0.02 70 / 0.06), 0 4px 16px -8px oklch(0.35 0.02 70 / 0.16);
-  --warm-shadow-md: 0 2px 4px oklch(0.35 0.02 70 / 0.05), 0 18px 40px -20px oklch(0.35 0.02 70 / 0.28);
-  --warm-shadow-lg: 0 30px 80px -36px oklch(0.35 0.02 70 / 0.42);
+  --bar-shadow: 0 -4px 16px oklch(0.3 0.02 308 / 0.06);
+  --warm-shadow-sm: 0 1px 2px oklch(0.3 0.02 308 / 0.05), 0 4px 16px -8px oklch(0.3 0.04 308 / 0.12);
+  --warm-shadow-md: 0 2px 4px oklch(0.3 0.02 308 / 0.04), 0 18px 40px -20px oklch(0.3 0.04 308 / 0.16);
+  --warm-shadow-lg: 0 30px 80px -36px oklch(0.3 0.04 308 / 0.22);
 }
 
 .dark {
   --card-shadow: 0 0 0 1px oklch(1 0 0 / 0.06), 0 1px 2px -1px oklch(0 0 0 / 0.4), 0 2px 4px 0 oklch(0 0 0 / 0.3);
   --card-shadow-hover: 0 0 0 1px oklch(1 0 0 / 0.1), 0 8px 28px -12px oklch(0 0 0 / 0.55);
   --card-shadow-selected: 0 0 0 1.5px var(--primary), 0 1px 3px -1px oklch(0 0 0 / 0.4), 0 2px 6px 0 oklch(0 0 0 / 0.3);
-  --background: #2b2218;
-  --primary-foreground: #2b2218;
-  --secondary: #3a3228;
-  --secondary-foreground: #f7f1e4;
-  --muted: #3a3228;
-  --muted-foreground: #c4b8a6;
-  --accent-foreground: #e8d4b0;
+  --background: oklch(0.2 0.02 300);
+  --primary-foreground: oklch(0.2 0.02 300);
+  --secondary: oklch(0.28 0.02 300);
+  --secondary-foreground: oklch(0.96 0.01 300);
+  --muted: oklch(0.28 0.02 300);
+  --muted-foreground: oklch(0.74 0.02 300);
+  --accent-foreground: oklch(0.86 0.06 308);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --band: #3a342e;
-  --band-2: #433c35;
-  --surface: #3a342e;
-  --surface-2: #322d28;
-  --ink: #f7f1e4;
-  --ink-2: #e4d6c4;
-  --ink-3: #c4b8a6;
-  --line: #4a4034;
-  --line-2: #433c32;
-  --brand: #c9a06a;
-  --brand-ink: #e8d4b0;
-  --brand-soft: #3d2a1c;
-  --dark-accent: #d4b08a;
-  --headline-accent: #e4c48a;
-  --highlight-soft: #4a4030;
-  --highlight-deep: #e4c48a;
-  --dark: #241f1b;
-  --dark-2: #322d28;
-  --dark-line: #4a433c;
-  --dark-soft: #b8b0a6;
-  --chip-1-soft: #2f3a2e;
-  --chip-1-ink: #c5d6c2;
-  --chip-2-soft: #4a4030;
-  --chip-2-ink: #e4d2b0;
-  --chip-3-soft: #343c66;
-  --chip-3-ink: #c3cbf5;
-  --glow-1: #3d2a1c;
-  --glow-2: #4a4030;
+  --band: oklch(0.26 0.02 300);
+  --band-2: oklch(0.3 0.02 300);
+  --surface: oklch(0.26 0.02 300);
+  --surface-2: oklch(0.23 0.02 300);
+  --ink: oklch(0.97 0.008 300);
+  --ink-2: oklch(0.86 0.02 300);
+  --ink-3: oklch(0.7 0.02 300);
+  --line: oklch(0.34 0.02 300);
+  --line-2: oklch(0.3 0.02 300);
+  --brand: oklch(0.78 0.1 308);
+  --brand-ink: oklch(0.88 0.06 308);
+  --brand-soft: oklch(0.3 0.05 308);
+  --dark-accent: oklch(0.82 0.08 308);
+  --headline-accent: oklch(0.82 0.08 308);
+  --highlight-soft: oklch(0.3 0.04 308);
+  --highlight-deep: oklch(0.82 0.08 308);
+  --dark: oklch(0.16 0.02 300);
+  --dark-2: oklch(0.23 0.02 300);
+  --dark-line: oklch(0.34 0.02 300);
+  --dark-soft: oklch(0.68 0.02 300);
+  --chip-1-soft: oklch(0.28 0.03 145);
+  --chip-1-ink: oklch(0.82 0.05 145);
+  --chip-2-soft: oklch(0.3 0.05 308);
+  --chip-2-ink: oklch(0.86 0.06 308);
+  --chip-3-soft: oklch(0.3 0.05 285);
+  --chip-3-ink: oklch(0.86 0.06 285);
+  --glow-1: oklch(0.3 0.05 308);
+  --glow-2: oklch(0.28 0.03 300);
   --status-want: oklch(0.72 0.13 158);
   --status-want-soft: oklch(0.34 0.04 158);
   --status-no: oklch(0.7 0.17 22);
@@ -128,23 +128,23 @@
   --warm-shadow-lg: 0 36px 90px -38px oklch(0 0 0 / 0.8);
 }
 
-/* Second Minas skin: Pampulha blue. Same override contract as the demo. */
-.skin-pampulha {
-  --brand: #7480c6;
-  --brand-ink: #4a529e;
-  --brand-soft: #e8eaf8;
+/* Second skin: Grafton, Australian spring. Cooler lilac. Same override contract. */
+.skin-grafton {
+  --brand: oklch(0.5 0.14 285);
+  --brand-ink: oklch(0.4 0.12 285);
+  --brand-soft: oklch(0.95 0.03 285);
   --headline-accent: var(--brand-ink);
-  --accent-foreground: #4a529e;
-  --dark-accent: #96a4ea;
+  --accent-foreground: oklch(0.4 0.12 285);
+  --dark-accent: oklch(0.78 0.1 285);
 }
 
-.dark.skin-pampulha,
-.skin-pampulha.dark,
-.dark .skin-pampulha {
-  --brand: #96a4ea;
-  --brand-ink: #aeb9f0;
-  --brand-soft: #343c66;
-  --headline-accent: #c3cbf5;
-  --accent-foreground: #c3cbf5;
-  --dark-accent: #96a4ea;
+.dark.skin-grafton,
+.skin-grafton.dark,
+.dark .skin-grafton {
+  --brand: oklch(0.78 0.1 285);
+  --brand-ink: oklch(0.86 0.06 285);
+  --brand-soft: oklch(0.3 0.05 285);
+  --headline-accent: oklch(0.86 0.06 285);
+  --accent-foreground: oklch(0.86 0.06 285);
+  --dark-accent: oklch(0.78 0.1 285);
 }

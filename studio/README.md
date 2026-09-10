@@ -1,17 +1,17 @@
-# Canastra
+# Jacaranda
 
-Recording studio for the X series. The on-screen product is a Minas Gerais
-tasting guide: Serra da Canastra, Serro, Pampulha. No product brand lives
-here. Nothing in this folder publishes.
+Recording studio for the X series. The on-screen product is a spring street
+guide: Rio, Grafton, Brisbane, Sydney. No product brand lives here. Nothing
+in this folder publishes.
 
-The package on npm stays `@fracazo/design-system`. **Canastra** is the name
+The package on npm stays `@fracazo/design-system`. **Jacaranda** is the name
 you say on X.
 
-Named for queijo Canastra: it is only itself if it comes from that serra.
-Same contract as the system. The roles never move.
+Named for *Jacaranda mimosifolia*: native to Brazil, shipped through Kew,
+now the tree that means Australian spring. Same crossing as the person who
+built this. The roles never move.
 
-Runners-up if you want a different Minas word later: **Serro**, **pedra-sabão**,
-**Vila Rica**. Pão de queijo is too cute. Matrinxã is Mato Grosso.
+Canastra (the cheese, the yellow-brown skin) is retired. Do not bring it back.
 
 ## Run it
 
@@ -36,7 +36,7 @@ without sound.
 3. Show a large cursor. No browser chrome. Reduced motion off.
 4. First line is the hook. Proper noun or a sharp claim. Not "starting a series".
 5. One hashtag at the end, `#DesignEngineering`. People find the series by
-   searching **Canastra**.
+   searching **Jacaranda**.
 6. One clip per post. Do not stitch a montage. Do not pin a 16-post thread.
 
 ## Posts and moves
@@ -45,14 +45,14 @@ Every caption is under 280 characters. Attach the scene's clip.
 
 ### 01 · `#/intro`
 
-Hover the OfferCard, then Order a wheel.
+Hover the OfferCard, then Walk the street.
 
 ```
-Um cafezinho e um queijinho.
+Brazil, then Australia.
 
-Canastra is a cheese you cannot fake. I named a design system after that.
+Jacaranda is a tree you cannot fake. I named a design system after that.
 
-Coffee for the button. Casca for the name. Watch the card. CSS. No JavaScript.
+Bloom for the button. Cool white for the page. Watch the card. CSS. No JavaScript.
 
 #DesignEngineering
 ```
@@ -87,12 +87,12 @@ A skill agents load before they touch any UI.
 
 ### 04 · `#/brand`
 
-Hover Canastra, then Pampulha.
+Hover Brazil, then Grafton.
 
 ```
 Same card. I only changed the brand file.
 
-Left is Canastra. Right is Pampulha.
+Left is Rio. Right is Grafton.
 
 No hex in the system. The hue lives in one file. The roles never move.
 
@@ -113,7 +113,7 @@ That block is the contract. The decision sits where the agent is already looking
 
 ### 06 · `#/buttons`
 
-Hover each variant. Pause on Order a wheel.
+Hover each variant. Pause on Walk the street.
 
 ```
 Four buttons. That is the whole set.
@@ -140,12 +140,12 @@ Agents reach for the fancy control. The file says not to.
 
 ### 08 · `#/choice`
 
-Open the select, pick Serro.
+Open the select, pick Brisbane.
 
 ```
-Select is for long filters. This one is micro-regions of Minas.
+Select is for long filters. This one is cities the tree reached.
 
-A short list of cheeses should be cards.
+A short list of streets should be cards.
 
 Shipping the component is easy. Shipping the refuse-when is the system.
 
@@ -154,13 +154,13 @@ Shipping the component is easy. Shipping the refuse-when is the system.
 
 ### 09 · `#/overlays`
 
-Open Preview the wheel, close, then How to keep it.
+Open Preview the street, close, then How they arrived.
 
 ```
 Three overlays. Three jobs.
 
-Dialog for the wheel.
-Sheet for how to keep it.
+Dialog for the street.
+Sheet for how they arrived.
 Popover stays on the search.
 
 If the agent opens a Dialog for all three, the surface shouts.
@@ -170,12 +170,12 @@ If the agent opens a Dialog for all three, the surface shouts.
 
 ### 10 · `#/disclosure`
 
-Collapse Fresco, open Meia-cura, switch to Route.
+Collapse Bud, open Bloom, switch to Route.
 
 ```
-Fresco, meia-cura, curado.
+Bud, bloom, carpet.
 
-Accordion for ages. Tabs when the views weigh the same.
+Accordion for stages. Tabs when the views weigh the same.
 
 A public FAQ still uses details and summary. No JavaScript required.
 
@@ -198,10 +198,10 @@ No carousel. No badges. No glass.
 
 ### 12 · `#/rank`
 
-Drag Canastra curado to the top.
+Drag Grafton to the top.
 
 ```
-Drag the tasting order. Grip handle only.
+Drag the walk order. Grip handle only.
 
 Touch, mouse, keyboard.
 
@@ -212,7 +212,7 @@ If order does not matter, do not use this.
 
 ### 13 · `#/skill`
 
-Click the cream, then Tab through the three buttons.
+Click the page, then Tab through the three buttons.
 
 ```
 Click nothing. Hit Tab.
@@ -240,10 +240,10 @@ Eight lint rules catch the rest. The build fails before anyone posts a screensho
 
 ### 15 · `#/emphasis`
 
-Hover the middle wheel, then a neighbour.
+Hover the middle card, then a neighbour.
 
 ```
-Only the middle wheel is tinted.
+Only the middle street is tinted.
 
 One emphasis signal. A rule ships only when I have made the same correction twice.
 
@@ -255,7 +255,7 @@ One emphasis signal. A rule ships only when I have made the same correction twic
 Hover Start a product.
 
 ```
-Canastra. Public MIT.
+Jacaranda. Public MIT.
 
 @fracazo/design-system
 
