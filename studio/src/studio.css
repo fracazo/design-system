@@ -4,6 +4,21 @@
 @source "../node_modules/@fracazo/design-system/dist";
 @source "./**/*.{ts,tsx}";
 
+[data-jacaranda-mark] {
+  --blossom-edge: #5B4BD6;
+  --blossom-mid: #8B6BE8;
+  --blossom-core: #B79BF0;
+  --jacaranda-trunk: #1E1A33;
+}
+
+.dark [data-jacaranda-mark],
+[data-jacaranda-mark][data-invert] {
+  --blossom-edge: #B79BF0;
+  --blossom-mid: #8B6BE8;
+  --blossom-core: #5B4BD6;
+  --jacaranda-trunk: #FAF8FE;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

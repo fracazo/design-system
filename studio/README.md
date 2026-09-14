@@ -25,6 +25,10 @@ Open `http://localhost:5173`. Pick a scene, press `r` (or add `?record=1`)
 to hide the chrome, then record. Arrows step between scenes. Escape brings
 the chrome back.
 
+The getting-started docs page is at
+`http://localhost:5173/getting-started.html`. The same content lives in
+`docs/getting-started.md` for GitHub and the package.
+
 ## How to post on X
 
 The clip is the post. The text is a caption. For You shows the first line

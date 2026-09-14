@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { JacarandaLockup } from "./mark";
 import {
   BrandScene,
   ButtonsScene,
@@ -113,10 +114,7 @@ export function App() {
         className="fixed top-0 left-0 z-40 flex h-svh w-64 flex-col border-r border-border bg-surface/95 backdrop-blur-sm"
       >
         <div className="px-5 py-5">
-          <p className="font-mono text-[11px] font-semibold uppercase tracking-[0.16em] text-ink-3">
-            Jacaranda
-          </p>
-          <p className="mt-2 text-sm text-ink-2">Recording studio</p>
+          <JacarandaLockup className="text-[21px] text-ink" subtitle="design system" />
         </div>
         <nav className="min-h-0 flex-1 overflow-y-auto px-2 pb-4">
           {scenes.map((item) => {
@@ -145,6 +143,11 @@ export function App() {
             </a>
             <span className="mx-2">·</span>
             arrows to step
+          </p>
+          <p className="mt-2">
+            <a href="/getting-started.html" className="text-brand-ink underline-offset-2 hover:underline">
+              Get started
+            </a>
           </p>
         </div>
       </aside>

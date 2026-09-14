@@ -19,7 +19,8 @@
     "skills",
     "template",
     "README.md",
-    "DESIGN.md"
+    "DESIGN.md",
+    "docs"
   ],
   "exports": {
     ".": {

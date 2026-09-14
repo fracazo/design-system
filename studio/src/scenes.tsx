@@ -38,6 +38,7 @@ import { SortableList, type SortableItem } from "@fracazo/design-system/ui/sorta
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@fracazo/design-system/ui/tabs";
 import { Textarea } from "@fracazo/design-system/ui/textarea";
 import { Initials, Stage, Tile, holdLink } from "./media";
+import { JacarandaMark } from "./mark";
 
 const streets: SortableItem[] = [
   { id: "grafton", label: "Grafton" },
@@ -55,7 +56,7 @@ export function IntroScene() {
         Brazil, then Australia
       </p>
       <h1 className="mt-3 text-display">
-        <span className="text-headline-accent">Jacaranda</span>
+        <span className="font-bold tracking-tight text-headline-accent">Jacaranda</span>
       </h1>
       <p className="mt-5 max-w-prose text-lede text-ink-2">
         A South American tree that became Australian spring. I named a design system after that crossing.
@@ -68,14 +69,18 @@ export function IntroScene() {
         <OfferCard
           href="#intro"
           onClick={holdLink}
-          media={<Tile letter="J" wash="bloom" />}
+          media={
+            <div className="grid size-full place-items-center bg-brand-soft">
+              <JacarandaMark density="full" className="size-28" />
+            </div>
+          }
           tag="Jacaranda mimosifolia"
           title="Streets of purple haze"
-          description="Native to Brazil. Shipped through Kew. Blooming in Grafton, Brisbane, Sydney."
+          description="Native to Brazil. Shipped through Kew in London. Blooming in Grafton, Brisbane, Sydney."
           footer={{
             avatar: <Initials letters="GR" />,
             name: "Grafton",
-            meta: "Spring · NSW",
+            meta: "Jacaranda festival · NSW",
           }}
           className="animate-in fade-in slide-in-from-bottom-4 duration-500"
         />
@@ -155,7 +160,7 @@ export function BrandScene() {
             tag="Jacaranda mimosifolia"
             title="The native range"
             description="Same roles. One brand file. Bloom purple for the action and the name."
-            footer={{ avatar: <Initials letters="RJ" />, name: "Rio de Janeiro", meta: "Kew, 1818" }}
+            footer={{ avatar: <Initials letters="RJ" />, name: "Rio de Janeiro", meta: "Kew, London, 1818" }}
           />
         </div>
         <div className="skin-grafton">
@@ -168,7 +173,7 @@ export function BrandScene() {
             media={<Tile letter="G" wash="grafton" />}
             tag="Grafton"
             title="The spring it became"
-            description="Same roles. Hue rotated cooler. Lilac over the Clarence."
+            description="Same roles. Hue rotated cooler. Lilac for the Jacaranda festival."
             footer={{
               avatar: (
                 <span className="grid size-full place-items-center bg-chip-3-soft text-sm font-semibold text-chip-3-ink">
@@ -254,7 +259,7 @@ export function FormScene() {
             id="notes"
             value={notes}
             onChange={(event) => setNotes(event.target.value)}
-            placeholder="Grafton in late October. Walk Prince Street before the carpet goes."
+            placeholder="Grafton in late October. Walk Prince Street for the Jacaranda festival."
           />
         </div>
         <div className="mt-6">
@@ -323,7 +328,7 @@ export function OverlaysScene() {
               </DialogDescription>
             </DialogHeader>
             <p className="text-sm text-foreground">
-              Late October. The canopy goes violet first, then the pavement.
+              Festival week. The canopy goes violet first, then the pavement.
             </p>
             <DialogFooter>
               <Button>Walk this street</Button>
@@ -337,13 +342,13 @@ export function OverlaysScene() {
           </SheetTrigger>
           <SheetContent side="bottom" className="rounded-t-xl">
             <SheetHeader>
-              <SheetTitle>Rio, Kew, then here</SheetTitle>
+              <SheetTitle>Rio, Kew in London, then here</SheetTitle>
               <SheetDescription>
                 Supplementary mobile detail. On desktop this content sits as an aside.
               </SheetDescription>
             </SheetHeader>
             <p className="px-4 pb-6 text-sm text-foreground">
-              Specimens left Rio for Kew around 1818. Seeds followed the imperial plant routes. Brisbane planted one in 1864.
+              Specimens left Rio for Kew in London around 1818. Seeds followed the imperial plant routes. Brisbane planted one in 1864.
             </p>
           </SheetContent>
         </Sheet>
@@ -418,12 +423,12 @@ export function CardsScene() {
           highlighted
           media={<Tile letter="G" wash="leaf" />}
           tag="Grafton"
-          title="Prince Street in late October"
+          title="Prince Street in festival week"
           description="The whole card is one link. highlighted is the one emphasis signal."
           footer={{
             avatar: <Initials letters="GR" />,
             name: "Grafton",
-            meta: "Festival week",
+            meta: "Jacaranda festival",
           }}
         />
         <ArticleCard
@@ -432,7 +437,7 @@ export function CardsScene() {
           media={<Tile letter="K" wash="mist" />}
           tags={["Jacaranda", "Kew"]}
           title="How a Rio specimen became Australian spring"
-          excerpt="Kew took the cuttings. Trade ships did the rest. A two-line excerpt. Tags are text, not badges."
+          excerpt="Kew in London took the cuttings. Trade ships did the rest. A two-line excerpt. Tags are text, not badges."
           author={{ avatar: <Initials letters="AF" />, name: "Alex Fracazo" }}
           date="10 Sep 2026"
           dateTime="2026-09-10"
@@ -533,7 +538,7 @@ export function EmphasisScene() {
           tag="Grafton"
           title="Australian spring"
           description="highlighted tints the body. Nothing else changes."
-          footer={{ name: "Grafton", meta: "Festival" }}
+          footer={{ name: "Grafton", meta: "Jacaranda festival" }}
         />
         <OfferCard
           href="#emphasis"
