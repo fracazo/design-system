@@ -369,9 +369,9 @@ export function GettingStartedPage() {
           <section className="mt-16" aria-labelledby="wire-the-guardrails">
             <SectionHeading id="wire-the-guardrails">Wire the guardrails</SectionHeading>
             <p className="mt-4 max-w-prose text-ink-2">
-              Eight ESLint rules catch what a reviewer would. Exempt only renderers that
+              Nine ESLint rules catch what a reviewer would. Exempt only renderers that
               cannot use CSS variables: PDF, email, OG images. Then hold the brand file
-              to the contract: 63 light, 48 dark, 2 theme. Nothing missing, nothing extra.
+              to core, plus any extension it declares. Nothing missing from that set, nothing extra.
             </p>
             <div className="mt-5">
               <CodeBlock label="js" code={eslintSnippet} copyLabel="Copy the ESLint config" />

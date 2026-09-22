@@ -28,15 +28,17 @@ rendering through every step, proven with BirthGuide's snapshot harness.
   Compiled by `tsc` to `dist/src/`; the class strings and `"use client"`
   directives survive compilation, which is what lets a consumer `@source`
   the dist. Stories stay in BirthGuide.
-- `skills/product-design/`: the agent skill (Vercel's product-design
-  shape). `SKILL.md` routes by mode; `references/rules.md` is the rule
-  registry (stable IDs, source, enforcement status, bad and good);
+- `skills/`: seven domain skills (accessibility, layout, writing,
+  typography, colors, ui, and the interface orchestrator) plus
+  `product-design/`, the Jacaranda layer. `SKILL.md` routes by mode and
+  sends a review to interface. `references/rules.md` is the lint registry
+  (stable IDs, source, enforcement status, bad and good);
   `exemplars/` are decisions from shipped commits; `coverage-gaps.md` holds
   lint candidates and missing decisions. A rule is added only when the same
   correction has recurred and Alex accepts it; lintable rules move to
   `guardrails/eslint.ts`.
 - `css/roles.css`: the system. The brand contract is the comment block at
-  the top (`brand-contract:theme` / `:light` / `:dark`); the bins parse it.
+  the top (`brand-contract:theme`, `:core`, `:landing`, `:showcase`); the bins parse it.
   It imports `css/motion.css`, the animation vocabulary the components use
   (values matching `tw-animate-css` 1.4.0 for the subset in use); add a
   utility there only when a component or a product needs it.
@@ -91,9 +93,9 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 - `pnpm check` (tsc, no emit) and `pnpm build`. After a component change,
   confirm the compiled file still opens with its `"use client"` directive
   (13 of the 19 carry one) and that `pnpm pack` lists `dist/src/ui/*.js`.
-- `node dist/guardrails/check-brand.js <a brand file>`: both product brand
-  files must still satisfy the contract (currently 63 light, 48 dark,
-  2 theme).
+- `node dist/guardrails/check-brand.js <a brand file>`: a brand file must
+  satisfy core, plus every extension it declares. The starter satisfies
+  core alone. The studio record skin declares `landing` and `showcase`.
 - `node dist/guardrails/build-brand-css.js --brand <file> --out /tmp/x.css
   --name X --url https://x --check` against a product's committed
   `public/brand.css`: declarations must match.
@@ -164,7 +166,7 @@ account had to be done on npmjs.com; the CLI route
   nothing tying it to the package version. It now lives in `template/` and
   `ds-init` writes it, pinned to the version that ran. Same content: Next
   16, Tailwind v4, `src/system/brands/starter.css` with achromatic
-  placeholders for all 63/48/2 contract properties, the house base layer,
+  placeholders for the core contract, the house base layer,
   the pre-paint dark script plus `ThemeSync`, `designSystemGuardrails()`
   with no exemptions, `pnpm lint` = eslint plus `ds-check-brand`, the
   `pnpm-workspace.yaml` that approves native builds and excludes the

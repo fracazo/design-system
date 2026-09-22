@@ -1,8 +1,8 @@
 # Exemplar: craft pass, concentric radii and button optics
 
 Status: accepted
-Product: BirthGuide, then the package's Button
-Source: BirthGuide commits "feat(design): craft pass tier 1: tabular numerals, concentric radii, button optics", "feat(ui): move button primitive from pill to size-scaled rounded-rect" (SPEC_021)
+Product: the first product, then the package's Button
+Source: the first product commits "feat(design): craft pass tier 1: tabular numerals, concentric radii, button optics", "feat(ui): move button primitive from pill to size-scaled rounded-rect" (SPEC_021)
 Rules: rule/concentric-radii, rule/no-radius-literal
 
 ## Decision

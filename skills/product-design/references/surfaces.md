@@ -1,9 +1,8 @@
 # Surfaces
 
-Load when: starting any work, to name the scope; and for product-specific
-routes.
-Canonical owner: BirthGuide `_context/PRINCIPLES.md` (scopes and budgets);
-`DESIGN.md`, Two surface scopes and the brand chapters.
+Load when: starting any work, to name the scope.
+Canonical owner: `DESIGN.md`, Two surface scopes. Routes, budgets that
+differ, and voice live in the product's CLAUDE.md.
 
 ## Scopes
 
@@ -18,31 +17,11 @@ load under 1MB, images under 200KB each and 500KB per page. Illustration
 over photography, custom only; one custom typeface; entrance motion once
 per visit.
 
-The hospital case applies to both: a landing page opened on a ward tour is
-still read under pressure.
+## Extensions
 
-## BirthGuide (Australian English)
-
-- Conversion: `/` (hero, offerings, program curriculum, comparison,
-  testimonials, pricing, FAQ, footer), `/guides/*`, `/tools/*`.
-- Engagement: `/questionnaire`, `/plan/edit/*`, `/plan/[slug]` (the
-  published plan read at the bedside), downloads, `/program/*` sessions,
-  `/resume`, `/unsubscribe`.
-- Always-dark: footer and showcase bands. Landing phone mock uses `dark-3`
-  and `dark-4`.
-- Served token API: `public/brand.css` (generated; lint fails when stale).
-- Local Storybook is the component gallery for both products.
-
-## birthplans.app (US English)
-
-- Conversion: `/` (hero, plan comparison, free answers, pricing, FAQ, stat
-  band), guides.
-- Engagement: `/questionnaire` (with the did-you-know bar and the
-  preference status ramp), `/plan/*` preview and download; one output, the
-  PDF.
-- Always-dark: footer.
-- Fluid-type lint rule is off until the type-role pass; no new clamps.
-- No Storybook, no served brand.css.
+Landing roles (bands, glows, chips) and showcase roles (the on-dark ramp
+and the bezel) are opt-in. A product declares them in the brand file and
+satisfies the whole set. Core alone is a valid brand.
 
 ## Starter
 

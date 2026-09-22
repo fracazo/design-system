@@ -30,13 +30,13 @@ model. Do not restate values here; read them.
 - The six divergent semantics hold literals in both themes and are not
   aliased (rule/divergent-six). Dark `border` and `input` are translucent
   white hairlines.
-- `--dark-3` and `--dark-4` exist for the landing phone mock; nothing else
-  should use them.
-- `--headline-accent` behaves differently per brand (BirthGuide: brand ink
-  in light, sand in dark; birthplans: sand, applied only under `dark:`).
-- `chip-3` is the sister product's tint in each brand. Do not "correct" it.
-- `--dark-soft-2`, `--dark-faint`, `--dark-faint-2` are near-identical greys
-  kept on purpose (exact-match discipline). Collapsing them needs Alex.
+- `--dark-3` and `--dark-4` are the showcase bezel. Declare the showcase
+  extension before using them.
+- `--headline-accent` is a core brand role. How it differs per product is
+  in that product's chapter of DESIGN.md.
+- Chips and glows are the landing extension. Declare it before using them.
+- Text on a status wash uses `--status-want-ink` or `--status-no-ink`, not
+  the fill.
 
 ## Shadows
 

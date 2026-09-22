@@ -1,6 +1,6 @@
 {
   "name": "@fracazo/design-system",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "description": "An agent-native design system. Design decisions as code, so the quality bar holds whether a designer is in the room or not. Lint guardrails, components with intent docs, and an agent skill. One brand file per product, the system stays the same.",
   "license": "MIT",
   "author": "Alex Fracazo",
@@ -47,6 +47,7 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.json",
+    "prepare": "tsc -p tsconfig.json",
     "check": "tsc -p tsconfig.json --noEmit",
     "studio": "pnpm --dir studio dev",
     "prepublishOnly": "pnpm build"

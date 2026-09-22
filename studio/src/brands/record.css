@@ -1,7 +1,8 @@
 /* =============================================================================
-   Illustrative recording skin for the studio. Values from Jacaranda brand
-   sheet v4 (Sep 2026). Núcleo, Flor, Botão, Calçada, Tronco. Grafton lives
-   on .skin-grafton. Not a product brand. Does not ship in the package tarball.
+   Illustrative recording skin for the studio. Values from the Jacaranda
+   sheet v4 (Sep 2026). Grafton lives on .skin-grafton. Not a product brand.
+   Does not ship in the package tarball.
+   brand-extensions: landing showcase
    ============================================================================= */
 
 @theme inline {
@@ -64,12 +65,16 @@
   --chip-3-ink: #4A529E;
   --glow-1: #F1ECFD;
   --glow-2: #E4DFF3;
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
   --status-want: oklch(0.606 0.117 158);
   --status-want-soft: oklch(0.945 0.012 158);
+  --status-want-ink: oklch(0.45 0.08 158);
   --status-ifnec: var(--highlight);
   --status-ifnec-soft: var(--highlight-soft);
   --status-no: oklch(0.616 0.156 22);
   --status-no-soft: oklch(0.949 0.017 22);
+  --status-no-ink: oklch(0.46 0.11 22);
   --bar-shadow: 0 -4px 16px rgb(30 26 51 / 0.06);
   --warm-shadow-sm: 0 1px 2px rgb(30 26 51 / 0.05), 0 4px 16px -8px rgb(91 75 214 / 0.12);
   --warm-shadow-md: 0 2px 4px rgb(30 26 51 / 0.04), 0 18px 40px -20px rgb(91 75 214 / 0.16);
@@ -120,8 +125,10 @@
   --glow-2: #2A2545;
   --status-want: oklch(0.72 0.13 158);
   --status-want-soft: oklch(0.34 0.04 158);
+  --status-want-ink: oklch(0.86 0.08 158);
   --status-no: oklch(0.7 0.17 22);
   --status-no-soft: oklch(0.34 0.05 22);
+  --status-no-ink: oklch(0.88 0.06 22);
   --warm-shadow-sm: 0 1px 2px rgb(0 0 0 / 0.4), 0 4px 16px -8px rgb(0 0 0 / 0.55);
   --warm-shadow-md: 0 2px 6px rgb(0 0 0 / 0.38), 0 20px 44px -22px rgb(0 0 0 / 0.7);
   --warm-shadow-lg: 0 36px 90px -38px rgb(0 0 0 / 0.8);

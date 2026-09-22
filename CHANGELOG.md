@@ -2,7 +2,7 @@
 
 Semantic versioning by hand. Australian English, no em dashes.
 
-## 0.8.0 (unreleased)
+## 1.0.0 (unreleased)
 
 - `ArticleCard` (`@fracazo/design-system/ui/article-card`): the second
   house primitive, a linked article surface for a grid of blog posts and
@@ -21,8 +21,21 @@ Semantic versioning by hand. Australian English, no em dashes.
   are gone, and the "Read article" button that only appeared on hover is
   gone because hover-only content never reaches touch or keyboard readers.
   An entrance, if a product wants one, is motion.css classes through
-  className, gated once per visit. Minor version: a new export, no
-  contract change.
+  className, gated once per visit.
+
+- Brand contract splits into core and named extensions (`landing`,
+  `showcase`). `ds-check-brand` accepts a file that satisfies core plus
+  any extension it declares, and rejects a short or undeclared set.
+  `--status-want-ink` and `--status-no-ink` are core: text on a status
+  wash uses the ink, which has to clear Lc 60. Major version: existing
+  brand files must add the inks and declare the extensions they already
+  fill.
+- Radius ramp and the two font roles are custom properties on `:root`,
+  so a page without Tailwind can read them. `prepare` builds `dist/`
+  on a git install.
+- Seven domain skills plus the interface orchestrator. product-design
+  stays the Jacaranda layer and sends reviews to interface.
+- `no-em-dash` is an error. `no-ai-language` ships as a warning.
 
 ## 0.7.0 (8 Sep 2026)
 

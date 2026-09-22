@@ -13,9 +13,8 @@ focus-visible, on-dark-ramp, no-em-dash. Still candidates:
   shadow (layout classes allowed). Needs the imported component names.
 - rule/no-dark-pairs, second form: a `dark:` token utility beside its light
   twin (`bg-band dark:bg-dark`), which usually means a missing token.
-- rule/voice-bans as a word list over string literals in JSX.
-- Warnings to turn into errors once each product is clean: no-stock-palette
-  (BirthGuide 48, birthplans 5), focus-visible (24, 2), no-em-dash (47, 23).
+- Warnings to turn into errors once each product is clean: no-stock-palette,
+  focus-visible, on-dark-ramp, no-ai-language. no-em-dash is already an error.
 
 ## Missing decisions
 
@@ -30,8 +29,9 @@ focus-visible, on-dark-ramp, no-em-dash. Still candidates:
   built their own.
 - Illustration style for conversion surfaces: the brand spec's guidance
   predates the warm palette and names colours that are not in production.
-- birthplans.app type-role pass: fourteen clamp literals await convergence
-  before its fluid-type lint can switch on.
+- A product type-role pass: clamp literals that still await convergence
+  before that product's fluid-type lint can switch on. The list lives in
+  the product repo.
 - Whether a product may ship a manual theme toggle: today, none do, by
   decision; not recorded as a rule.
 

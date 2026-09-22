@@ -1,5 +1,9 @@
 # Rules
 
+Lint and contract registry. Stable IDs for the mechanical checks. A review
+of a surface uses the interface skill, which loads the domain skills. Do
+not treat this file as a second review rubric.
+
 Every rule has a stable ID, a scope, the rule, why, exceptions, its source
 and an example pair. `Enforced by` says who catches a violation today:
 `lint` (the package's ESLint plugin, rule `design-system/<id>`; `lint,
@@ -20,7 +24,7 @@ Exceptions: renderers that cannot use CSS variables (react-pdf, email HTML,
 OG images), listed per product in its ESLint config.
 Source: DESIGN.md, Guardrails; guardrails/eslint.ts.
 Enforced by: lint.
-Bad: `className="bg-[#c2727a] text-white"`
+Bad: `className="bg-[#767676] text-white"`
 Good: `className="bg-primary text-primary-foreground"`
 
 ### rule/no-dark-pairs
@@ -29,7 +33,7 @@ Rule: never a hand-authored light and dark pair (`bg-x dark:bg-y`) for a
 colour. The token owns both themes; write one class.
 Why: two literals drift independently and the dark half is never reviewed.
 Exceptions: `dark:` on a non-colour property (opacity, display) is fine.
-Source: DESIGN.md, Reject list; BirthGuide SPEC_016.
+Source: DESIGN.md, Reject list; the first product SPEC_016.
 Enforced by: lint (the arbitrary-value form). A `dark:` token beside its
 light twin is still prose.
 Bad: `bg-[#E6EFE2] dark:bg-[oklch(0.34_0.045_150)]`
@@ -43,7 +47,7 @@ theme-varying token such as `text-ink` or `text-ink-3`.
 Why: the surface never changes theme, so its text must not; `text-ink` on
 the footer renders espresso on espresso in light mode.
 Exceptions: none.
-Source: DESIGN.md, Colour; BirthGuide usage story.
+Source: DESIGN.md, Colour; the first product usage story.
 Enforced by: lint, warn (a theme-varying text token inside a JSX subtree
 whose root carries `bg-dark`; a nested light surface resets the context).
 Bad: `<footer className="bg-dark"><p className="text-ink">`
@@ -82,19 +86,21 @@ Scope: product UI (not PDFs or emails).
 Rule: no Tailwind default palette colour (`amber-500`, `blue-600`,
 `gray-200`) in a className.
 Why: it competes with the brand, ignores dark mode and looks generic.
-Exceptions: none in UI. Known violation: BirthGuide `PregnancyProgress.tsx`
+Exceptions: none in UI. Known violation: the first product `PregnancyProgress.tsx`
 (coverage gap).
-Source: BirthGuide brand spec 9.2; DESIGN.md, Colour.
-Enforced by: lint, warn (BirthGuide has 48 occurrences, mostly in the
+Source: the first product brand spec 9.2; DESIGN.md, Colour.
+Enforced by: lint, warn (the first product has 48 occurrences, mostly in the
 calculator tools; a cleanup spec turns it to error).
 Bad: `bg-amber-100 text-amber-800`
 Good: `bg-highlight-soft text-highlight-ink`
 
 ### rule/status-colour-means-preference
-Scope: `status-want`, `status-ifnec`, `status-no` and their `-soft` washes.
-Rule: use only to encode a reader's preference state; never as decoration
-or as generic success and danger colours.
-Why: colour that carries meaning must carry only that meaning.
+Scope: `status-want`, `status-ifnec`, `status-no`, their `-soft` washes,
+and `status-want-ink`, `status-no-ink`.
+Rule: use only to encode a status, never as decoration. Text on a wash
+uses the ink, not the fill. The ink must clear Lc 60 on that wash.
+Why: colour that carries meaning must carry only that meaning, and the
+fill is too close to its wash to be text.
 Exceptions: none. Destructive actions use `destructive`.
 Source: DESIGN.md, Colour; roles.css comment.
 Enforced by: prose.
@@ -124,7 +130,7 @@ Why: concentric corners read as one shape; equal radii at different depths
 read as a mistake.
 Exceptions: corners that never meet; gaps that would need a negative inner
 radius.
-Source: DESIGN.md, Radius; BirthGuide SPEC_021 (exemplar
+Source: DESIGN.md, Radius; the first product SPEC_021 (exemplar
 concentric-radii-and-button-optics).
 Enforced by: prose.
 Bad: `rounded-lg p-4` parent around a `rounded-lg` child.
@@ -137,10 +143,10 @@ Rule: fluid sizes are the named roles `text-display`, `text-section-title`,
 Why: near-miss clamps drift a few pixels from one another and nobody can
 tell which is intended.
 Exceptions: a deliberate one-off with an inline disable stating why (five
-exist in BirthGuide). birthplans.app has the rule off pending its type-role
+exist in the first product). the second product has the rule off pending its type-role
 pass; no new clamp literals there either.
 Source: DESIGN.md, Type; exemplar clamp-drift-to-named-roles.
-Enforced by: lint (BirthGuide, starter); prose (birthplans until the pass).
+Enforced by: lint (the first product, starter); prose (the second product until the pass).
 Bad: `text-[clamp(1.9rem,4vw,3rem)]`
 Good: `text-section-title`
 
@@ -169,7 +175,7 @@ reverse mid-animation.
 Rule: CSS transitions, not keyframes.
 Why: transitions retarget when interrupted; keyframes restart from zero.
 Exceptions: one-shot staged sequences such as a hero entrance.
-Source: DESIGN.md, Motion; BirthGuide principles story.
+Source: DESIGN.md, Motion; the first product principles story.
 Enforced by: prose.
 
 ### rule/entrance-once-per-visit
@@ -180,7 +186,7 @@ rest on reloads and in-visit navigation, collapse under
 Why: replaying an entrance on every reload reads as a bug and costs the
 reader time.
 Exceptions: none.
-Source: BirthGuide layout.tsx; DESIGN.md, Motion.
+Source: the first product layout.tsx; DESIGN.md, Motion.
 Enforced by: prose.
 
 ### rule/no-clipped-ambient
@@ -261,7 +267,7 @@ spacing or variant of their own.
 Why: Storybook is a consumer; a missing value is a finding, not a local
 fix.
 Exceptions: none.
-Source: BirthGuide usage story.
+Source: the first product usage story.
 Enforced by: lint (colour rule covers stories); prose.
 
 ## Copy
@@ -272,21 +278,22 @@ metadata.
 Rule: never an em dash. Commas, colons, full stops, parentheses instead.
 Why: house style across every product and repo.
 Exceptions: none (legacy occurrences are removed when a file is touched).
-Source: every CLAUDE.md; DESIGN.md.
-Enforced by: lint, warn (every U+2014 in a source file, comments
-included); docs and commit messages stay prose.
+Source: every CLAUDE.md; DESIGN.md, Reject list.
+Enforced by: lint, error (every U+2014 in a source file, comments
+included). Docs and commit messages stay prose.
 
-### rule/voice-bans
-Scope: all user-facing writing.
-Rule: no wellness-speak ("your journey", "mama", "you've got this"), no
-filler affirmations ("amazing", "incredible"), no AI marketing words
-("seamless", "empower", "unlock", "cutting-edge", "revolutionise",
-"great question"). Short sentences, one idea each. Read aloud.
-Why: the products earn trust by sounding like a midwife who respects the
-reader.
-Exceptions: none.
-Source: PRINCIPLES.md voice rules; both CLAUDE.md copy sections.
-Enforced by: prose (a word list is a lint candidate).
+### rule/no-ai-language
+Scope: string literals and JSX text.
+Rule: no machine-written patterns. Throat-clearing openers, rhetorical
+scaffolding, inflated verbs, agent jargon in product copy, closing
+offers, emoji, and exclamation marks outside genuinely celebratory copy.
+The word list is in DESIGN.md, Language, and in the writing skill.
+Why: the copy should sound like a person who knows the product, not like
+a model completing a prompt.
+Exceptions: a one-off disable, `eslint-disable-next-line design-system/no-ai-language`,
+with a reason. Celebratory copy may keep an exclamation mark.
+Source: DESIGN.md, Language.
+Enforced by: lint, warn.
 
 ### rule/sentence-case
 Scope: headings, buttons, labels, navigation.
@@ -294,17 +301,16 @@ Rule: sentence case. All caps only on the mono kicker label with wide
 tracking.
 Why: Title Case reads as marketing; all caps reads as shouting.
 Exceptions: proper nouns.
-Source: PRINCIPLES.md; DESIGN.md, Type.
+Source: DESIGN.md, Type.
 Enforced by: prose.
 
 ### rule/english-per-product
 Scope: copy, comments, commit messages.
-Rule: BirthGuide is Australian English (caesarean, labour, colour);
-birthplans.app is US English (cesarean, labor, color, anesthesiologist).
-The package and the starter are Australian English.
+Rule: the product's CLAUDE.md names its English. This package and the
+starter are Australian English.
 Why: each product speaks to its market; mixing reads as carelessness.
 Exceptions: Tailwind class names stay US spelling everywhere.
-Source: each CLAUDE.md language section.
+Source: each product's CLAUDE.md language section.
 Enforced by: prose.
 
 ### rule/claim-only-what-ships
@@ -312,8 +318,7 @@ Scope: landing and product copy.
 Rule: outcomes and features named in copy are ones the product delivers
 today.
 Why: the reader is deciding under pressure; an overclaim is a broken
-promise at the bedside.
+promise.
 Exceptions: none.
-Source: BirthGuide landing commits ("make the outcome copy claim only what
-the product delivers").
+Source: DESIGN.md, Priority order.
 Enforced by: prose.

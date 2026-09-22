@@ -29,7 +29,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-band py-band">
+      <section className="bg-surface-2 py-16">
         <div className="mx-auto max-w-3xl px-6">
           <h2 className="text-section-title">A form on a band</h2>
           <div className="mt-band-gap rounded-20 bg-card p-6 shadow-card">
@@ -38,19 +38,19 @@ export default function Home() {
               <Input id="email" type="email" placeholder="you@example.com" />
             </div>
             <div className="mt-5 flex flex-wrap gap-2">
-              <span className="rounded-full bg-status-want-soft px-3 py-1 text-xs font-medium text-status-want">Want</span>
-              <span className="rounded-full bg-status-ifnec-soft px-3 py-1 text-xs font-medium text-highlight-ink">If necessary</span>
-              <span className="rounded-full bg-status-no-soft px-3 py-1 text-xs font-medium text-status-no">Don&apos;t want</span>
+              <span className="rounded-full bg-status-want-soft px-3 py-1 text-xs font-medium text-status-want-ink">Want</span>
+              <span className="rounded-full bg-status-ifnec-soft px-3 py-1 text-xs font-medium text-highlight-ink">If needed</span>
+              <span className="rounded-full bg-status-no-soft px-3 py-1 text-xs font-medium text-status-no-ink">No</span>
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="bg-dark py-band text-dark-ink-2">
+      <footer className="border-t border-border py-16 text-ink-2">
         <div className="mx-auto max-w-3xl px-6">
-          <h4 className="text-dark-faint-2">Always-dark surface</h4>
-          <p className="mt-2 text-dark-soft">
-            Text here comes from the on-dark ramp, which does not change with the theme.
+          <h4 className="text-ink">Core surface</h4>
+          <p className="mt-2">
+            This starter satisfies the core contract only. Bands, glows and the on-dark ramp are extensions.
           </p>
         </div>
       </footer>

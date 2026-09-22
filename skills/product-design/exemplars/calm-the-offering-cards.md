@@ -1,8 +1,8 @@
 # Exemplar: calm the offering cards
 
 Status: accepted
-Product: BirthGuide, landing hero offering pair
-Source: BirthGuide commit "feat(landing): calm the offering cards down"
+Product: the first product, landing hero offering pair
+Source: the first product commit "feat(landing): calm the offering cards down"
 Rules: rule/one-emphasis-signal, rule/concentric-radii, rule/semantic-first
 
 ## Decision

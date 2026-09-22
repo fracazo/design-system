@@ -19,7 +19,7 @@ When a team ships faster, the design review queue is the first thing that breaks
 
 Jacaranda moves the bar out of the review queue and into the tooling, where it holds whether a designer is in the room or not. It grew out of BirthGuide and birthplans.app: two products, two brand files, one system.
 
-It ships eight lint rules, nineteen components with intent docs, a brand contract, four bins, and one agent skill. You import the roles, then exactly one brand file. Both people and AI assistants build from the same reference.
+It ships nine lint rules, nineteen components with intent docs, a brand contract (core plus extensions), four bins, and eight agent skills. You import the roles, then exactly one brand file. Both people and AI assistants build from the same reference.
 
 **What makes Jacaranda different:**
 

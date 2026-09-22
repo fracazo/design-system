@@ -1,8 +1,8 @@
 # Exemplar: blend the hero glow into the next section
 
 Status: accepted
-Product: BirthGuide, landing hero to curriculum boundary
-Source: BirthGuide commit "fix(landing): blend the hero glow into the curriculum section"
+Product: the first product, landing hero to curriculum boundary
+Source: the first product commit "fix(landing): blend the hero glow into the curriculum section"
 Rules: rule/no-clipped-ambient
 
 ## Decision

@@ -6,8 +6,8 @@ Canonical owner: each product's CLAUDE.md verification section and
 
 ## Every UI change
 
-1. `pnpm lint` (ESLint guardrails plus the brand contract; BirthGuide also
-   checks the served brand.css).
+1. `pnpm lint` (ESLint guardrails plus the brand contract; a product that
+   serves `public/brand.css` also checks that file).
 2. `pnpm typecheck` or `tsc --noEmit`; `pnpm build`.
 3. Render it: both themes, 360px and 1280px, every materially changed
    state, keyboard order and focus, long content. Say what you saw; never
@@ -28,8 +28,8 @@ Canonical owner: each product's CLAUDE.md verification section and
 
 ## Package release
 
-`pnpm check`, `pnpm build`, `ds-check-brand` against both product brand
-files, `ds-build-brand-css --check` against BirthGuide's committed
+`pnpm check`, `pnpm build`, `ds-check-brand` against each product brand
+file and the starter, `ds-build-brand-css --check` against any committed
 `public/brand.css`. Alex publishes (browser auth); tag `vX.Y.Z`. After a
 merge that adds devDependencies, `pnpm install` in the main checkout before
 publishing.

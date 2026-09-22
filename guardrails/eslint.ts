@@ -17,10 +17,11 @@
 //     }),
 //   ])
 //
-// Defaults: the rules a clean codebase already satisfies are errors; the ones
-// that need a cleanup pass first (stock palette, focus: rings, em dashes,
-// on-dark text) are warnings, so they surface without blocking a merge. Turn
-// each up to error once the product is clean. A deliberate one-off carries
+// Defaults: the rules a clean codebase already satisfies are errors. That
+// includes no-em-dash. Rules that still need a cleanup pass (stock palette,
+// focus: rings, on-dark text, machine-written language) are warnings, so
+// they surface without blocking a merge. Turn each up to error once the
+// product is clean. A deliberate one-off carries
 // `// eslint-disable-next-line design-system/<id> -- <reason>` so the
 // exception is visible in review.
 //
@@ -30,6 +31,7 @@
 
 type Node = {
   type: string
+  parent?: Node
   [key: string]: unknown
 }
 
@@ -236,6 +238,73 @@ export const rules: Record<string, RuleModule> = {
       }
     },
   },
+  'no-ai-language': {
+    meta: {
+      type: 'suggestion',
+      docs: {
+        description: 'No machine-written patterns in string literals or JSX text',
+        url: `${RULES_DOC}#ruleno-ai-language`,
+      },
+      messages: {
+        violation:
+          'Machine-written language ({{match}}). Plain words, no throat-clearing, no sign-off (rule/no-ai-language)',
+      },
+      schema: [],
+    },
+    create(context) {
+      const patterns: RegExp[] = [
+        /\bit(?:'|\u2019)?s worth noting\b/i,
+        /\bin today(?:'|\u2019)?s\b/i,
+        /\bas an ai\b/i,
+        /\bgreat question\b/i,
+        /\bcertainly\b/i,
+        /\bnot just\b[^.\n]{0,80}\bbut\b/i,
+        /\b(?:isn(?:'|\u2019)?t|is not)\b[^.\n]{0,80}\bit(?:'|\u2019)?s\b/i,
+        /\b(?:delve|leverage|utilise|utilize|robust|streamline|elevate|harness|navigate|landscape|tapestry|journey|agentic|orchestrate|seamless|empower|unlock|revolutionise|revolutionize)\b/i,
+        /\bcutting-edge\b/i,
+        /\bspin up\b/i,
+        /\bsurfac(?:e|es|ed|ing)\s+(?:the|a|an|this|that|your)\b/i,
+        /\blet me know if\b/i,
+        /\bi hope this helps\b/i,
+        /\bfeel free to\b/i,
+        /!/,
+        /[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}]/u,
+      ]
+      const inClassName = (node: Node): boolean => {
+        let cur: Node | undefined = node
+        while (cur) {
+          if (cur.type === 'JSXAttribute') {
+            const name = cur.name as { name?: string } | undefined
+            return name?.name === 'className'
+          }
+          cur = cur.parent
+        }
+        return false
+      }
+      const check = (node: Node, text: string) => {
+        if (!text.trim() || inClassName(node)) return
+        for (const pattern of patterns) {
+          const match = text.match(pattern)
+          if (match) {
+            context.report({ node, messageId: 'violation', data: { match: match[0] } })
+            return
+          }
+        }
+      }
+      return {
+        Literal(node) {
+          if (typeof node.value === 'string') check(node, node.value)
+        },
+        JSXText(node) {
+          if (typeof node.value === 'string') check(node, node.value)
+        },
+        TemplateElement(node) {
+          const cooked = (node.value as { cooked?: string } | undefined)?.cooked
+          if (typeof cooked === 'string') check(node, cooked)
+        },
+      }
+    },
+  },
 }
 
 /**
@@ -262,7 +331,7 @@ export type Severity = 'error' | 'warn' | 'off'
 
 /** The plugin object, for configs that want to wire rules by hand. */
 export const plugin = {
-  meta: { name: '@fracazo/design-system', version: '0.4.0' },
+  meta: { name: '@fracazo/design-system', version: '1.0.0' },
   rules,
 }
 
@@ -275,7 +344,8 @@ export const defaultSeverity: Record<RuleId, Severity> = {
   'no-stock-palette': 'warn',
   'focus-visible': 'warn',
   'on-dark-ramp': 'warn',
-  'no-em-dash': 'warn',
+  'no-em-dash': 'error',
+  'no-ai-language': 'warn',
 }
 
 export interface GuardrailOptions {

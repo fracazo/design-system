@@ -1,6 +1,6 @@
 ---
 name: fracazo-design-system
-description: The written authority for products built on @fracazo/design-system. Judgment, composition and the rejection list for surfaces a parent under pressure will read; the stylesheet and the guardrails do the visual work.
+description: The written authority for products built on @fracazo/design-system. Judgment, composition and the rejection list; the stylesheet and the guardrails do the visual work.
 version: 1.0.0
 applies_to: any product that imports @fracazo/design-system/roles.css and one brand file
 enforced_by: css/roles.css (brand contract, held by ds-check-brand), @fracazo/design-system/eslint, each product's design snapshot harness
@@ -25,16 +25,12 @@ CLAUDE.md for the rules that are local to it.
 
 ## Who the reader is
 
-Every product on this system is used by people close to a birth: a parent
-in the third trimester on a phone, a partner at a bedside on hospital
-wifi, someone reading at 3am with one hand. They are tired, sometimes
-frightened, and they came for one answer. The surface earns trust by being
-fast, calm and exact, the way a good midwife is. It never earns it with
-decoration, hype or novelty.
+The product's own CLAUDE.md names the reader and the voice. This file
+does not. The surface earns trust by being fast, calm and exact. It
+never earns it with decoration, hype or novelty.
 
-Two products run on it today: BirthGuide (Australia) and birthplans.app
-(English-speaking markets, primarily the US). Their chapters are at the
-end. Everything before them applies to both, and to the next product.
+What differs per product is in the brand chapters at the end. Everything
+before them applies to every product on the system.
 
 ## Priority order
 
@@ -79,7 +75,7 @@ tour is still read under pressure.
 on this surface, what the one strongest piece of evidence or the one
 primary action is. Support two reading speeds: the scan (headings, the
 key value, the primary button) and the careful read (the detail, the
-caveat, the "if necessary" path).
+caveat, the conditional path).
 
 **Choose the composition.** One focal relationship per screen. Prose for
 reasoning, a list for parallel items, a table for exact comparison, a
@@ -129,9 +125,12 @@ Primitives where no role fits:
 - Accent chips: `bg-chip-1-soft text-chip-1-ink`, `chip-2`, `chip-3`.
 - The "new" or "note" pair: `bg-highlight text-highlight-ink`, with
   `highlight-soft` and `highlight-deep` for two-tone stat pills.
-- Preference state, and only preference state: `status-want`,
-  `status-ifnec`, `status-no`, each with a `-soft` wash. Colour carries
-  meaning here; it is never decoration.
+- Status, and only status: `status-want`, `status-ifnec`, `status-no`,
+  each with a `-soft` wash. Text on a wash uses `status-want-ink` or
+  `status-no-ink`, never the fill. Those inks are core, and they must
+  clear APCA Lc 60 on their wash (WCAG 4.5:1 for normal text). Ifnec
+  text uses the brand ink or `highlight-ink`. Colour carries meaning
+  here; it is never decoration.
 
 Always-dark surfaces (footer, showcase bands) are `bg-dark` or `bg-dark-2`
 and their text comes from the mode-constant on-dark ramp, `text-dark-ink`
@@ -204,14 +203,15 @@ meet is a defect.
 Engagement surfaces carry no photography and no decorative illustration;
 icons are SVG (lucide). Conversion surfaces may use illustration over
 photography, custom, editorial and restrained, never stock, never
-photographs of pregnant women and babies, never carousels or autoplay.
+carousels or autoplay.
 Icons label actions when they make the action faster to recognise; they
 never decorate a heading.
 
 ### Accessibility
 
-WCAG AA (4.5:1 for body text, 3:1 for large text and controls). Rose or
-periwinkle text on a light surface uses the brand ink, not the brand.
+WCAG AA (4.5:1 for body text, 3:1 for large text and controls). Text in
+the brand hue on a light surface uses the brand ink, not the brand fill.
+Labels on a status wash use the status ink and clear Lc 60.
 Native controls where they exist; the date picker is the OS one. Focus is
 shown with `focus-visible`, so a modal opened with the mouse does not
 paint a ring on its close button while keyboard users still get one.
@@ -269,10 +269,13 @@ system, never the reverse.
 
 ## Guardrails and verification
 
-- **Brand contract.** `roles.css` lists every property a brand file must
-  define, light, dark and theme. `ds-check-brand` fails lint when a file
-  defines less or more. A new role is a minor version and a changelog
-  note; a contract change a brand must satisfy anew is a major version.
+- **Brand contract.** `roles.css` lists a core every brand file must
+  define, plus named extensions a product opts into. `ds-check-brand`
+  accepts core plus any declared extension, and rejects a file that
+  declares an extension it does not fully satisfy, or that carries a
+  property from an extension it did not declare. A new role is a minor
+  version and a changelog note; a contract change a brand must satisfy
+  anew is a major version.
 - **ESLint.** No raw colour in a `className` (hex, oklch, rgb, hsl,
   including arbitrary utilities) and no `text-[clamp(...)]`. Renderers
   that cannot use CSS variables (react-pdf, email HTML, OG images) are
@@ -284,6 +287,32 @@ system, never the reverse.
   cache after restructuring the CSS import graph. An intentional change
   regenerates the committed baseline in the same branch and names its
   delta.
+
+## Language
+
+Copy mechanics hold for every product. Voice, terminology and examples
+live in the product's CLAUDE.md and in the brand chapter below, not here.
+The writing skill reviews against this list.
+
+- **Hedging and throat-clearing openers.** "it's worth noting", "in today's",
+  "as an AI", "great question", "certainly".
+- **Rhetorical scaffolding.** "not just X, but Y". "X isn't Y, it's Z".
+  Tricolons used as a default rhythm. A question the text then answers itself.
+- **Inflated verbs and adjectives.** "delve", "leverage", "utilise",
+  "robust", "streamline", "elevate", "harness", "navigate" when it is not
+  about navigation, "landscape", "tapestry", "journey". Also the marketing
+  set: "seamless", "empower", "unlock", "cutting-edge", "revolutionise".
+- **Agent jargon in product copy.** "agentic", "orchestrate", "surface" as
+  a verb, "spin up".
+- **Closing offers and sign-offs.** "let me know if", "I hope this helps",
+  "feel free to".
+- **Emoji and exclamation marks.** No emoji in interface copy or as list
+  markers. No exclamation marks outside genuinely celebratory copy.
+
+The em dash stays banned everywhere, in the reject list and in the
+`no-em-dash` lint rule (an error). `no-ai-language` checks string literals
+and JSX text against this word list, as a warning, with the same one-off
+disable as the other rules.
 
 ## Reject these reflexes
 
@@ -304,9 +333,7 @@ Each of these has been corrected more than once. Treat them as defects.
   consumers; a missing value is a finding to raise.
 - Em dashes, anywhere: copy, comments, commit messages, generated
   documents. Use commas, colons, full stops, parentheses.
-- Wellness-speak ("your journey", "mama", "you've got this"), filler
-  affirmations ("amazing", "incredible"), AI marketing words
-  ("seamless", "empower", "unlock", "cutting-edge", "revolutionise").
+- Machine-written language, as listed under Language.
 - All caps outside the micro kicker label, or Title Case in a heading,
   button or label. The system is sentence case.
 - Centred hero plus three cards, metric boxes, badges as metadata,
@@ -325,6 +352,9 @@ weeks, endorsed by midwives; it reads as something a midwife would
 recommend without hesitation, never as a children's app. Australian
 English throughout: caesarean, labour, antenatal, nappy. "Birth plan" for
 search, "birth preferences" in clinical and community copy; both coexist.
+Wellness-speak ("mama", "you've got this") is out. The voice is a
+midwife who respects the reader. Plain-language terms keep the clinical
+name in parentheses where it helps.
 
 - **Palette.** Cream page (`#FAF6EF`), espresso ink (`#2B2620`), rose
   accent (`--brand` `#C2727A`, `--brand-ink` for text on light). Dark is

@@ -1,8 +1,8 @@
 # Exemplar: dialog close ring only for keyboard users
 
 Status: accepted
-Product: BirthGuide, now the package's Dialog
-Source: BirthGuide commit "fix(ui): show the dialog close ring only for keyboard users"
+Product: the first product, now the package's Dialog
+Source: the first product commit "fix(ui): show the dialog close ring only for keyboard users"
 Rules: rule/focus-visible
 
 ## Decision

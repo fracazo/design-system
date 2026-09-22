@@ -75,6 +75,33 @@ Import the roles, then exactly one brand file, at the top of the global styleshe
 @source "../../node_modules/@fracazo/design-system/dist";
 ```
 
+## Products without Tailwind
+
+A static page can consume the roles with plain CSS. React, Tailwind and Next are not required. The components are React-only; leave them out.
+
+Import order matters. The package's `roles.css` first, then exactly one brand file.
+
+```html
+<link rel="stylesheet" href="node_modules/@fracazo/design-system/css/roles.css" />
+<link rel="stylesheet" href="brand.css" />
+```
+
+The radius ramp (`--radius-sm` through `--radius-4xl`) and the two font roles (`--font-sans`, `--font-mono`) are ordinary custom properties on `:root` in `roles.css`, so they resolve when `@theme` is inert. Set the real stacks on `:root` in the brand file. A plain stack, not `next/font`:
+
+```css
+:root {
+  --font-sans: "Source Sans 3", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+  --radius: 0.5rem;
+}
+```
+
+Repeat the font lines in `@theme inline` only when the product also uses Tailwind, so the `font-sans` utility matches.
+
+The brand file must satisfy core. Declare `brand-extensions: landing` or `showcase` only when every property in that set is defined. `ds-check-brand` accepts core alone.
+
+A git install has no `dist/` until `prepare` runs the TypeScript build, which is what publishes `ds-check-brand`.
+
 ## Add your first component
 
 Import from a per-component subpath. That keeps each one's client boundary where it declares it. Pull `cn` from the root.
@@ -106,7 +133,7 @@ shipped UI.
 
 ## Wire the guardrails
 
-Eight ESLint rules catch what a reviewer would. Exempt only renderers that cannot use CSS variables: PDF, email, OG images. Then hold the brand file to the contract: 63 light, 48 dark, 2 theme. Nothing missing, nothing extra.
+Nine ESLint rules catch what a reviewer would. `no-em-dash` is an error. `no-ai-language` is a warning. Exempt only renderers that cannot use CSS variables: PDF, email, OG images. Then hold the brand file to the contract: core, plus any extension the file declares. Nothing missing from that set, nothing extra.
 
 ```js
 import { designSystemGuardrails } from "@fracazo/design-system/eslint";
@@ -133,9 +160,9 @@ export default defineConfig([
 
 ## What ships
 
-- Eight lint rules: colour literals, arbitrary clamps, dark pairs, radius literals, stock palette, focus rings, text on always-dark surfaces, em dashes.
-- Nineteen components, each with use for, avoid when, and variants in JSDoc.
-- One agent skill, with request modes, stable rule IDs, exemplars and intake.
+- Nine lint rules: colour literals, arbitrary clamps, dark pairs, radius literals, stock palette, focus rings, text on always-dark surfaces, em dashes (error), machine-written language (warning).
+- Nineteen components, each with use for, avoid when, and variants in JSDoc. React only.
+- Eight agent skills: six domain skills, an interface orchestrator, and product-design for request modes, roles and intake.
 - Four bins: `ds-init`, `ds-check-brand`, `ds-build-brand-css`, `ds-intake`.
 
 ## Recording studio

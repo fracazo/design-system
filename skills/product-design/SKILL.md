@@ -53,7 +53,7 @@ edits.
 |---|---|---|
 | Shape | "Design this flow", "how should this work?" | Frame reader, job, evidence; compare material alternatives; define flow, states, acceptance criteria and open decisions. No edits unless asked. |
 | Implement | "Build", "fix", "improve", "make it compliant" | Resolve material decisions, then the smallest coherent end-to-end change. Do not absorb unrelated findings. |
-| Review | "Audit", "critique", "what's wrong?" | Inspect source and rendered evidence; report prioritised findings with rule IDs. No edits unless asked. |
+| Review | "Audit", "critique", "what's wrong?" | Load `../interface/SKILL.md` and follow its format, severity, cap and verdict. No edits unless asked. |
 | Copy | "Fix the copy", "rewrite this error" | Edit user-facing language and accessible names only. Report structural blockers; do not widen scope. |
 | Harden | "Polish", "production-ready", "edge cases" | Keep the settled direction; fix state, resilience, responsive, accessibility and finish defects. |
 
@@ -96,9 +96,10 @@ Resolve conflicts in this order.
    | Sizes, radius, spacing, rhythm | `references/type-and-space.md` |
    | Hover, entrance, transitions, reduced motion | `references/motion.md` |
    | Which component, house patterns | `references/components.md` + the component's intent block |
-   | Copy, labels, errors, English variant | `references/copy.md` |
+   | Copy mechanics | `references/copy.md`, then the writing skill |
    | Which surface, budgets, imagery | `references/surfaces.md` |
-   | Any rule by ID, lint status, examples | `references/rules.md` |
+   | A lint or contract ID | `references/rules.md` (registry only, not a review rubric) |
+   | A review of a surface | `../interface/SKILL.md` |
    | Before claiming zero visual change | `references/verification.md` |
    | Running or judging an intake packet | `references/intake.md` |
 
@@ -110,20 +111,13 @@ Resolve conflicts in this order.
    viewports, keyboard order and focus, every materially changed state, long
    content. Token work: snapshot compare, delta stated.
 
-## Review output
+## Review
 
-Lead with findings, ordered by reader impact.
-
-- **P0** blocks the primary task, severe accessibility failure, or harm the
-  reader cannot undo.
-- **P1** likely task failure, misleading consequence, missing critical
-  state, major responsive or accessibility defect.
-- **P2** meaningful friction, weak hierarchy, inconsistency, recoverability.
-- **P3** minor craft.
-
-Each finding: location (file and line, or rendered), verification status
-(seen rendered, inferred from source), rule ID or source, reader
-consequence, smallest concrete fix.
+Do not score a review from this file. Load `../interface/SKILL.md`. It
+loads the six domain skills in order (accessibility, layout, writing,
+typography, colors, ui) and returns one table, one severity scale, a
+finding cap, considered-but-rejected, and a verdict. `references/rules.md`
+is the lint and contract registry. It is not a second rule list.
 
 ## Skill integrity
 

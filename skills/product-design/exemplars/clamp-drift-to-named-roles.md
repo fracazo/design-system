@@ -1,8 +1,8 @@
 # Exemplar: converge near-miss clamp drift onto named roles
 
 Status: accepted
-Product: BirthGuide landing, then the package's type roles
-Source: BirthGuide commits "refactor(design): name the fluid type and band rhythm tokens", "fix(landing): converge near-miss clamp drift onto the named tokens", "feat(lint): guard arbitrary fluid type sizes in className"
+Product: the first product landing, then the package's type roles
+Source: the first product commits "refactor(design): name the fluid type and band rhythm tokens", "fix(landing): converge near-miss clamp drift onto the named tokens", "feat(lint): guard arbitrary fluid type sizes in className"
 Rules: rule/no-arbitrary-clamp
 
 ## Decision

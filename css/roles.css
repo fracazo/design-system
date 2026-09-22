@@ -14,55 +14,88 @@
    hairlines is a design decision, not duplication; never "fix" a divergent
    semantic by aliasing it.
 
-   Brand contract. ds-check-brand reads these lists and fails the lint when
-   a brand file defines less or more.
+   Brand contract. ds-check-brand reads these lists. Every brand file must
+   satisfy core. A file may opt into named extensions by declaring
+   `brand-extensions:` and must then define every property in each set it
+   names. A property from an undeclared extension is extra. A declared
+   extension that is short a property fails.
 
    brand-contract:theme
      --font-sans --font-mono
-   brand-contract:light
+   brand-contract:core:light
      --radius
      --card-shadow --card-shadow-hover --card-shadow-selected
      --background --primary-foreground --secondary --secondary-foreground
      --muted --muted-foreground --accent-foreground --destructive
      --border --input
-     --band --band-2 --surface --surface-2 --ink --ink-2 --ink-3
-     --line --line-2 --brand --brand-ink --brand-soft --dark-accent
+     --surface --surface-2 --ink --ink-2 --ink-3
+     --line --line-2 --brand --brand-ink --brand-soft
      --headline-accent
-     --highlight --highlight-ink --highlight-soft --highlight-deep
-     --dark --dark-2 --dark-3 --dark-4 --dark-line --dark-soft
-     --dark-ink --dark-ink-2 --dark-muted --dark-soft-2 --dark-faint
-     --dark-faint-2 --dark-brand
-     --chip-1-soft --chip-1-ink --chip-2-soft --chip-2-ink
-     --chip-3-soft --chip-3-ink --glow-1 --glow-2
-     --status-want --status-want-soft --status-ifnec --status-ifnec-soft
-     --status-no --status-no-soft
-     --bar-shadow --warm-shadow-sm --warm-shadow-md --warm-shadow-lg
-   brand-contract:dark
+     --highlight --highlight-ink
+     --status-want --status-want-soft --status-want-ink
+     --status-ifnec --status-ifnec-soft
+     --status-no --status-no-soft --status-no-ink
+   brand-contract:core:dark
      --card-shadow --card-shadow-hover --card-shadow-selected
      --background --primary-foreground --secondary --secondary-foreground
      --muted --muted-foreground --accent-foreground --destructive
      --border --input
-     --band --band-2 --surface --surface-2 --ink --ink-2 --ink-3
-     --line --line-2 --brand --brand-ink --brand-soft --dark-accent
+     --surface --surface-2 --ink --ink-2 --ink-3
+     --line --line-2 --brand --brand-ink --brand-soft
      --headline-accent
-     --highlight-soft --highlight-deep
-     --dark --dark-2 --dark-line --dark-soft
+     --status-want --status-want-soft --status-want-ink
+     --status-no --status-no-soft --status-no-ink
+   brand-contract:landing:light
+     --band --band-2
+     --highlight-soft --highlight-deep --dark-accent
      --chip-1-soft --chip-1-ink --chip-2-soft --chip-2-ink
      --chip-3-soft --chip-3-ink --glow-1 --glow-2
-     --status-want --status-want-soft --status-no --status-no-soft
+     --bar-shadow --warm-shadow-sm --warm-shadow-md --warm-shadow-lg
+   brand-contract:landing:dark
+     --band --band-2
+     --highlight-soft --highlight-deep --dark-accent
+     --chip-1-soft --chip-1-ink --chip-2-soft --chip-2-ink
+     --chip-3-soft --chip-3-ink --glow-1 --glow-2
      --warm-shadow-sm --warm-shadow-md --warm-shadow-lg
+   brand-contract:showcase:light
+     --dark --dark-2 --dark-3 --dark-4 --dark-line --dark-soft
+     --dark-ink --dark-ink-2 --dark-muted --dark-soft-2 --dark-faint
+     --dark-faint-2 --dark-brand
+   brand-contract:showcase:dark
+     --dark --dark-2 --dark-line --dark-soft
    brand-contract:end
 
-   Roles absent from the dark list are mode-constant by design: the radius
-   base, the NEW badge (--highlight, --highlight-ink), the phone bezel
-   (--dark-3, --dark-4), the on-dark text ramp (--dark-ink ... --dark-brand)
-   and the bottom-bar shadow. Always-dark surfaces never change theme, so
-   neither does their text. The status "if necessary" pair aliases the
-   highlight primitive in light and follows it into dark by itself.
+   Core is the page, surfaces, the ink ramp, lines, brand, one highlight
+   pair, the status ramp (fills, washes and the want and no inks), radius
+   and card shadows, plus the six divergent semantics. Landing is glows,
+   bands, chips, the two-tone highlight, the dark accent and the landing
+   shadows. Showcase is the on-dark ramp and the bezel.
+
+   Roles absent from a dark list are mode-constant: the radius base, the
+   highlight pair, the ifnec status pair, the bottom-bar shadow, the bezel
+   pair (--dark-3, --dark-4) and the on-dark text ramp. Text on a status
+   wash uses the ink (--status-want-ink, --status-no-ink), never the fill.
    ============================================================================= */
 
 /* Motion vocabulary (animate-in, fade-in-0, accordion-down ...). */
 @import "./motion.css";
+
+/* Plain custom properties, outside @theme, so a page without Tailwind still
+   has the radius ramp and the two font roles. @theme below keeps the same
+   radius mapping for the utilities. The font values here are a fallback
+   stack; the brand file overrides them on :root. */
+:root {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --radius-20: 20px;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
 
 @custom-variant dark (&:is(.dark *));
 
@@ -169,15 +202,16 @@
   --color-glow-1: var(--glow-1);
   --color-glow-2: var(--glow-2);
 
-  /* Traffic-light status ramp (Want / If necessary / Don't want) for
-     on-screen preference UI. PDFs and previews keep their own hex palette
-     in constants.ts. */
+  /* Status ramp. The fill and the wash are not text colours. Labels use
+     the ink, which has to clear Lc 60 on its wash. */
   --color-status-want: var(--status-want);
   --color-status-want-soft: var(--status-want-soft);
+  --color-status-want-ink: var(--status-want-ink);
   --color-status-ifnec: var(--status-ifnec);
   --color-status-ifnec-soft: var(--status-ifnec-soft);
   --color-status-no: var(--status-no);
   --color-status-no-soft: var(--status-no-soft);
+  --color-status-no-ink: var(--status-no-ink);
 
   /* Warm soft shadows for landing cards: shadow-warm-sm / -md / -lg */
   --shadow-warm-sm: var(--warm-shadow-sm);
