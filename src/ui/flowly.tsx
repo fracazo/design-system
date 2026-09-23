@@ -20,10 +20,9 @@ import { cn } from "../cn.js"
  * spec. Size is Tailwind through `className` (`w-72`, `w-full`).
  * Motion: `organic` (default) undulates each lobe on its own loop so the
  * silhouette breathes and the valleys merge, never a bounce or a spin.
- * Gate with `motion-safe` and sit still under `prefers-reduced-motion`.
- * Pass `motion="none"` to keep a still mark. Decorative: aria-hidden and
- * pointer-events-none, so it never steals clicks or a name from the
- * layout it sits behind.
+ * Sit still under `prefers-reduced-motion`. Pass `motion="none"` to keep
+ * a still mark. Decorative: aria-hidden and pointer-events-none, so it
+ * never steals clicks or a name from the layout it sits behind.
  */
 
 const colourRole = {
@@ -92,33 +91,9 @@ function Flowly({
         </filter>
       </defs>
       <g filter={`url(#${gooId})`} fill={paint}>
-        <circle
-          className={cn(
-            "flowly-lobe",
-            motion === "organic" && "motion-safe:animate-flowly-a",
-          )}
-          cx="94"
-          cy="80"
-          r="52"
-        />
-        <circle
-          className={cn(
-            "flowly-lobe",
-            motion === "organic" && "motion-safe:animate-flowly-b",
-          )}
-          cx="180"
-          cy="80"
-          r="52"
-        />
-        <circle
-          className={cn(
-            "flowly-lobe",
-            motion === "organic" && "motion-safe:animate-flowly-c",
-          )}
-          cx="266"
-          cy="80"
-          r="52"
-        />
+        <circle className="flowly-lobe-a" cx="94" cy="80" r="52" />
+        <circle className="flowly-lobe-b" cx="180" cy="80" r="52" />
+        <circle className="flowly-lobe-c" cx="266" cy="80" r="52" />
       </g>
     </svg>
   )
