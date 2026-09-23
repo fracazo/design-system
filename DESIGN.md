@@ -220,7 +220,7 @@ Source order is reading order; landmarks and heading levels are real;
 
 ## Components
 
-The package ships nineteen components, seventeen shadcn-based and two
+The package ships twenty components, seventeen shadcn-based and three
 house primitives, under
 `@fracazo/design-system/ui/*`. Each carries an intent block at the top of
 its source (one line, then Use for, Avoid when, Variants); that block is
@@ -261,6 +261,12 @@ the contract and is updated whenever variants change. In brief:
   a byline footer (author, date, reading time). The whole card is one
   link; hover motion is CSS transitions under motion-safe; tags are text,
   not badges. It lays out in a grid, never a carousel.
+- **Flowly** is the house 3-lobe shape: three merged circles as one
+  silhouette (`shape={8}`). Colour and fill come from core roles (`brand`,
+  `highlight`, `primary`; `gradient` or `solid`). It is a rule for
+  marketing and product alike, sat behind a layout, on an empty state, or
+  as a band. It is not a free decorative gradient; do not invent another
+  blob.
 
 A component that must import app code (stores, data clients, routes)
 does not belong in the package; it stays in the product, like
@@ -338,7 +344,8 @@ Each of these has been corrected more than once. Treat them as defects.
   button or label. The system is sentence case.
 - Centred hero plus three cards, metric boxes, badges as metadata,
   nested cards, decorative gradients, glass, stock imagery, carousels,
-  autoplay, a visible theme switcher.
+  autoplay, a visible theme switcher. `Flowly` is the named exception for
+  the brand's 3-lobe mark, not a licence to invent other gradient blobs.
 
 Do not answer restraint with a sterile template. Restraint here is a
 precise hierarchy, one warm accent used with intent, exact evidence and

@@ -15,6 +15,7 @@ import {
 } from "@fracazo/design-system/ui/dialog";
 import { Input } from "@fracazo/design-system/ui/input";
 import { Label } from "@fracazo/design-system/ui/label";
+import { Flowly } from "@fracazo/design-system/ui/flowly";
 import { OfferCard } from "@fracazo/design-system/ui/offer-card";
 import { Popover, PopoverContent, PopoverTrigger } from "@fracazo/design-system/ui/popover";
 import { Progress } from "@fracazo/design-system/ui/progress";
@@ -211,12 +212,12 @@ export function NineteenScene() {
             </TabsList>
             <TabsContent value="overview">
               <p className="mt-4 text-sm text-muted-foreground">
-                Nineteen components. Each one carries its own guidance in JSDoc.
+                Twenty components. Each one carries its own guidance in JSDoc.
               </p>
             </TabsContent>
             <TabsContent value="detail">
               <p className="mt-4 text-sm text-muted-foreground">
-                Seventeen sit on shadcn. OfferCard and ArticleCard are house primitives.
+                Seventeen sit on shadcn. OfferCard, ArticleCard and Flowly are house primitives.
               </p>
             </TabsContent>
           </Tabs>
@@ -551,6 +552,46 @@ export function EmphasisScene() {
         />
       </div>
     </Stage>
+  );
+}
+
+export function FlowlyScene() {
+  return (
+    <div
+      className="relative flex min-h-svh flex-col items-center justify-center bg-dark px-8 py-16 text-dark-ink"
+      style={{
+        backgroundImage: "radial-gradient(circle, var(--dark-line) 1px, transparent 1px)",
+        backgroundSize: "22px 22px",
+      }}
+    >
+      <Flowly shape={8} fill="gradient" colour="brand" className="w-80" />
+      <p className="mt-16 font-mono text-sm text-dark-ink-2">
+        {'Flowly shape={8} fill="gradient" colour="brand"'}
+      </p>
+      <div className="mt-10 max-w-md text-sm text-dark-ink-2">
+        <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-dark-muted">
+          Guidelines
+        </p>
+        <p className="mt-3">
+          Use it for marketing and product alike: it is a rule, not a marketing ornament.
+        </p>
+        <p className="mt-2">Sit it behind a layout, on an empty state, or as a band.</p>
+      </div>
+      <div className="relative mt-14 w-full max-w-md overflow-hidden rounded-20 bg-card p-8 text-card-foreground shadow-card">
+        <Flowly
+          shape={8}
+          fill="gradient"
+          colour="brand"
+          className="absolute -top-4 left-1/2 w-52 -translate-x-1/2 opacity-50"
+        />
+        <p className="relative font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ink-3">
+          Empty state
+        </p>
+        <p className="relative mt-3 text-sm text-muted-foreground">
+          No streets saved yet. The mark sits behind the copy, same component as the band above.
+        </p>
+      </div>
+    </div>
   );
 }
 

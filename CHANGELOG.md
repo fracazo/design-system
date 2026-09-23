@@ -4,6 +4,19 @@ Semantic versioning by hand. Australian English, no em dashes.
 
 ## 1.0.0 (unreleased)
 
+- `Flowly` (`@fracazo/design-system/ui/flowly`): the house 3-lobe shape,
+  a horizontal capsule of three merged circles. `shape={8}` is the only
+  silhouette. `fill` is `gradient` (the lit mark) or `solid`; `colour` is
+  a core fill role (`brand`, `highlight`, `primary`), Australian
+  spelling. Gradient lights the chosen role with `color-mix` toward white
+  so it still grades when a brand's ink matches its fill (Jacaranda's
+  `--brand` and `--brand-ink` are the same). Size is Tailwind through
+  `className`. Decorative: aria-hidden, pointer-events-none. Tokens only
+  (no new role, no contract change, no client directive, no new
+  dependency). Use it behind a layout, on an empty state, or as a band,
+  in marketing and product alike: a rule, not a marketing ornament. Do
+  not invent another blob or a free decorative gradient.
+
 - `ArticleCard` (`@fracazo/design-system/ui/article-card`): the second
   house primitive, a linked article surface for a grid of blog posts and
   articles. Cover on top as a node slot (a product passes its own tile or

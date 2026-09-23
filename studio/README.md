@@ -269,3 +269,16 @@ The next product starts already named.
 
 #DesignEngineering
 ```
+
+### 17 · `#/flowly`
+
+Read the mark, then the empty state.
+
+```
+Flowly shape={8} fill="gradient" colour="brand"
+
+Use it for marketing and product alike: it is a rule, not a marketing ornament.
+Sit it behind a layout, on an empty state, or as a band.
+
+#DesignEngineering
+```

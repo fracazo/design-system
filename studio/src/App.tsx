@@ -8,6 +8,7 @@ import {
   CloseScene,
   DisclosureScene,
   EmphasisScene,
+  FlowlyScene,
   FormScene,
   IntroScene,
   LayersScene,
@@ -44,6 +45,7 @@ const scenes: Scene[] = [
   { id: "tokens", n: "14", title: "Both themes", move: "Click Dark, pause, click Light.", node: <TokensScene /> },
   { id: "emphasis", n: "15", title: "One emphasis", move: "Hover the middle card, then a neighbour.", node: <EmphasisScene /> },
   { id: "close", n: "16", title: "ds-init", move: "Hover Start a product.", node: <CloseScene /> },
+  { id: "flowly", n: "17", title: "Flowly", move: "Read the mark, then the empty state.", node: <FlowlyScene /> },
 ];
 
 function readHash() {

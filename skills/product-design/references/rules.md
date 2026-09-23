@@ -257,6 +257,7 @@ carousels or autoplay, no visible theme switcher.
 Why: these are the shapes a generator reaches for when it has not framed
 the reader's job.
 Exceptions: a card grid when the items are genuinely peer units.
+`Flowly` is the named 3-lobe mark; do not invent other gradient blobs.
 Source: DESIGN.md, Reject list.
 Enforced by: prose.
 
