@@ -18,8 +18,12 @@ import { cn } from "../cn.js"
  * matches its fill.
  * Fill: `solid` paints the role flat; `gradient` is the lit mark from the
  * spec. Size is Tailwind through `className` (`w-72`, `w-full`).
- * Decorative: aria-hidden and pointer-events-none, so it never steals
- * clicks or a name from the layout it sits behind.
+ * Motion: `organic` (default) undulates each lobe on its own loop so the
+ * silhouette breathes and the valleys merge, never a bounce or a spin.
+ * Gate with `motion-safe` and sit still under `prefers-reduced-motion`.
+ * Pass `motion="none"` to keep a still mark. Decorative: aria-hidden and
+ * pointer-events-none, so it never steals clicks or a name from the
+ * layout it sits behind.
  */
 
 const colourRole = {
@@ -31,6 +35,7 @@ const colourRole = {
 type FlowlyColour = keyof typeof colourRole
 type FlowlyFill = "solid" | "gradient"
 type FlowlyShape = 8
+type FlowlyMotion = "organic" | "none"
 
 type FlowlyProps = Omit<React.ComponentProps<"svg">, "children" | "color"> & {
   /** Silhouette id. 8 is the horizontal 3-lobe capsule; the only one that ships. */
@@ -39,12 +44,15 @@ type FlowlyProps = Omit<React.ComponentProps<"svg">, "children" | "color"> & {
   fill?: FlowlyFill
   /** Core fill role. Australian spelling, matching the spec. */
   colour?: FlowlyColour
+  /** `organic` undulates the lobes; `none` is a still mark. */
+  motion?: FlowlyMotion
 }
 
 function Flowly({
   shape = 8,
   fill = "gradient",
   colour = "brand",
+  motion = "organic",
   className,
   ...props
 }: FlowlyProps) {
@@ -60,9 +68,10 @@ function Flowly({
       data-shape={shape}
       data-fill={fill}
       data-colour={colour}
+      data-motion={motion}
       viewBox="0 0 360 160"
       aria-hidden="true"
-      className={cn("pointer-events-none block w-64 select-none", className)}
+      className={cn("pointer-events-none block w-64 select-none overflow-visible", className)}
       {...props}
     >
       <defs>
@@ -83,12 +92,43 @@ function Flowly({
         </filter>
       </defs>
       <g filter={`url(#${gooId})`} fill={paint}>
-        <circle cx="94" cy="80" r="52" />
-        <circle cx="180" cy="80" r="52" />
-        <circle cx="266" cy="80" r="52" />
+        <circle
+          className={cn(
+            "flowly-lobe",
+            motion === "organic" && "motion-safe:animate-flowly-a",
+          )}
+          cx="94"
+          cy="80"
+          r="52"
+        />
+        <circle
+          className={cn(
+            "flowly-lobe",
+            motion === "organic" && "motion-safe:animate-flowly-b",
+          )}
+          cx="180"
+          cy="80"
+          r="52"
+        />
+        <circle
+          className={cn(
+            "flowly-lobe",
+            motion === "organic" && "motion-safe:animate-flowly-c",
+          )}
+          cx="266"
+          cy="80"
+          r="52"
+        />
       </g>
     </svg>
   )
 }
 
-export { Flowly, type FlowlyColour, type FlowlyFill, type FlowlyProps, type FlowlyShape }
+export {
+  Flowly,
+  type FlowlyColour,
+  type FlowlyFill,
+  type FlowlyMotion,
+  type FlowlyProps,
+  type FlowlyShape,
+}

@@ -263,10 +263,12 @@ the contract and is updated whenever variants change. In brief:
   not badges. It lays out in a grid, never a carousel.
 - **Flowly** is the house 3-lobe shape: three merged circles as one
   silhouette (`shape={8}`). Colour and fill come from core roles (`brand`,
-  `highlight`, `primary`; `gradient` or `solid`). It is a rule for
-  marketing and product alike, sat behind a layout, on an empty state, or
-  as a band. It is not a free decorative gradient; do not invent another
-  blob.
+  `highlight`, `primary`; `gradient` or `solid`). The lobes undulate on
+  their own loops under `motion-safe` so the mark breathes; it sits still
+  when the reader prefers reduced motion, or when `motion="none"`. It is
+  a rule for marketing and product alike, sat behind a layout, on an
+  empty state, or as a band. It is not a free decorative gradient; do not
+  invent another blob.
 
 A component that must import app code (stores, data clients, routes)
 does not belong in the package; it stays in the product, like

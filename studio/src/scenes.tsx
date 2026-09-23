@@ -566,7 +566,7 @@ export function FlowlyScene() {
     >
       <Flowly shape={8} fill="gradient" colour="brand" className="w-80" />
       <p className="mt-16 font-mono text-sm text-dark-ink-2">
-        {'Flowly shape={8} fill="gradient" colour="brand"'}
+        {'Flowly shape={8} fill="gradient" colour="brand" motion="organic"'}
       </p>
       <div className="mt-10 max-w-md text-sm text-dark-ink-2">
         <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-dark-muted">

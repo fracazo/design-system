@@ -89,6 +89,31 @@
     from { height: var(--radix-accordion-content-height, auto); }
     to { height: 0; }
   }
+
+  /* Flowly: three incommensurate loops so the lobes breathe and merge,
+     never bounce or spin as one body. */
+  --animate-flowly-a: flowly-a 8.4s ease-in-out infinite;
+  --animate-flowly-b: flowly-b 11.2s ease-in-out infinite;
+  --animate-flowly-c: flowly-c 9.6s ease-in-out infinite;
+
+  @keyframes flowly-a {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    28% { transform: translate(7px, -4px) scale(1.08); }
+    55% { transform: translate(3px, 5px) scale(0.95); }
+    78% { transform: translate(-4px, -2px) scale(1.03); }
+  }
+  @keyframes flowly-b {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    22% { transform: translate(-5px, 3px) scale(0.93); }
+    48% { transform: translate(4px, -5px) scale(1.07); }
+    74% { transform: translate(-2px, 4px) scale(1.02); }
+  }
+  @keyframes flowly-c {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    32% { transform: translate(-7px, 3px) scale(1.06); }
+    61% { transform: translate(-2px, -5px) scale(0.94); }
+    84% { transform: translate(4px, 2px) scale(1.04); }
+  }
 }
 
 /* Enter */
@@ -153,3 +178,15 @@
 @utility slide-out-to-bottom { --tw-exit-translate-y: 100%; }
 @utility slide-out-to-left { --tw-exit-translate-x: -100%; }
 @utility slide-out-to-right { --tw-exit-translate-x: 100%; }
+
+/* Flowly lobes scale about their own centre, not the SVG origin. */
+@utility flowly-lobe {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :is(.animate-flowly-a, .animate-flowly-b, .animate-flowly-c) {
+    animation: none;
+  }
+}

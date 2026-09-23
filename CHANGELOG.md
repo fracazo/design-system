@@ -14,9 +14,14 @@ Semantic versioning by hand. Australian English, no em dashes.
   `className`. Decorative: aria-hidden, pointer-events-none. Tokens only
   (no new role, no contract change, no new dependency). A client
   directive is required for unique SVG paint and goo ids. Three equal
-  circles plus a goo filter make the flowy merge. Use it behind a layout, on an empty state, or as a band,
-  in marketing and product alike: a rule, not a marketing ornament. Do
-  not invent another blob or a free decorative gradient.
+  circles plus a goo filter make the flowy merge. `motion="organic"`
+  (default) undulates each lobe on its own ease-in-out loop
+  (`animate-flowly-a/b/c` in `motion.css`) so the silhouette breathes
+  and the valleys merge; `motion="none"` is still. Gated to
+  `motion-safe`; `prefers-reduced-motion` sits the mark still. Use it
+  behind a layout, on an empty state, or as a band, in marketing and
+  product alike: a rule, not a marketing ornament. Do not invent another
+  blob or a free decorative gradient.
 
 - `ArticleCard` (`@fracazo/design-system/ui/article-card`): the second
   house primitive, a linked article surface for a grid of blog posts and
