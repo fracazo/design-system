@@ -18,11 +18,12 @@ import { cn } from "../cn.js"
  * matches its fill.
  * Fill: `solid` paints the role flat; `gradient` is the lit mark from the
  * spec. Size is Tailwind through `className` (`w-72`, `w-full`).
- * Motion: `organic` (default) undulates each lobe on its own loop so the
- * silhouette breathes and the valleys merge, never a bounce or a spin.
- * Sit still under `prefers-reduced-motion`. Pass `motion="none"` to keep
- * a still mark. Decorative: aria-hidden and pointer-events-none, so it
- * never steals clicks or a name from the layout it sits behind.
+ * Motion: `organic` (default) writes each lobe's cx, cy and r on its own
+ * incommensurate loop so the silhouette breathes and the valleys merge,
+ * never a bounce or a spin. Sit still under `prefers-reduced-motion`.
+ * Pass `motion="none"` to keep a still mark. Decorative: aria-hidden and
+ * pointer-events-none, so it never steals clicks or a name from the
+ * layout it sits behind.
  */
 
 const colourRole = {
@@ -47,6 +48,44 @@ type FlowlyProps = Omit<React.ComponentProps<"svg">, "children" | "color"> & {
   motion?: FlowlyMotion
 }
 
+const REST = [
+  { cx: 94, cy: 80, r: 52 },
+  { cx: 180, cy: 80, r: 52 },
+  { cx: 266, cy: 80, r: 52 },
+] as const
+
+/** Incommensurate periods so the silhouette never repeats on a beat. */
+const LOOPS = [
+  { period: 5.5, cx: 9, cy: 7, r: 5.5, phase: 0.2 },
+  { period: 7.2, cx: 6, cy: 8, r: 6, phase: 1.7 },
+  { period: 6.3, cx: 9, cy: 7, r: 5.5, phase: 3.1 },
+] as const
+
+function useOrganicMotion(enabled: boolean) {
+  const [live, setLive] = React.useState(false)
+
+  React.useEffect(() => {
+    if (!enabled) {
+      setLive(false)
+      return
+    }
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)")
+    const sync = () => setLive(!media.matches)
+    sync()
+    media.addEventListener("change", sync)
+    return () => media.removeEventListener("change", sync)
+  }, [enabled])
+
+  return live
+}
+
+function writeLobe(el: SVGCircleElement | null, cx: number, cy: number, r: number) {
+  if (!el) return
+  el.setAttribute("cx", cx.toFixed(2))
+  el.setAttribute("cy", cy.toFixed(2))
+  el.setAttribute("r", r.toFixed(2))
+}
+
 function Flowly({
   shape = 8,
   fill = "gradient",
@@ -60,6 +99,45 @@ function Flowly({
   const gradientId = `${uid}-fill`
   const gooId = `${uid}-goo`
   const paint = fill === "gradient" ? `url(#${gradientId})` : role
+  const live = useOrganicMotion(motion === "organic")
+  const aRef = React.useRef<SVGCircleElement>(null)
+  const bRef = React.useRef<SVGCircleElement>(null)
+  const cRef = React.useRef<SVGCircleElement>(null)
+
+  React.useEffect(() => {
+    const nodes = [aRef.current, bRef.current, cRef.current]
+    const restLobes = () => {
+      REST.forEach((rest, i) => writeLobe(nodes[i], rest.cx, rest.cy, rest.r))
+    }
+
+    if (!live || nodes.some((node) => !node)) {
+      restLobes()
+      return
+    }
+
+    let frame = 0
+    const origin = performance.now()
+    const tick = (now: number) => {
+      const t = (now - origin) / 1000
+      LOOPS.forEach((loop, i) => {
+        const rest = REST[i]
+        const w = (Math.PI * 2) / loop.period
+        const drift = t * 0.55 + loop.phase
+        writeLobe(
+          nodes[i],
+          rest.cx + Math.sin(t * w + loop.phase) * loop.cx + Math.sin(drift) * loop.cx * 0.28,
+          rest.cy + Math.sin(t * w + loop.phase + 1.15) * loop.cy + Math.cos(drift * 1.1) * loop.cy * 0.3,
+          rest.r + Math.sin(t * w + loop.phase + 0.4) * loop.r + Math.sin(drift * 0.8) * loop.r * 0.22,
+        )
+      })
+      frame = requestAnimationFrame(tick)
+    }
+    frame = requestAnimationFrame(tick)
+    return () => {
+      cancelAnimationFrame(frame)
+      restLobes()
+    }
+  }, [live])
 
   return (
     <svg
@@ -91,9 +169,9 @@ function Flowly({
         </filter>
       </defs>
       <g filter={`url(#${gooId})`} fill={paint}>
-        <circle className="flowly-lobe-a" cx="94" cy="80" r="52" />
-        <circle className="flowly-lobe-b" cx="180" cy="80" r="52" />
-        <circle className="flowly-lobe-c" cx="266" cy="80" r="52" />
+        <circle ref={aRef} className="flowly-lobe-a" cx="94" cy="80" r="52" />
+        <circle ref={bRef} className="flowly-lobe-b" cx="180" cy="80" r="52" />
+        <circle ref={cRef} className="flowly-lobe-c" cx="266" cy="80" r="52" />
       </g>
     </svg>
   )
