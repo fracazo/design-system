@@ -93,7 +93,7 @@ rendering through every step, proven with BirthGuide's snapshot harness.
 
 - `pnpm check` (tsc, no emit) and `pnpm build`. After a component change,
   confirm the compiled file still opens with its `"use client"` directive
-  (13 of the 20 carry one) and that `pnpm pack` lists `dist/src/ui/*.js`.
+  (14 of the 20 carry one) and that `pnpm pack` lists `dist/src/ui/*.js`.
 - `node dist/guardrails/check-brand.js <a brand file>`: a brand file must
   satisfy core, plus every extension it declares. The starter satisfies
   core alone. The studio record skin declares `landing` and `showcase`.

@@ -12,8 +12,9 @@ Semantic versioning by hand. Australian English, no em dashes.
   so it still grades when a brand's ink matches its fill (Jacaranda's
   `--brand` and `--brand-ink` are the same). Size is Tailwind through
   `className`. Decorative: aria-hidden, pointer-events-none. Tokens only
-  (no new role, no contract change, no client directive, no new
-  dependency). Use it behind a layout, on an empty state, or as a band,
+  (no new role, no contract change, no new dependency). A client
+  directive is required for unique SVG paint and goo ids. Three equal
+  circles plus a goo filter make the flowy merge. Use it behind a layout, on an empty state, or as a band,
   in marketing and product alike: a rule, not a marketing ornament. Do
   not invent another blob or a free decorative gradient.
 
