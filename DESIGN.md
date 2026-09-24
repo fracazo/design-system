@@ -268,7 +268,7 @@ the contract and is updated whenever variants change. In brief:
 - **ShaderField** is a brand-sampled WebGL canvas for conversion-surface
   illustration. `wash` is the slow domain-warped hero, `motes` is sparse
   drift, `ripple` follows the pointer. Colours come from `--band` (or
-  `--background`), `--brand`, `--brand-soft` and `--ink`. It is not a
+  `--background`), `--band-2` (or `--line`), `--brand`, `--brand-soft` and `--ink`. It is not a
   decorative gradient and it is not for engagement surfaces. Pass it as
   OfferCard or ArticleCard `media`, or as a hero layer behind copy that
   sits on its own surface. A pause control ships by default; set

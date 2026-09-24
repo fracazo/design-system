@@ -21,6 +21,7 @@ export type FieldRuntime = {
 
 const TOKEN_ROLES = [
   { uniform: "u_band", role: "--band", fallback: "--background" },
+  { uniform: "u_mid", role: "--band-2", fallback: "--line" },
   { uniform: "u_brand", role: "--brand" },
   { uniform: "u_soft", role: "--brand-soft" },
   { uniform: "u_ink", role: "--ink" },

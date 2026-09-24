@@ -12,6 +12,7 @@ uniform vec2 u_res;
 uniform float u_time;
 uniform vec4 u_pointer;
 uniform vec3 u_band;
+uniform vec3 u_mid;
 uniform vec3 u_brand;
 uniform vec3 u_soft;
 uniform vec3 u_ink;
@@ -67,8 +68,11 @@ void main() {
     fbm(p + 1.5 * q + vec2(8.3, 2.8) - t * 0.28)
   );
   float n = fbm(p + 1.7 * r);
-  vec3 col = mix(u_band, u_soft, smoothstep(0.22, 0.68, n));
-  col = mix(col, u_brand, smoothstep(0.52, 0.96, n) * 0.48);
+  // band and brand-soft are often the same value. Mid (band-2 / line)
+  // keeps the field from collapsing to a flat wash.
+  vec3 col = mix(u_band, u_mid, smoothstep(0.12, 0.58, n));
+  col = mix(col, u_soft, smoothstep(0.4, 0.75, n) * 0.35);
+  col = mix(col, u_brand, smoothstep(0.42, 0.9, n) * 0.4);
   gl_FragColor = vec4(grain(col, uv), 1.0);
 }
 `
@@ -79,7 +83,7 @@ void main() {
   vec2 uv = gl_FragCoord.xy / max(u_res, vec2(1.0));
   vec2 p = aspectUv();
   float t = u_time * 0.08;
-  vec3 col = mix(u_band, u_soft, 0.35 + 0.2 * fbm(p * 0.9 + t * 0.15));
+  vec3 col = mix(u_band, u_mid, 0.4 + 0.25 * fbm(p * 0.9 + t * 0.15));
 
   float glow = 0.0;
   for (int i = 0; i < 18; i++) {
@@ -115,8 +119,8 @@ void main() {
 
   vec2 q = vec2(fbm(warp + t), fbm(warp + vec2(4.1, 2.6) - t));
   float n = fbm(warp + 1.4 * q);
-  vec3 col = mix(u_band, u_soft, smoothstep(0.2, 0.7, n));
-  col = mix(col, u_brand, smoothstep(0.5, 0.95, n) * 0.5 + ripple * 0.2 * active);
+  vec3 col = mix(u_band, u_mid, smoothstep(0.16, 0.62, n));
+  col = mix(col, u_brand, smoothstep(0.42, 0.92, n) * 0.42 + max(ripple, 0.0) * 0.35 * active);
   gl_FragColor = vec4(grain(col, uv), 1.0);
 }
 `
