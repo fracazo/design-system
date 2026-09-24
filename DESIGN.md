@@ -194,9 +194,13 @@ use CSS transitions, which retarget when interrupted mid-flight.
 Keyframes are reserved for one-shot staged sequences such as a hero
 entrance, gated to play once per visit so a reload does not replay them,
 and collapsed to nothing under `prefers-reduced-motion`. Nothing the
-reader needs is behind an animation. Ambient effects (glow blobs) must
+reader needs is behind an animation. Ambient effects (glow blobs, GPU fields) must
 not clip at a section edge; a hard horizontal seam where two sections
-meet is a defect.
+meet is a defect. A brand-sampled WebGL field is conversion-surface
+illustration, not a decorative gradient: it reads roles as uniforms, freezes
+under prefers-reduced-motion, pauses off-screen, and exposes a pause
+control for looping motion (WCAG 2.2.2). Nothing the reader needs is in
+the shader. Engagement surfaces stay still.
 
 ### Imagery and icons
 
@@ -220,8 +224,8 @@ Source order is reading order; landmarks and heading levels are real;
 
 ## Components
 
-The package ships nineteen components, seventeen shadcn-based and two
-house primitives, under
+The package ships twenty-one components, seventeen shadcn-based, two
+house primitives and two GPU fields, under
 `@fracazo/design-system/ui/*`. Each carries an intent block at the top of
 its source (one line, then Use for, Avoid when, Variants); that block is
 the contract and is updated whenever variants change. In brief:
@@ -261,6 +265,17 @@ the contract and is updated whenever variants change. In brief:
   a byline footer (author, date, reading time). The whole card is one
   link; hover motion is CSS transitions under motion-safe; tags are text,
   not badges. It lays out in a grid, never a carousel.
+- **ShaderField** is a brand-sampled WebGL canvas for conversion-surface
+  illustration. `wash` is the slow domain-warped hero, `motes` is sparse
+  drift, `ripple` follows the pointer. Colours come from `--band` (or
+  `--background`), `--brand`, `--brand-soft` and `--ink`. It is not a
+  decorative gradient and it is not for engagement surfaces. Pass it as
+  OfferCard or ArticleCard `media`, or as a hero layer behind copy that
+  sits on its own surface. A pause control ships by default; set
+  `controls={false}` and drive `paused` when the field sits inside a link.
+- **LightOrb** is a raymarched sphere lit by the pointer, albedo from
+  `--brand`. One per surface, conversion only. WebGL failure falls back
+  to a `bg-brand` circle.
 
 A component that must import app code (stores, data clients, routes)
 does not belong in the package; it stays in the product, like

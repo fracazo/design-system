@@ -28,6 +28,7 @@ Components, has the one-paragraph digest.
 | Long free text | `Textarea` (auto-grows) | Input |
 | A grid of peer offers, each one link | `OfferCard` in a grid | a carousel, a house card with a Button per offer |
 | A grid of blog posts or articles, each one link | `ArticleCard` in a grid | a carousel, a glass card, badges for the tags |
+| Conversion-surface illustration, no photography | `ShaderField` (`wash`, `motes`, `ripple`) or `LightOrb` | a CSS gradient, a stock 3D file, three.js, anything on an engagement surface |
 
 ## Composing
 

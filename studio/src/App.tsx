@@ -8,6 +8,7 @@ import {
   CloseScene,
   DisclosureScene,
   EmphasisScene,
+  FieldsScene,
   FormScene,
   IntroScene,
   LayersScene,
@@ -32,7 +33,7 @@ const scenes: Scene[] = [
   { id: "queue", n: "02", title: "The queue", move: "Hover Continue. One signal, then rest.", node: <QueueScene /> },
   { id: "layers", n: "03", title: "Three layers", move: "Hover Lint, Components, Skill left to right.", node: <LayersScene /> },
   { id: "brand", n: "04", title: "One brand file", move: "Hover Brazil, then Grafton.", node: <BrandScene /> },
-  { id: "nineteen", n: "05", title: "Nineteen", move: "Hover Default, then switch the tab.", node: <NineteenScene /> },
+  { id: "nineteen", n: "05", title: "Twenty-one", move: "Hover Default, then switch the tab.", node: <NineteenScene /> },
   { id: "buttons", n: "06", title: "Button", move: "Hover each variant top to bottom. Pause on Walk the street.", node: <ButtonsScene /> },
   { id: "form", n: "07", title: "Form", move: "Click Email, type, then grow the notes field.", node: <FormScene /> },
   { id: "choice", n: "08", title: "Choice", move: "Open the select, pick Brisbane.", node: <ChoiceScene /> },
@@ -43,7 +44,8 @@ const scenes: Scene[] = [
   { id: "skill", n: "13", title: "Focus-visible", move: "Click the page, then Tab through the three buttons.", node: <SkillScene /> },
   { id: "tokens", n: "14", title: "Both themes", move: "Click Dark, pause, click Light.", node: <TokensScene /> },
   { id: "emphasis", n: "15", title: "One emphasis", move: "Hover the middle card, then a neighbour.", node: <EmphasisScene /> },
-  { id: "close", n: "16", title: "ds-init", move: "Hover Start a product.", node: <CloseScene /> },
+  { id: "fields", n: "16", title: "GPU fields", move: "Move the pointer over Ripple and the orb, then Dark roles.", node: <FieldsScene /> },
+  { id: "close", n: "17", title: "ds-init", move: "Hover Start a product.", node: <CloseScene /> },
 ];
 
 function readHash() {

@@ -161,7 +161,7 @@ export default defineConfig([
 ## What ships
 
 - Nine lint rules: colour literals, arbitrary clamps, dark pairs, radius literals, stock palette, focus rings, text on always-dark surfaces, em dashes (error), machine-written language (warning).
-- Nineteen components, each with use for, avoid when, and variants in JSDoc. React only.
+- Twenty-one components, each with use for, avoid when, and variants in JSDoc. React only. ShaderField and LightOrb are conversion-surface GPU illustration.
 - Eight agent skills: six domain skills, an interface orchestrator, and product-design for request modes, roles and intake.
 - Four bins: `ds-init`, `ds-check-brand`, `ds-build-brand-css`, `ds-intake`.
 

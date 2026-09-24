@@ -19,7 +19,7 @@ When a team ships faster, the design review queue is the first thing that breaks
 
 Jacaranda moves the bar out of the review queue and into the tooling, where it holds whether a designer is in the room or not. It grew out of BirthGuide and birthplans.app: two products, two brand files, one system.
 
-It ships nine lint rules, nineteen components with intent docs, a brand contract (core plus extensions), four bins, and eight agent skills. You import the roles, then exactly one brand file. Both people and AI assistants build from the same reference.
+It ships nine lint rules, twenty-one components with intent docs, a brand contract (core plus extensions), four bins, and eight agent skills. You import the roles, then exactly one brand file. Both people and AI assistants build from the same reference.
 
 **What makes Jacaranda different:**
 
@@ -54,7 +54,7 @@ The full path, including two prompts you can paste into an AI coding tool, is in
 |---|---|
 | [`css/roles.css`](css/roles.css) | The system: dark variant, Tailwind v4 `@theme` mapping, radius ramp, fluid type, band rhythm, eight aliasing semantics, and the **brand contract** |
 | [`css/motion.css`](css/motion.css) | Enter, exit, accordion, fade, zoom, blur and slide. `roles.css` imports it |
-| [`@fracazo/design-system/ui/*`](src/ui) | Nineteen components (seventeen shadcn-based, plus house OfferCard and ArticleCard), each with intent JSDoc |
+| [`@fracazo/design-system/ui/*`](src/ui) | Twenty-one components (seventeen shadcn-based, house OfferCard and ArticleCard, plus ShaderField and LightOrb), each with intent JSDoc |
 | [`@fracazo/design-system/eslint`](guardrails/eslint.ts) | Eight guardrails, one per rule ID |
 | `ds-init` | Writes a new product from [`template/`](template) |
 | `ds-check-brand` | Holds a brand file to the contract: nothing missing, nothing extra |
@@ -83,7 +83,7 @@ Two tiers. Primitives (`--brand`, `--band`, `--ink`) hold literals and live in t
 
 ### Components
 
-Nineteen typed React components. Import from a per-component subpath so each one's client boundary stays where it declares it.
+Twenty-one typed React components. Import from a per-component subpath so each one's client boundary stays where it declares it.
 
 ### The skill
 
@@ -93,7 +93,7 @@ Agents load `skills/product-design/SKILL.md` first. It names the request mode (s
 
 | Directory | Purpose |
 |---|---|
-| `src/` | `cn` and the nineteen components |
+| `src/` | `cn`, the twenty-one components, and the WebGL runtime they share |
 | `css/` | Roles, motion, the brand contract |
 | `guardrails/` | The four bins and the ESLint plugin |
 | `skills/product-design/` | Agent skill, rules, exemplars, intake |

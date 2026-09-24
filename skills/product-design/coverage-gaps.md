@@ -29,6 +29,8 @@ focus-visible, on-dark-ramp, no-em-dash. Still candidates:
   built their own.
 - Illustration style for conversion surfaces: the brand spec's guidance
   predates the warm palette and names colours that are not in production.
+  `ShaderField` and `LightOrb` are the GPU option when photography is
+  refused; they do not close the editorial-illustration gap.
 - A product type-role pass: clamp literals that still await convergence
   before that product's fluid-type lint can switch on. The list lives in
   the product repo.

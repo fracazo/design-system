@@ -4,6 +4,20 @@ Semantic versioning by hand. Australian English, no em dashes.
 
 ## 1.0.0 (unreleased)
 
+- `ShaderField` (`@fracazo/design-system/ui/shader-field`) and `LightOrb`
+  (`@fracazo/design-system/ui/light-orb`): two house GPU primitives for
+  conversion-surface illustration. Vanilla WebGL 1, no new dependency.
+  The field programs are `wash` (domain-warped brand wash), `motes`
+  (sparse drift) and `ripple` (pointer displacement). The orb is a
+  raymarched sphere whose albedo, rim and highlight read `--brand`,
+  `--brand-soft` and `--card`. Both sample computed roles so light and
+  dark reskin with the brand file, freeze under prefers-reduced-motion,
+  pause when off-screen or in a hidden tab, cap device pixel ratio at
+  1.5, and ship a 44px pause control for WCAG 2.2.2. WebGL failure falls
+  back to `bg-brand-soft` or a `bg-brand` circle. Studio scene `#/fields`
+  shows all four programs. Not for engagement surfaces; nothing the
+  reader needs lives in a shader.
+
 - `ArticleCard` (`@fracazo/design-system/ui/article-card`): the second
   house primitive, a linked article surface for a grid of blog posts and
   articles. Cover on top as a node slot (a product passes its own tile or

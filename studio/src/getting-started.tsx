@@ -385,7 +385,7 @@ export function GettingStartedPage() {
             <SectionHeading id="what-ships">What ships</SectionHeading>
             <ul className="mt-4 max-w-prose list-disc space-y-2 ps-5 text-ink-2">
               <li>Eight lint rules: colour literals, arbitrary clamps, dark pairs, radius literals, stock palette, focus rings, text on always-dark surfaces, em dashes.</li>
-              <li>Nineteen components, each with use for, avoid when, and variants in JSDoc.</li>
+              <li>Twenty-one components, each with use for, avoid when, and variants in JSDoc.</li>
               <li>One agent skill, with request modes, stable rule IDs, exemplars and intake.</li>
               <li>
                 Four bins:

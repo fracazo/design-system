@@ -108,7 +108,7 @@ No hex in the system. The hue lives in one file. The roles never move.
 Hover Default, then switch the tab.
 
 ```
-19 components. Each file opens with Use for and Avoid when.
+21 components. Each file opens with Use for and Avoid when.
 
 That block is the contract. The decision sits where the agent is already looking.
 
@@ -254,7 +254,21 @@ One emphasis signal. A rule ships only when I have made the same correction twic
 #DesignEngineering
 ```
 
-### 16 · `#/close`
+### 16 · `#/fields`
+
+Move the pointer over Ripple and the orb, then Dark roles.
+
+```
+The field reads the brand file.
+
+Wash, motes, ripple, a lit orb. Vanilla WebGL. No extra library.
+
+Conversion only. Pause the loop. Dark reskins the uniforms.
+
+#DesignEngineering
+```
+
+### 17 · `#/close`
 
 Hover Start a product.
 

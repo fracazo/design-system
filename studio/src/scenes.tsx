@@ -15,7 +15,9 @@ import {
 } from "@fracazo/design-system/ui/dialog";
 import { Input } from "@fracazo/design-system/ui/input";
 import { Label } from "@fracazo/design-system/ui/label";
+import { LightOrb } from "@fracazo/design-system/ui/light-orb";
 import { OfferCard } from "@fracazo/design-system/ui/offer-card";
+import { ShaderField } from "@fracazo/design-system/ui/shader-field";
 import { Popover, PopoverContent, PopoverTrigger } from "@fracazo/design-system/ui/popover";
 import { Progress } from "@fracazo/design-system/ui/progress";
 import { RadioGroup, RadioGroupItem } from "@fracazo/design-system/ui/radio-group";
@@ -129,7 +131,7 @@ export function LayersScene() {
           tag="Components"
           title="Use for, avoid when"
           description="The decision sits in the source, not in a doc nobody opens."
-          footer={{ name: "src/ui/*", meta: "19 exports" }}
+          footer={{ name: "src/ui/*", meta: "21 exports" }}
         />
         <OfferCard
           href="#layers"
@@ -211,12 +213,12 @@ export function NineteenScene() {
             </TabsList>
             <TabsContent value="overview">
               <p className="mt-4 text-sm text-muted-foreground">
-                Nineteen components. Each one carries its own guidance in JSDoc.
+                Twenty-one components. Each one carries its own guidance in JSDoc.
               </p>
             </TabsContent>
             <TabsContent value="detail">
               <p className="mt-4 text-sm text-muted-foreground">
-                Seventeen sit on shadcn. OfferCard and ArticleCard are house primitives.
+                Seventeen sit on shadcn. OfferCard, ArticleCard, ShaderField and LightOrb are house primitives.
               </p>
             </TabsContent>
           </Tabs>
@@ -551,6 +553,82 @@ export function EmphasisScene() {
         />
       </div>
     </Stage>
+  );
+}
+
+export function FieldsScene() {
+  const [fieldsPaused, setFieldsPaused] = useState(false);
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+    return () => {
+      document.documentElement.classList.remove("dark");
+    };
+  }, [dark]);
+
+  return (
+    <div className="relative min-h-svh overflow-hidden bg-background">
+      <ShaderField
+        program="wash"
+        paused={fieldsPaused}
+        controls={false}
+        className="absolute inset-0 min-h-svh"
+      />
+      <div className="relative mx-auto flex min-h-svh max-w-5xl flex-col justify-center px-8 py-16">
+        <div className="max-w-xl rounded-20 bg-card p-6 shadow-card">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ink-3">
+            Conversion only
+          </p>
+          <h1 className="mt-3 text-display">
+            The field reads the <span className="text-headline-accent">brand file</span>
+          </h1>
+          <p className="mt-5 text-lede text-ink-2">
+            Vanilla WebGL. No extra library. Wash, motes, ripple and a lit orb. Every colour is a role.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button onClick={() => setDark((value) => !value)}>
+              {dark ? "Light roles" : "Dark roles"}
+            </Button>
+            <Button variant="outline" onClick={() => setFieldsPaused((value) => !value)}>
+              {fieldsPaused ? "Play fields" : "Pause fields"}
+            </Button>
+          </div>
+        </div>
+        <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <OfferCard
+            href="#fields"
+            onClick={holdLink}
+            media={
+              <ShaderField
+                program="motes"
+                paused={fieldsPaused}
+                controls={false}
+                className="size-full min-h-0"
+              />
+            }
+            tag="Motes"
+            title="Sparse drift"
+            description="Media slot. Pause lives on the page, not inside the link."
+            footer={{ name: "ShaderField", meta: "program=motes" }}
+          />
+          <div className="overflow-hidden rounded-20 bg-card shadow-card">
+            <ShaderField program="ripple" className="aspect-square min-h-0" />
+            <div className="px-5 py-4">
+              <p className="text-sm font-semibold">Ripple</p>
+              <p className="mt-1 text-sm text-muted-foreground">Move the pointer. The wash follows.</p>
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-20 bg-card shadow-card">
+            <LightOrb className="aspect-square min-h-0 bg-card" />
+            <div className="px-5 py-4">
+              <p className="text-sm font-semibold">LightOrb</p>
+              <p className="mt-1 text-sm text-muted-foreground">A sphere. The pointer is the key light.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 
