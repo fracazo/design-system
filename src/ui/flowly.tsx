@@ -49,17 +49,38 @@ type FlowlyProps = Omit<React.ComponentProps<"svg">, "children" | "color"> & {
 }
 
 const REST = [
-  { cx: 82, cy: 80, r: 43 },
-  { cx: 180, cy: 80, r: 47 },
-  { cx: 278, cy: 80, r: 43 },
+  { cx: 88, cy: 80, r: 46 },
+  { cx: 180, cy: 80, r: 50 },
+  { cx: 272, cy: 80, r: 46 },
 ] as const
 
 /** Incommensurate periods so the silhouette never repeats on a beat. */
 const LOOPS = [
-  { period: 5.8, cx: 7, cy: 11, r: 7, phase: 0.2 },
-  { period: 7.4, cx: 5, cy: 13, r: 8, phase: 1.9 },
-  { period: 6.5, cx: 7, cy: 11, r: 7, phase: 3.4 },
+  { period: 5.8, cx: 3, cy: 11, r: 6, phase: 0.2 },
+  { period: 7.4, cx: 2, cy: 13, r: 7, phase: 1.9 },
+  { period: 6.5, cx: 3, cy: 11, r: 6, phase: 3.4 },
 ] as const
+
+/** Keep a goo neck between neighbours. Slack is the widest allowed gap. */
+const NECK_SLACK = 6
+
+type Lobe = { cx: number; cy: number; r: number }
+
+function pinchChain(lobes: Lobe[]) {
+  const mid = lobes[1]
+  for (const i of [0, 2] as const) {
+    const lobe = lobes[i]
+    const dx = lobe.cx - mid.cx
+    const dy = lobe.cy - mid.cy
+    const dist = Math.hypot(dx, dy)
+    const limit = lobe.r + mid.r + NECK_SLACK
+    if (dist > limit && dist > 0) {
+      const scale = limit / dist
+      lobe.cx = mid.cx + dx * scale
+      lobe.cy = mid.cy + dy * scale
+    }
+  }
+}
 
 function useOrganicMotion(enabled: boolean) {
   const [live, setLive] = React.useState(false)
@@ -119,17 +140,18 @@ function Flowly({
     const origin = performance.now()
     const tick = (now: number) => {
       const t = (now - origin) / 1000
-      LOOPS.forEach((loop, i) => {
+      const lobes: Lobe[] = LOOPS.map((loop, i) => {
         const rest = REST[i]
         const w = (Math.PI * 2) / loop.period
         const drift = t * 0.55 + loop.phase
-        writeLobe(
-          nodes[i],
-          rest.cx + Math.sin(t * w + loop.phase) * loop.cx + Math.sin(drift) * loop.cx * 0.28,
-          rest.cy + Math.sin(t * w + loop.phase + 1.15) * loop.cy + Math.cos(drift * 1.1) * loop.cy * 0.3,
-          rest.r + Math.sin(t * w + loop.phase + 0.4) * loop.r + Math.sin(drift * 0.8) * loop.r * 0.22,
-        )
+        return {
+          cx: rest.cx + Math.sin(t * w + loop.phase) * loop.cx + Math.sin(drift) * loop.cx * 0.28,
+          cy: rest.cy + Math.sin(t * w + loop.phase + 1.15) * loop.cy + Math.cos(drift * 1.1) * loop.cy * 0.3,
+          r: rest.r + Math.sin(t * w + loop.phase + 0.4) * loop.r + Math.sin(drift * 0.8) * loop.r * 0.22,
+        }
       })
+      pinchChain(lobes)
+      lobes.forEach((lobe, i) => writeLobe(nodes[i], lobe.cx, lobe.cy, lobe.r))
       frame = requestAnimationFrame(tick)
     }
     frame = requestAnimationFrame(tick)
@@ -167,11 +189,11 @@ function Flowly({
           height="190%"
           colorInterpolationFilters="sRGB"
         >
-          <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
+          <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur" />
           <feColorMatrix
             in="blur"
             mode="matrix"
-            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -8"
             result="goo"
           />
         </filter>

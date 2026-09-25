@@ -582,7 +582,7 @@ export function FlowlyScene() {
           shape={8}
           fill="gradient"
           colour="brand"
-          className="absolute -top-4 left-1/2 w-52 -translate-x-1/2 opacity-50"
+          className="absolute -top-5 left-1/2 w-64 -translate-x-1/2 opacity-70"
         />
         <p className="relative font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ink-3">
           Empty state
