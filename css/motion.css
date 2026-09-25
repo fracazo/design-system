@@ -157,5 +157,5 @@
 /* Flowly's organic loop writes SVG cx, cy and r on the lobes so the
    goo filter re-merges each frame. CSS keyframes cannot drive those
    attributes into a filtered group, so no utility lives here.
-   Durations live on the component: 5.5s / 7.2s / 6.3s, gated by
+   Durations live on the component: 5.8s / 7.4s / 6.5s, gated by
    prefers-reduced-motion. */

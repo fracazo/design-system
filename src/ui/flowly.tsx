@@ -14,8 +14,8 @@ import { cn } from "../cn.js"
  * existing roles, never a literal.
  * Colour: `brand` is the default (the brand fill). `highlight` and
  * `primary` are the other core fills that read as a mark. Gradient lights
- * the chosen role toward white so it still grades when a brand's ink
- * matches its fill.
+ * the chosen role from a white mix to a black mix so the mark has volume
+ * when a brand's ink matches its fill.
  * Fill: `solid` paints the role flat; `gradient` is the lit mark from the
  * spec. Size is Tailwind through `className` (`w-72`, `w-full`).
  * Motion: `organic` (default) writes each lobe's cx, cy and r on its own
@@ -49,16 +49,16 @@ type FlowlyProps = Omit<React.ComponentProps<"svg">, "children" | "color"> & {
 }
 
 const REST = [
-  { cx: 94, cy: 80, r: 52 },
-  { cx: 180, cy: 80, r: 52 },
-  { cx: 266, cy: 80, r: 52 },
+  { cx: 82, cy: 80, r: 43 },
+  { cx: 180, cy: 80, r: 47 },
+  { cx: 278, cy: 80, r: 43 },
 ] as const
 
 /** Incommensurate periods so the silhouette never repeats on a beat. */
 const LOOPS = [
-  { period: 5.5, cx: 9, cy: 7, r: 5.5, phase: 0.2 },
-  { period: 7.2, cx: 6, cy: 8, r: 6, phase: 1.7 },
-  { period: 6.3, cx: 9, cy: 7, r: 5.5, phase: 3.1 },
+  { period: 5.8, cx: 7, cy: 11, r: 7, phase: 0.2 },
+  { period: 7.4, cx: 5, cy: 13, r: 8, phase: 1.9 },
+  { period: 6.5, cx: 7, cy: 11, r: 7, phase: 3.4 },
 ] as const
 
 function useOrganicMotion(enabled: boolean) {
@@ -153,25 +153,33 @@ function Flowly({
     >
       <defs>
         {fill === "gradient" ? (
-          <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor={`color-mix(in oklab, ${role} 62%, white)`} />
-            <stop offset="100%" stopColor={role} />
+          <linearGradient id={gradientId} x1="0.12" y1="0" x2="0.88" y2="1">
+            <stop offset="0%" stopColor={`color-mix(in oklab, ${role} 38%, white)`} />
+            <stop offset="46%" stopColor={role} />
+            <stop offset="100%" stopColor={`color-mix(in oklab, ${role} 62%, black)`} />
           </linearGradient>
         ) : null}
-        <filter id={gooId} x="-20%" y="-30%" width="140%" height="160%">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="7" result="blur" />
+        <filter
+          id={gooId}
+          x="-28%"
+          y="-45%"
+          width="156%"
+          height="190%"
+          colorInterpolationFilters="sRGB"
+        >
+          <feGaussianBlur in="SourceGraphic" stdDeviation="12" result="blur" />
           <feColorMatrix
             in="blur"
             mode="matrix"
-            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -8"
+            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10"
             result="goo"
           />
         </filter>
       </defs>
       <g filter={`url(#${gooId})`} fill={paint}>
-        <circle ref={aRef} className="flowly-lobe-a" cx="94" cy="80" r="52" />
-        <circle ref={bRef} className="flowly-lobe-b" cx="180" cy="80" r="52" />
-        <circle ref={cRef} className="flowly-lobe-c" cx="266" cy="80" r="52" />
+        <circle ref={aRef} className="flowly-lobe-a" cx={REST[0].cx} cy={REST[0].cy} r={REST[0].r} />
+        <circle ref={bRef} className="flowly-lobe-b" cx={REST[1].cx} cy={REST[1].cy} r={REST[1].r} />
+        <circle ref={cRef} className="flowly-lobe-c" cx={REST[2].cx} cy={REST[2].cy} r={REST[2].r} />
       </g>
     </svg>
   )

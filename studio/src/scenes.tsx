@@ -564,7 +564,7 @@ export function FlowlyScene() {
         backgroundSize: "22px 22px",
       }}
     >
-      <Flowly shape={8} fill="gradient" colour="brand" className="w-80" />
+      <Flowly shape={8} fill="gradient" colour="brand" className="w-96" />
       <p className="mt-16 font-mono text-sm text-dark-ink-2">
         {'Flowly shape={8} fill="gradient" colour="brand" motion="organic"'}
       </p>

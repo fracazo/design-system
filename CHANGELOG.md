@@ -8,16 +8,17 @@ Semantic versioning by hand. Australian English, no em dashes.
   a horizontal capsule of three merged circles. `shape={8}` is the only
   silhouette. `fill` is `gradient` (the lit mark) or `solid`; `colour` is
   a core fill role (`brand`, `highlight`, `primary`), Australian
-  spelling. Gradient lights the chosen role with `color-mix` toward white
-  so it still grades when a brand's ink matches its fill (Jacaranda's
-  `--brand` and `--brand-ink` are the same). Size is Tailwind through
-  `className`. Decorative: aria-hidden, pointer-events-none. Tokens only
-  (no new role, no contract change, no new dependency). A client
-  directive is required for unique SVG paint and goo ids. Three equal
-  circles plus a goo filter make the flowy merge. `motion="organic"`
+  spelling. Gradient lights the chosen role from a white mix through the
+  fill to a black mix so the mark has volume when a brand's ink matches
+  its fill (Jacaranda's `--brand` and `--brand-ink` are the same). Size is
+  Tailwind through `className`. Decorative: aria-hidden,
+  pointer-events-none. Tokens only (no new role, no contract change, no
+  new dependency). A client directive is required for unique SVG paint
+  and goo ids. Three lobes sit just off a touch, the middle one slightly
+  larger, and a goo filter grows the peanut-chain waists. `motion="organic"`
   (default) writes each lobe's cx, cy and r on its own incommensurate
-  loop (5.5s / 7.2s / 6.3s) so the silhouette breathes and the valleys
-  merge; `motion="none"` is still. `prefers-reduced-motion` sits the
+  loop (5.8s / 7.4s / 6.5s) so the silhouette breathes and the valleys
+  pinch; `motion="none"` is still. `prefers-reduced-motion` sits the
   mark still (no frames are written). Use it
   behind a layout, on an empty state, or as a band, in marketing and
   product alike: a rule, not a marketing ornament. Do not invent another
