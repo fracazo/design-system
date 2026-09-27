@@ -133,9 +133,9 @@ function placeLights(
 ) {
   const crest = lobes.reduce((best, lobe) => (lobe.cy < best.cy ? lobe : best))
   const drift = t === null ? 0 : Math.sin(t * 0.32) * 14
-  writeLight(key, crest.cx - 16 + drift, crest.cy - 74, 128)
-  writeLight(spec, crest.cx - 4 + drift * 0.35, crest.cy - 62, 72)
-  writeLight(fill, 196 - drift * 0.6, 172, 200)
+  writeLight(key, crest.cx - 10 + drift, crest.cy - 58, 62)
+  writeLight(spec, crest.cx + drift * 0.25, crest.cy - 48, 42)
+  writeLight(fill, 180 - drift * 0.4, 210, 260)
 }
 
 function Flowly({
@@ -256,45 +256,45 @@ function Flowly({
             <feGaussianBlur in="goo" stdDeviation="2.2" result="form" />
             <feDiffuseLighting
               in="form"
-              surfaceScale="7"
-              diffuseConstant="0.78"
-              kernelUnitLength="1 1"
+              surfaceScale="46"
+              diffuseConstant="0.85"
+              kernelUnitLength="0.5 0.5"
               lightingColor="white"
               result="key"
             >
-              <fePointLight ref={keyRef} x="150" y="8" z="128" />
+              <fePointLight ref={keyRef} x="160" y="20" z="62" />
             </feDiffuseLighting>
             <feDiffuseLighting
               in="form"
-              surfaceScale="4"
-              diffuseConstant="0.42"
-              kernelUnitLength="1 1"
+              surfaceScale="12"
+              diffuseConstant="0.16"
+              kernelUnitLength="0.5 0.5"
               lightingColor="white"
               result="fillLight"
             >
-              <fePointLight ref={fillRef} x="200" y="172" z="200" />
+              <fePointLight ref={fillRef} x="180" y="210" z="260" />
             </feDiffuseLighting>
-            <feComposite in="key" in2="fillLight" operator="arithmetic" k2="1" k3="0.7" k4="0.06" result="diff" />
+            <feComposite in="key" in2="fillLight" operator="arithmetic" k2="1" k3="1" k4="0.12" result="diff" />
             <feComponentTransfer in="diff" result="soft">
-              <feFuncR type="gamma" amplitude="1" exponent="0.82" offset="0.1" />
-              <feFuncG type="gamma" amplitude="1" exponent="0.82" offset="0.1" />
-              <feFuncB type="gamma" amplitude="1" exponent="0.82" offset="0.1" />
+              <feFuncR type="linear" slope="1.15" intercept="-0.04" />
+              <feFuncG type="linear" slope="1.15" intercept="-0.04" />
+              <feFuncB type="linear" slope="1.15" intercept="-0.04" />
               <feFuncA type="identity" />
             </feComponentTransfer>
             <feSpecularLighting
               in="form"
-              surfaceScale="3.2"
-              specularConstant="0.2"
-              specularExponent="8"
-              kernelUnitLength="1 1"
+              surfaceScale="22"
+              specularConstant="0.45"
+              specularExponent="16"
+              kernelUnitLength="0.5 0.5"
               lightingColor="white"
               result="spec"
             >
-              <fePointLight ref={specRef} x="160" y="4" z="72" />
+              <fePointLight ref={specRef} x="168" y="24" z="42" />
             </feSpecularLighting>
             <feFlood ref={inkRef} floodColor={role} result="ink" />
             <feBlend in="soft" in2="ink" mode="multiply" result="body" />
-            <feComposite in="spec" in2="body" operator="arithmetic" k2="0.7" k3="1" k4="0" result="lit" />
+            <feComposite in="spec" in2="body" operator="arithmetic" k2="0.42" k3="1" k4="0" result="lit" />
             <feComposite in="lit" in2="goo" operator="in" />
           </filter>
         ) : null}
