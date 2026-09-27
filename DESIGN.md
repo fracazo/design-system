@@ -263,9 +263,9 @@ the contract and is updated whenever variants change. In brief:
   not badges. It lays out in a grid, never a carousel.
 - **Flowly** is the house 3-lobe shape: three merged circles as one
   silhouette (`shape={8}`). Colour and fill come from core roles (`brand`,
-  `highlight`, `primary`; `gradient` or `solid`). Gradient lights the role
-  from a white mix to a black mix. The lobes undulate on
-  their own loops so the mark breathes and the valleys pinch; it sits
+  `highlight`, `primary`; `gradient` or `solid`). Gradient lights the
+  merged form: a key on the crest, a soft fill from below, shadow in the
+  waists. A slow wave carries both the silhouette and that light; it sits
   still when the reader prefers reduced motion, or when `motion="none"`.
   It is a rule for marketing and product alike, sat behind a layout, on an
   empty state, or as a band. It is not a free decorative gradient; do not

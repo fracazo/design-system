@@ -154,8 +154,7 @@
 @utility slide-out-to-left { --tw-exit-translate-x: -100%; }
 @utility slide-out-to-right { --tw-exit-translate-x: 100%; }
 
-/* Flowly's organic loop writes SVG cx, cy and r on the lobes so the
-   goo filter re-merges each frame. CSS keyframes cannot drive those
-   attributes into a filtered group, so no utility lives here.
-   Durations live on the component: 5.8s / 7.4s / 6.5s, gated by
-   prefers-reduced-motion. */
+/* Flowly's organic loop writes SVG cx, cy and r, and moves the point
+   lights, so the goo re-merges and the shading follows the crest.
+   CSS keyframes cannot drive those attributes into a filtered group,
+   so no utility lives here. Gated by prefers-reduced-motion. */
